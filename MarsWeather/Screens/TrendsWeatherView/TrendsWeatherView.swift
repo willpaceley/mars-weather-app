@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct TrendsWeatherView: View {
+    @Binding var isLoading: Bool
+    
     var body: some View {
-        Text("Weather Trends")
+        VStack {
+            if isLoading {
+                LoadingView()
+            } else {
+                Text("Weather Trends")
+            }
+        }
     }
 }
 
 struct TrendsWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        TrendsWeatherView()
+        TrendsWeatherView(isLoading: .constant(false))
     }
 }

@@ -17,6 +17,7 @@
 		07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8299E29FC1CD200587495 /* MarsWeatherData.swift */; };
 		07D829A129FC1E1000587495 /* Sol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D829A029FC1E1000587495 /* Sol.swift */; };
 		07D829A329FC1E4200587495 /* Descriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D829A229FC1E4200587495 /* Descriptions.swift */; };
+		07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089729FC5C6500EC2D6A /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		07D8299E29FC1CD200587495 /* MarsWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsWeatherData.swift; sourceTree = "<group>"; };
 		07D829A029FC1E1000587495 /* Sol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sol.swift; sourceTree = "<group>"; };
 		07D829A229FC1E4200587495 /* Descriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descriptions.swift; sourceTree = "<group>"; };
+		07F1089729FC5C6500EC2D6A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				07D8299D29FC1CB800587495 /* Models */,
+				07F1089629FC5B3D00EC2D6A /* Views */,
 				07D8299329FB178C00587495 /* Screens */,
 				07D8298529FB141100587495 /* MarsWeatherApp.swift */,
 				07D8298929FB141300587495 /* Assets.xcassets */,
@@ -123,6 +126,14 @@
 				07D829A029FC1E1000587495 /* Sol.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		07F1089629FC5B3D00EC2D6A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				07F1089729FC5C6500EC2D6A /* LoadingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 				07D8299A29FBEF9200587495 /* InfoScreenView.swift in Sources */,
 				07D8298629FB141100587495 /* MarsWeatherApp.swift in Sources */,
 				07D8299C29FBF0CE00587495 /* MarsWeatherTabView.swift in Sources */,
+				07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
