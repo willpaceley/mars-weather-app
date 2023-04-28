@@ -17,7 +17,7 @@ struct MarsWeatherTabView: View {
             
             TrendsWeatherView()
                 .tabItem {
-                    Label("Trends", systemImage: "chart.line.uptrend.xyaxis")
+                    Label("Trends", systemImage: "chart.xyaxis.line")
                 }
             
             InfoScreenView()
