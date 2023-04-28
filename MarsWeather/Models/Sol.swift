@@ -11,8 +11,8 @@ struct Sol: Codable {
     let id, terrestrialDate, sol, ls: String
     let season: Season
     let minTemp, maxTemp, pressure: String
-    let pressureString, absHumidity, windSpeed, windDirection: AbsHumidity
-    let atmoOpacity: AtmoOpacity
+    let pressureString: Pressure
+    let absHumidity, windSpeed, windDirection, atmoOpacity: String
     let sunrise, sunset: String
     let localUvIrradianceIndex: LocalUvIrradianceIndex
     let minGtsTemp, maxGtsTemp: String
@@ -36,15 +36,10 @@ struct Sol: Codable {
     }
 }
 
-enum AbsHumidity: String, Codable {
+enum Pressure: String, Codable {
     case empty = "--"
     case higher = "Higher"
     case lower = "Lower"
-}
-
-enum AtmoOpacity: String, Codable {
-    case empty = "--"
-    case sunny = "Sunny"
 }
 
 enum LocalUvIrradianceIndex: String, Codable {

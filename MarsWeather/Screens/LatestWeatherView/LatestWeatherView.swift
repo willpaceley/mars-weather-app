@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LatestWeatherView: View {
+    @Binding var sols: [Sol]?
     @Binding var isLoading: Bool
     
     var body: some View {
@@ -24,6 +25,7 @@ struct LatestWeatherView: View {
 
 struct LatestWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestWeatherView(isLoading: .constant(false))
+        LatestWeatherView(sols: .constant(MockData.sols),
+                          isLoading: .constant(false))
     }
 }

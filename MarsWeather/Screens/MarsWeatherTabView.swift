@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct MarsWeatherTabView: View {
-    @State private var weatherData: MarsWeatherData?
+    @State private var sols: [Sol]?
+    @State private var descriptions: Descriptions?
     @State private var isLoading = false
     
     var body: some View {
         TabView {
-            LatestWeatherView(isLoading: $isLoading)
+            LatestWeatherView(sols: $sols, isLoading: $isLoading)
                 .tabItem {
                     Label("Latest", systemImage: "thermometer.sun")
                 }
@@ -49,10 +50,13 @@ extension MarsWeatherTabView {
             do {
                 let url = URL(string: "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json")!
                 let (data, _) = try await URLSession.shared.data(from: url)
-                weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
+                let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
                 
-                if let weatherData {
-                    print("Fetched weather data for \(weatherData.soles.count) sols!")
+                sols = weatherData.soles
+                descriptions = weatherData.descriptions
+                
+                if let sols {
+                    print("Fetched weather data for \(sols.count) sols!")
                 }
                 
                 isLoading = false
