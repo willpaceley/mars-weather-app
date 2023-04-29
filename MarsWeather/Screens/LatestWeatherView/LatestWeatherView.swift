@@ -9,15 +9,10 @@ import SwiftUI
 
 struct LatestWeatherView: View {
     @Binding var sols: [Sol]?
-    @Binding var isLoading: Bool
     
     var body: some View {
         VStack {
-            if isLoading {
-                LoadingView()
-            } else {
-                Text("Latest Weather")
-            }
+            Text("Latest Weather")
         }
         .padding()
     }
@@ -25,7 +20,6 @@ struct LatestWeatherView: View {
 
 struct LatestWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestWeatherView(sols: .constant(MockData.sols),
-                          isLoading: .constant(false))
+        LatestWeatherView(sols: .constant(MockData.sols))
     }
 }

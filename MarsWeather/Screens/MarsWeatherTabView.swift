@@ -13,21 +13,27 @@ struct MarsWeatherTabView: View {
     @State private var isLoading = false
     
     var body: some View {
-        TabView {
-            LatestWeatherView(sols: $sols, isLoading: $isLoading)
-                .tabItem {
-                    Label("Latest", systemImage: "thermometer.sun")
-                }
+        ZStack {
+            TabView {
+                LatestWeatherView(sols: $sols)
+                    .tabItem {
+                        Label("Latest", systemImage: "thermometer.sun")
+                    }
+                
+                TrendsWeatherView()
+                    .tabItem {
+                        Label("Trends", systemImage: "chart.xyaxis.line")
+                    }
+                
+                InfoScreenView()
+                    .tabItem {
+                        Label("Info", systemImage: "info.circle")
+                    }
+            }
             
-            TrendsWeatherView(isLoading: $isLoading)
-                .tabItem {
-                    Label("Trends", systemImage: "chart.xyaxis.line")
-                }
-            
-            InfoScreenView()
-                .tabItem {
-                    Label("Info", systemImage: "info.circle")
-                }
+            if isLoading {
+                LoadingView()
+            }
         }
         .preferredColorScheme(.dark)
         .task {
