@@ -19,6 +19,7 @@
 		07D829A329FC1E4200587495 /* Descriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D829A229FC1E4200587495 /* Descriptions.swift */; };
 		07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089729FC5C6500EC2D6A /* LoadingView.swift */; };
 		07F1089A29FC63CF00EC2D6A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089929FC63CF00EC2D6A /* MockData.swift */; };
+		07F1089F29FDCA4600EC2D6A /* AppTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		07D829A229FC1E4200587495 /* Descriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descriptions.swift; sourceTree = "<group>"; };
 		07F1089729FC5C6500EC2D6A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		07F1089929FC63CF00EC2D6A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +136,18 @@
 		07F1089629FC5B3D00EC2D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				07F1089D29FDCA0700EC2D6A /* Titles */,
 				07F1089729FC5C6500EC2D6A /* LoadingView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		07F1089D29FDCA0700EC2D6A /* Titles */ = {
+			isa = PBXGroup;
+			children = (
+				07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */,
+			);
+			path = Titles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 				07D8299C29FBF0CE00587495 /* MarsWeatherTabView.swift in Sources */,
 				07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */,
 				07F1089A29FC63CF00EC2D6A /* MockData.swift in Sources */,
+				07F1089F29FDCA4600EC2D6A /* AppTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

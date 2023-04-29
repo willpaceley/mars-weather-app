@@ -37,7 +37,7 @@ struct MarsWeatherTabView: View {
         }
         .preferredColorScheme(.dark)
         .task {
-            fetchWeatherData()
+//            fetchWeatherData()
         }
     }
 }
