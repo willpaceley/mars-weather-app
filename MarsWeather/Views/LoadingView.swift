@@ -11,7 +11,7 @@ struct LoadingView: View {
     var body: some View {
         ProgressView()
             .tint(.accentColor)
-            .scaleEffect(2)
+            .scaleEffect(1.5)
     }
 }
 

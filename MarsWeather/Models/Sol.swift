@@ -8,11 +8,16 @@
 import Foundation
 
 struct Sol: Codable {
-    let id, terrestrialDate, sol, ls: String
+    let id: String
+    let terrestrialDate : String
+    let sol: String
+    let ls: String
     let season: Season
-    let minTemp, maxTemp, pressure: String
-    let pressureString: Pressure
-    let absHumidity, windSpeed, windDirection, atmoOpacity: String
+    let minTemp, maxTemp: String
+    let pressure, pressureString: String
+    let absHumidity: String
+    let windSpeed, windDirection: String
+    let atmoOpacity: String
     let sunrise, sunset: String
     let localUvIrradianceIndex: LocalUvIrradianceIndex
     let minGtsTemp, maxGtsTemp: String
@@ -36,17 +41,11 @@ struct Sol: Codable {
     }
 }
 
-enum Pressure: String, Codable {
-    case empty = "--"
-    case higher = "Higher"
-    case lower = "Lower"
-}
-
 enum LocalUvIrradianceIndex: String, Codable {
     case empty = "--"
-    case high = "High"
     case low = "Low"
     case moderate = "Moderate"
+    case high = "High"
     case veryHigh = "Very_High"
 }
 
