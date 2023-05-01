@@ -11,7 +11,7 @@ struct SunPositionTimeView: View {
     let sol: Sol
     
     var body: some View {
-        HStack(spacing: 15) {
+        HStack {
             VStack(spacing: 7) {
                 Text("Sunrise")
                     .fontWeight(.semibold)
@@ -26,6 +26,8 @@ struct SunPositionTimeView: View {
                 Text(sol.sunrise)
                     .font(.callout)
             }
+            
+            Spacer()
             
             VStack(spacing: 7) {
                 Text("Sunset")
@@ -43,7 +45,9 @@ struct SunPositionTimeView: View {
             }
         }
         .padding()
-        .cornerRadius(7)
+        .frame(minWidth: 150, maxWidth: 175)
+        .background(Color.gray.opacity(0.25))
+        .cornerRadius(5)
     }
 }
 

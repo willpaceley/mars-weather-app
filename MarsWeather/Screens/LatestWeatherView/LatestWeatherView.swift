@@ -18,32 +18,23 @@ struct LatestWeatherView: View {
                     
                     LatestReportTitleView(sol: latestReports[0])
                     
-                    ZStack(alignment: .topLeading) {
-                        Rectangle()
-                            .foregroundColor(Color(UIColor.darkGray))
-                            .cornerRadius(10)
-                            .opacity(0.5)
-                        
-                        VStack(alignment: .leading, spacing: 0) {
-                            
-                            HStack {
-                                TemperatureView(sol: latestReports[0])
-                                
-                                Spacer()
-                                
-                                SunPositionTimeView(sol: latestReports[0])
-                            }
+                    Grid {
+                        GridRow {
+                            TemperatureView(sol: latestReports[0])
+                            SunPositionTimeView(sol: latestReports[0])
                         }
+                        
+                        Divider()
                     }
-                    .frame(maxWidth: .infinity)
                 }
-                
-                Spacer()
+                .frame(maxWidth: .infinity)
             }
+            Spacer()
         }
         .padding()
     }
 }
+
 
 struct LatestWeatherView_Previews: PreviewProvider {
     static var previews: some View {
