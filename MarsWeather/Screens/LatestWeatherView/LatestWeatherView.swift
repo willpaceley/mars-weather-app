@@ -18,19 +18,22 @@ struct LatestWeatherView: View {
                     
                     LatestReportTitleView(sol: latestReports[0])
                     
-                    Grid {
+                    Grid(alignment: .leading) {
                         GridRow {
                             TemperatureView(sol: latestReports[0])
                             SunPositionTimeView(sol: latestReports[0])
                         }
                         
-                        Divider()
+                        GridRow {
+                            ConditionsView(atmoOpacity: latestReports[0].atmoOpacity)
+                        }
                     }
                 }
                 .frame(maxWidth: .infinity)
             }
             Spacer()
         }
+        .navigationTitle("Mars Weather")
         .padding()
     }
 }

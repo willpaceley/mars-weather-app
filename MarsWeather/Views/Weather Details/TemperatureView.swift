@@ -16,12 +16,7 @@ struct TemperatureView: View {
                 Text("High")
                     .fontWeight(.semibold)
                 
-                Image(systemName: "thermometer.high")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.accentColor)
+                WeatherIconView(systemName: "thermometer.high")
                 
                 Text("\(sol.maxTemp) °C")
             }
@@ -32,12 +27,7 @@ struct TemperatureView: View {
                 Text("Low")
                     .fontWeight(.semibold)
                 
-                Image(systemName: "thermometer.low")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.accentColor)
+                WeatherIconView(systemName: "thermometer.low")
                 
                 Text("\(sol.minTemp) °C")
             }

@@ -16,12 +16,7 @@ struct SunPositionTimeView: View {
                 Text("Sunrise")
                     .fontWeight(.semibold)
                 
-                Image(systemName: "sunrise.fill")
-                    .resizable()
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.accentColor)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
+                WeatherIconView(systemName: "sunrise.fill")
                 
                 Text(sol.sunrise)
                     .font(.callout)
@@ -33,12 +28,7 @@ struct SunPositionTimeView: View {
                 Text("Sunset")
                     .fontWeight(.semibold)
                 
-                Image(systemName: "sunset.fill")
-                    .resizable()
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.accentColor)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
+                WeatherIconView(systemName: "sunset.fill")
                 
                 Text(sol.sunset)
                     .font(.callout)
