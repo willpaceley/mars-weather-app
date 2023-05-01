@@ -21,6 +21,7 @@
 		07F1089A29FC63CF00EC2D6A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089929FC63CF00EC2D6A /* MockData.swift */; };
 		07F1089F29FDCA4600EC2D6A /* AppTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */; };
 		07F108A329FF4D2A00EC2D6A /* SunPositionTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F108A229FF4D2A00EC2D6A /* SunPositionTimeView.swift */; };
+		07F108A529FFF62800EC2D6A /* LatestReportTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F108A429FFF62800EC2D6A /* LatestReportTitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		07F1089929FC63CF00EC2D6A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleView.swift; sourceTree = "<group>"; };
 		07F108A229FF4D2A00EC2D6A /* SunPositionTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunPositionTimeView.swift; sourceTree = "<group>"; };
+		07F108A429FFF62800EC2D6A /* LatestReportTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestReportTitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */,
+				07F108A429FFF62800EC2D6A /* LatestReportTitleView.swift */,
 			);
 			path = Titles;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				07D829A129FC1E1000587495 /* Sol.swift in Sources */,
 				07D829A329FC1E4200587495 /* Descriptions.swift in Sources */,
 				07D8299A29FBEF9200587495 /* InfoScreenView.swift in Sources */,
+				07F108A529FFF62800EC2D6A /* LatestReportTitleView.swift in Sources */,
 				07D8298629FB141100587495 /* MarsWeatherApp.swift in Sources */,
 				07D8299C29FBF0CE00587495 /* MarsWeatherTabView.swift in Sources */,
 				07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */,

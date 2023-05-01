@@ -16,20 +16,7 @@ struct LatestWeatherView: View {
                 VStack(alignment: .leading) {
                     AppTitleView()
                     
-                    Text("Latest Report")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Sol " + latestReports[0].sol)
-                            .foregroundColor(.accentColor)
-                        
-                        Text("April 29, 2023")
-                            .font(.callout)
-                            .foregroundColor(.secondary)
-                            .italic()
-                    }
-                    
+                    LatestReportTitleView(sol: latestReports[0])
                     
                     ZStack(alignment: .topLeading) {
                         Rectangle()
@@ -38,15 +25,6 @@ struct LatestWeatherView: View {
                             .opacity(0.5)
                         
                         VStack(alignment: .leading,spacing: 0) {
-//                            HStack {
-//                                Text("Sol " + latestReports[0].sol)
-//                            }
-//                            .padding(.leading)
-//                            .padding(.top, 10)
-//                            .foregroundColor(.accentColor)
-//                            .fontWeight(.semibold)
-//                            .font(.title3)
-                            
                             SunPositionTimeView(sol: latestReports[0])
                         }
                     }

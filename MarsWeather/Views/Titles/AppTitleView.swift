@@ -16,7 +16,7 @@ struct AppTitleView: View {
                 .foregroundColor(.accentColor)
         }
         .frame(maxWidth: .infinity)
-        .padding(.bottom)
+        .padding(.bottom, 5)
     }
 }
 
