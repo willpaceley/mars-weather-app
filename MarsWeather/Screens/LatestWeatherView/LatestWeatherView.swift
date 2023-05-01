@@ -20,26 +20,37 @@ struct LatestWeatherView: View {
                         .font(.title2)
                         .fontWeight(.semibold)
                     
-                    Text("April 29, 2023")
-                        .font(.callout)
-                        .foregroundColor(.secondary)
+                    VStack(alignment: .leading) {
+                        Text("Sol " + latestReports[0].sol)
+                            .foregroundColor(.accentColor)
+                        
+                        Text("April 29, 2023")
+                            .font(.callout)
+                            .foregroundColor(.secondary)
+                            .italic()
+                    }
+                    
                     
                     ZStack(alignment: .topLeading) {
                         Rectangle()
                             .foregroundColor(Color(UIColor.darkGray))
-                            .cornerRadius(15)
+                            .cornerRadius(10)
                             .opacity(0.5)
                         
-                        HStack {
-                            Text("Sol " + latestReports[0].sol)
+                        VStack(alignment: .leading,spacing: 0) {
+//                            HStack {
+//                                Text("Sol " + latestReports[0].sol)
+//                            }
+//                            .padding(.leading)
+//                            .padding(.top, 10)
+//                            .foregroundColor(.accentColor)
+//                            .fontWeight(.semibold)
+//                            .font(.title3)
+                            
+                            SunPositionTimeView(sol: latestReports[0])
                         }
-                        .padding(.leading)
-                        .padding(.top)
-                        .foregroundColor(.accentColor)
-                        .fontWeight(.semibold)
-                        .font(.title3)
                     }
-                    .frame(width: .infinity, height: 225)
+                    .frame(maxWidth: .infinity)
                 }
                 
                 Spacer()
