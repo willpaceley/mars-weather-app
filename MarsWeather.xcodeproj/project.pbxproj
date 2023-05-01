@@ -22,6 +22,7 @@
 		07F1089F29FDCA4600EC2D6A /* AppTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */; };
 		07F108A329FF4D2A00EC2D6A /* SunPositionTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F108A229FF4D2A00EC2D6A /* SunPositionTimeView.swift */; };
 		07F108A529FFF62800EC2D6A /* LatestReportTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F108A429FFF62800EC2D6A /* LatestReportTitleView.swift */; };
+		07F108A72A0002FD00EC2D6A /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F108A62A0002FD00EC2D6A /* TemperatureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleView.swift; sourceTree = "<group>"; };
 		07F108A229FF4D2A00EC2D6A /* SunPositionTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunPositionTimeView.swift; sourceTree = "<group>"; };
 		07F108A429FFF62800EC2D6A /* LatestReportTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestReportTitleView.swift; sourceTree = "<group>"; };
+		07F108A62A0002FD00EC2D6A /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				07F108A229FF4D2A00EC2D6A /* SunPositionTimeView.swift */,
+				07F108A62A0002FD00EC2D6A /* TemperatureView.swift */,
 			);
 			path = "Weather Details";
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */,
 				07D8298829FB141100587495 /* LatestWeatherView.swift in Sources */,
 				07D829A129FC1E1000587495 /* Sol.swift in Sources */,
+				07F108A72A0002FD00EC2D6A /* TemperatureView.swift in Sources */,
 				07D829A329FC1E4200587495 /* Descriptions.swift in Sources */,
 				07D8299A29FBEF9200587495 /* InfoScreenView.swift in Sources */,
 				07F108A529FFF62800EC2D6A /* LatestReportTitleView.swift in Sources */,

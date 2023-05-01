@@ -24,8 +24,15 @@ struct LatestWeatherView: View {
                             .cornerRadius(10)
                             .opacity(0.5)
                         
-                        VStack(alignment: .leading,spacing: 0) {
-                            SunPositionTimeView(sol: latestReports[0])
+                        VStack(alignment: .leading, spacing: 0) {
+                            
+                            HStack {
+                                TemperatureView(sol: latestReports[0])
+                                
+                                Spacer()
+                                
+                                SunPositionTimeView(sol: latestReports[0])
+                            }
                         }
                     }
                     .frame(maxWidth: .infinity)
