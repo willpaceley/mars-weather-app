@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct MarsWeatherTabView: View {
-    @State private var sols: [Sol]?
-    @State private var descriptions: Descriptions?
-    @State private var isLoading = false
+    @StateObject var vm = MarsWeatherTabViewModel()
     
     var body: some View {
         ZStack {
             TabView {
-                LatestWeatherView(sols: $sols)
+                LatestWeatherView(sols: $vm.sols)
                     .tabItem {
                         Label("Latest", systemImage: "thermometer.sun")
                     }
@@ -31,13 +29,13 @@ struct MarsWeatherTabView: View {
                     }
             }
             
-            if isLoading {
+            if vm.isLoading {
                 LoadingView()
             }
         }
         .preferredColorScheme(.dark)
         .task {
-//            fetchWeatherData()
+            fetchWeatherData()
         }
     }
 }
@@ -50,7 +48,7 @@ struct MarsWeatherTabView_Previews: PreviewProvider {
 
 extension MarsWeatherTabView {
     func fetchWeatherData() {
-        isLoading = true
+        vm.isLoading = true
         
         Task {
             do {
@@ -58,17 +56,17 @@ extension MarsWeatherTabView {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
                 
-                sols = weatherData.soles
-                descriptions = weatherData.descriptions
+                vm.sols = weatherData.soles
+                vm.descriptions = weatherData.descriptions
                 
-                if let sols {
+                if let sols = vm.sols {
                     print("Fetched weather data for \(sols.count) sols!")
                 }
                 
-                isLoading = false
+                vm.isLoading = false
             } catch {
                 print("A problem occurred fetching data from the Mars Weather API.")
-                isLoading = false
+                vm.isLoading = false
             }
         }
     }

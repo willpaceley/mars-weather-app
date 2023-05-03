@@ -17,6 +17,7 @@
 		07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8299E29FC1CD200587495 /* MarsWeatherData.swift */; };
 		07D829A129FC1E1000587495 /* Sol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D829A029FC1E1000587495 /* Sol.swift */; };
 		07D829A329FC1E4200587495 /* Descriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D829A229FC1E4200587495 /* Descriptions.swift */; };
+		07ED94E32A0297350075B8D4 /* MarsWeatherTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED94E22A0297350075B8D4 /* MarsWeatherTabViewModel.swift */; };
 		07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089729FC5C6500EC2D6A /* LoadingView.swift */; };
 		07F1089A29FC63CF00EC2D6A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089929FC63CF00EC2D6A /* MockData.swift */; };
 		07F1089F29FDCA4600EC2D6A /* AppTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */; };
@@ -39,6 +40,7 @@
 		07D8299E29FC1CD200587495 /* MarsWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsWeatherData.swift; sourceTree = "<group>"; };
 		07D829A029FC1E1000587495 /* Sol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sol.swift; sourceTree = "<group>"; };
 		07D829A229FC1E4200587495 /* Descriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descriptions.swift; sourceTree = "<group>"; };
+		07ED94E22A0297350075B8D4 /* MarsWeatherTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsWeatherTabViewModel.swift; sourceTree = "<group>"; };
 		07F1089729FC5C6500EC2D6A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		07F1089929FC63CF00EC2D6A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleView.swift; sourceTree = "<group>"; };
@@ -100,7 +102,7 @@
 		07D8299329FB178C00587495 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				07D8299B29FBF0CE00587495 /* MarsWeatherTabView.swift */,
+				07ED94E12A0297160075B8D4 /* MarsWeatherTabView */,
 				07D8299429FB19EA00587495 /* LatestWeatherView */,
 				07D8299529FBEDE300587495 /* TrendsWeatherView */,
 				07D8299829FBEF2C00587495 /* InfoScreenView */,
@@ -141,6 +143,15 @@
 				07D829A029FC1E1000587495 /* Sol.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		07ED94E12A0297160075B8D4 /* MarsWeatherTabView */ = {
+			isa = PBXGroup;
+			children = (
+				07D8299B29FBF0CE00587495 /* MarsWeatherTabView.swift */,
+				07ED94E22A0297350075B8D4 /* MarsWeatherTabViewModel.swift */,
+			);
+			path = MarsWeatherTabView;
 			sourceTree = "<group>";
 		};
 		07F1089629FC5B3D00EC2D6A /* Views */ = {
@@ -259,6 +270,7 @@
 				07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */,
 				07F1089A29FC63CF00EC2D6A /* MockData.swift in Sources */,
 				07F1089F29FDCA4600EC2D6A /* AppTitleView.swift in Sources */,
+				07ED94E32A0297350075B8D4 /* MarsWeatherTabViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
