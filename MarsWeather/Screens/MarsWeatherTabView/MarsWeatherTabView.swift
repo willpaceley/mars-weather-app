@@ -35,7 +35,7 @@ struct MarsWeatherTabView: View {
         }
         .preferredColorScheme(.dark)
         .task {
-            fetchWeatherData()
+            vm.getWeatherData()
         }
     }
 }
@@ -43,31 +43,5 @@ struct MarsWeatherTabView: View {
 struct MarsWeatherTabView_Previews: PreviewProvider {
     static var previews: some View {
         MarsWeatherTabView()
-    }
-}
-
-extension MarsWeatherTabView {
-    func fetchWeatherData() {
-        vm.isLoading = true
-        
-        Task {
-            do {
-                let url = URL(string: "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json")!
-                let (data, _) = try await URLSession.shared.data(from: url)
-                let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
-                
-                vm.sols = weatherData.soles
-                vm.descriptions = weatherData.descriptions
-                
-                if let sols = vm.sols {
-                    print("Fetched weather data for \(sols.count) sols!")
-                }
-                
-                vm.isLoading = false
-            } catch {
-                print("A problem occurred fetching data from the Mars Weather API.")
-                vm.isLoading = false
-            }
-        }
     }
 }
