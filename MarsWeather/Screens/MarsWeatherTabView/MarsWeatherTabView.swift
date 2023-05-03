@@ -37,6 +37,7 @@ struct MarsWeatherTabView: View {
         .task {
             vm.getWeatherData()
         }
+        .alert(isPresented: $vm.isPresentingAlert) { vm.alert }
     }
 }
 

@@ -12,15 +12,18 @@ final class NetworkProvider {
     
     private init() {}
     
-    func getMarsWeatherData() async -> MarsWeatherData? {
-        guard let url = createWeatherURL() else { return nil }
+    func getMarsWeatherData() async throws -> MarsWeatherData {
+        guard let url = createWeatherURL() else {
+            throw MWError.invalidURL
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
         
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
             let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
             return weatherData
         } catch {
-            return nil
+            throw MWError.invalidData
         }
     }
     

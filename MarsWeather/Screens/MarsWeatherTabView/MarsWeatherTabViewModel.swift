@@ -5,11 +5,13 @@
 //  Created by Will Paceley on 2023-05-03.
 //
 
-import Foundation
+import SwiftUI
 
-final class MarsWeatherTabViewModel: ObservableObject {
+@MainActor final class MarsWeatherTabViewModel: ObservableObject {
     @Published var sols: [Sol]?
     @Published var isLoading = false
+    @Published var isPresentingAlert = false
+    @Published var alert = AlertContext.defaultAlert
     
     var descriptions: Descriptions?
     
@@ -17,14 +19,33 @@ final class MarsWeatherTabViewModel: ObservableObject {
         isLoading = true
         
         Task {
-            guard let weatherData = await NetworkProvider.shared.getMarsWeatherData() else {
+            do {
+                let weatherData = try await NetworkProvider.shared.getMarsWeatherData()
+                sols = weatherData.soles
+                descriptions = weatherData.descriptions
                 isLoading = false
-                return
+            } catch {
+                if let mwError = error as? MWError {
+                    switch mwError {
+                    case .invalidURL:
+                        alert = AlertContext.invalidURL
+                        
+                    case .invalidData:
+                        alert = AlertContext.invalidData
+                        
+                    case .invalidResponse:
+                        alert = AlertContext.invalidResponse
+                        
+                    case .unableToComplete:
+                        alert = AlertContext.unableToComplete
+                    }
+                } else {
+                    alert = AlertContext.defaultAlert
+                }
+                
+                isLoading = false
+                isPresentingAlert = true
             }
-            
-            sols = weatherData.soles
-            descriptions = weatherData.descriptions
-            isLoading = false
         }
     }
 }
