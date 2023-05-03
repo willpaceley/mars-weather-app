@@ -19,6 +19,8 @@
 		07D829A329FC1E4200587495 /* Descriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D829A229FC1E4200587495 /* Descriptions.swift */; };
 		07ED94E32A0297350075B8D4 /* MarsWeatherTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED94E22A0297350075B8D4 /* MarsWeatherTabViewModel.swift */; };
 		07ED94E82A02A0860075B8D4 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED94E72A02A0860075B8D4 /* NetworkProvider.swift */; };
+		07ED94EB2A02B6330075B8D4 /* MWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED94EA2A02B6330075B8D4 /* MWError.swift */; };
+		07ED94ED2A02B7080075B8D4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED94EC2A02B7080075B8D4 /* Alert.swift */; };
 		07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089729FC5C6500EC2D6A /* LoadingView.swift */; };
 		07F1089A29FC63CF00EC2D6A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089929FC63CF00EC2D6A /* MockData.swift */; };
 		07F1089F29FDCA4600EC2D6A /* AppTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */; };
@@ -43,6 +45,8 @@
 		07D829A229FC1E4200587495 /* Descriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descriptions.swift; sourceTree = "<group>"; };
 		07ED94E22A0297350075B8D4 /* MarsWeatherTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsWeatherTabViewModel.swift; sourceTree = "<group>"; };
 		07ED94E72A02A0860075B8D4 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		07ED94EA2A02B6330075B8D4 /* MWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWError.swift; sourceTree = "<group>"; };
+		07ED94EC2A02B7080075B8D4 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		07F1089729FC5C6500EC2D6A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		07F1089929FC63CF00EC2D6A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		07F1089E29FDCA4600EC2D6A /* AppTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 		07ED94E52A02A06E0075B8D4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				07ED94E92A02B5310075B8D4 /* Alerts */,
 				07ED94E62A02A0780075B8D4 /* Providers */,
 			);
 			path = Utilities;
@@ -171,6 +176,15 @@
 				07ED94E72A02A0860075B8D4 /* NetworkProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		07ED94E92A02B5310075B8D4 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				07ED94EA2A02B6330075B8D4 /* MWError.swift */,
+				07ED94EC2A02B7080075B8D4 /* Alert.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		07F1089629FC5B3D00EC2D6A /* Views */ = {
@@ -284,12 +298,14 @@
 				07D8299A29FBEF9200587495 /* InfoScreenView.swift in Sources */,
 				07F108A529FFF62800EC2D6A /* LatestReportTitleView.swift in Sources */,
 				07F108A92A00416800EC2D6A /* WeatherIconView.swift in Sources */,
+				07ED94EB2A02B6330075B8D4 /* MWError.swift in Sources */,
 				07ED94E82A02A0860075B8D4 /* NetworkProvider.swift in Sources */,
 				07D8298629FB141100587495 /* MarsWeatherApp.swift in Sources */,
 				07D8299C29FBF0CE00587495 /* MarsWeatherTabView.swift in Sources */,
 				07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */,
 				07F1089A29FC63CF00EC2D6A /* MockData.swift in Sources */,
 				07F1089F29FDCA4600EC2D6A /* AppTitleView.swift in Sources */,
+				07ED94ED2A02B7080075B8D4 /* Alert.swift in Sources */,
 				07ED94E32A0297350075B8D4 /* MarsWeatherTabViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
