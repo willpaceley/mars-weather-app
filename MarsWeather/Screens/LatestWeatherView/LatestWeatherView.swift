@@ -26,6 +26,7 @@ struct LatestWeatherView: View {
                         
                         GridRow {
                             ConditionsView(atmoOpacity: latestReports[0].atmoOpacity)
+                            UVIrradianceView(irradianceIndex: latestReports[0].localUvIrradianceIndex)
                         }
                     }
                 }
