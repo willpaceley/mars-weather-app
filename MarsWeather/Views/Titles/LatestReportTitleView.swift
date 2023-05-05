@@ -23,7 +23,7 @@ struct LatestReportTitleView: View {
                 
                 Divider()
                 
-                Text("April 29, 2023")
+                Text(sol.terrestrialDate.formattedDate())
                     .font(.callout)
                     .foregroundColor(.secondary)
             }
