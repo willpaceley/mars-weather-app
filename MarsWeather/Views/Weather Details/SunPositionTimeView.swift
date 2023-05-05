@@ -35,7 +35,7 @@ struct SunPositionTimeView: View {
             }
         }
         .padding()
-        .frame(minWidth: 150, maxWidth: 175)
+        .frame(minWidth: 150, maxWidth: 200, minHeight: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }

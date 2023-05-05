@@ -17,20 +17,20 @@ struct LatestWeatherView: View {
                     AppTitleView()
                     
                     LatestReportTitleView(sol: latestReports[0])
-                    
-                    Grid(alignment: .leading) {
-                        GridRow {
+                                        
+                    VStack(alignment: .center) {
+                        HStack {
                             TemperatureView(sol: latestReports[0])
                             SunPositionTimeView(sol: latestReports[0])
                         }
                         
-                        GridRow {
+                        HStack {
                             ConditionsView(atmoOpacity: latestReports[0].atmoOpacity)
                             UVIrradianceView(irradianceIndex: latestReports[0].localUvIrradianceIndex)
                         }
                     }
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity)
             }
             Spacer()
         }

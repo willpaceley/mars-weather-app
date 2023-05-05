@@ -13,38 +13,40 @@ struct UVIrradianceView: View {
     var sliderOffset: Double {
         switch irradianceIndex {
         case .empty, .low:
-            return -87.5
+            return -85
         case .moderate:
-            return 43.75
+            return -25
         case .high:
-            return 87.5
+            return 25
         case .veryHigh:
-            return 175
+            return 85
         }
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 7) {
             Text("UV Irradiance")
                 .fontWeight(.semibold)
             
             ZStack {
                 Rectangle()
-                    .fill(LinearGradient(colors: [.red, .green, .blue], startPoint: .leading, endPoint: .trailing))
+                    .fill(LinearGradient(colors: [.yellow, .orange, .red], startPoint: .leading, endPoint: .trailing))
                     .frame(height: 10)
                     .cornerRadius(5)
                     .frame(width: 175)
                 
                 Circle()
                     .fill(.white)
-                    .frame(width: 10, height: 10)
+                    .frame(width: 15, height: 15)
                     .offset(CGSize(width: sliderOffset, height: 0))
             }
+            .padding(.top, 10)
+            .padding(.bottom, 10)
             
             Text(irradianceIndex == .veryHigh ? "Very High" : irradianceIndex.rawValue)
         }
         .padding()
-        .frame(minWidth: 200)
+        .frame(minWidth: 200, maxWidth: 250, minHeight: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }
