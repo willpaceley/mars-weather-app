@@ -13,13 +13,13 @@ struct UVIrradianceView: View {
     var sliderOffset: Double {
         switch irradianceIndex {
         case .empty, .low:
-            return -85
+            return -70
         case .moderate:
-            return -25
+            return 0
         case .high:
-            return 25
+            return 35
         case .veryHigh:
-            return 85
+            return 70
         }
     }
     
@@ -33,7 +33,7 @@ struct UVIrradianceView: View {
                     .fill(LinearGradient(colors: [.yellow, .orange, .red], startPoint: .leading, endPoint: .trailing))
                     .frame(height: 10)
                     .cornerRadius(5)
-                    .frame(width: 175)
+                    .frame(width: 150)
                 
                 Circle()
                     .fill(.white)
@@ -46,7 +46,8 @@ struct UVIrradianceView: View {
             Text(irradianceIndex == .veryHigh ? "Very High" : irradianceIndex.rawValue)
         }
         .padding()
-        .frame(minWidth: 200, maxWidth: 250, minHeight: 120)
+//        .frame(minWidth: 175, maxWidth: 250, minHeight: 120)
+        .frame(minHeight: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }
@@ -54,6 +55,7 @@ struct UVIrradianceView: View {
 
 struct UVIrradianceView_Previews: PreviewProvider {
     static var previews: some View {
-        UVIrradianceView(irradianceIndex: MockData.sol.localUvIrradianceIndex)
+//        UVIrradianceView(irradianceIndex: MockData.sol.localUvIrradianceIndex)
+        UVIrradianceView(irradianceIndex: .veryHigh)
     }
 }

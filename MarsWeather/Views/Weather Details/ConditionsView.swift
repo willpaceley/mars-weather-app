@@ -24,7 +24,7 @@ struct ConditionsView: View {
             Text(atmoOpacity)
         }
         .padding()
-        .frame(minWidth: 120, maxWidth: 150, minHeight: 120)
+        .frame(minWidth: 120, minHeight: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }

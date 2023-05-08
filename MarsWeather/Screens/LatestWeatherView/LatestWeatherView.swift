@@ -23,9 +23,10 @@ struct LatestWeatherView: View {
                             TemperatureView(sol: latestReports[0])
                             SunPositionTimeView(sol: latestReports[0])
                         }
-                        
+
                         HStack {
                             ConditionsView(atmoOpacity: latestReports[0].atmoOpacity)
+                            PressureView(sol: latestReports[0])
                             UVIrradianceView(irradianceIndex: latestReports[0].localUvIrradianceIndex)
                         }
                     }
