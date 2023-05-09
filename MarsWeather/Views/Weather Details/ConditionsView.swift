@@ -15,8 +15,8 @@ struct ConditionsView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Conditions")
+        VStack(spacing: 15) {
+            Text("Condition")
                 .fontWeight(.semibold)
             
             WeatherIconView(systemName: icon)
@@ -24,7 +24,7 @@ struct ConditionsView: View {
             Text(atmoOpacity)
         }
         .padding()
-        .frame(minWidth: 120, minHeight: 120)
+        .frame(width: 110, height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }

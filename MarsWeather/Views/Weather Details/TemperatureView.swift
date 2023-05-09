@@ -33,8 +33,8 @@ struct TemperatureView: View {
             }
         }
         .padding()
-        .frame(maxWidth: 200, minHeight: 120)
 //        .frame(minWidth: 150, maxWidth: 200, minHeight: 120)
+        .frame(width: 178.5, height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }

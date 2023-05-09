@@ -22,7 +22,7 @@ struct PressureView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 15) {
             Text("Pressure")
                 .fontWeight(.semibold)
             
@@ -31,7 +31,7 @@ struct PressureView: View {
             Text(sol.pressure + " Pa")
         }
         .padding()
-        .frame(minWidth: 110, minHeight: 120)
+        .frame(width: 110, height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }
