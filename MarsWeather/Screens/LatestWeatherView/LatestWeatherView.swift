@@ -52,6 +52,6 @@ struct LatestWeatherView: View {
 
 struct LatestWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestWeatherView(sols: MockData.sols)
+        LatestWeatherView(sols: MockData.getMockWeatherData())
     }
 }
