@@ -9,6 +9,15 @@ import SwiftUI
 
 struct LatestWeatherView: View {
     let sols: [Sol]
+    var recentReports: [Sol] {
+        let length = sols.count
+        
+        if length > 6 {
+            return Array(sols[0..<7])
+        } else {
+            return Array(sols[0..<length])
+        }
+    }
     
     var body: some View {
         ScrollView {
@@ -22,10 +31,19 @@ struct LatestWeatherView: View {
                         .padding(.bottom, 10)
                     
                     WeatherDetailsView(sol: sols[0])
+                    
+                    Divider()
+                        .padding(.top)
+                        .padding(.bottom)
+                    
+                    SubHeaderView(title: "Last 7 Days")
+                    
+                    ForEach(recentReports) { report in
+                        Text(report.sol)
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            Spacer()
         }
         .padding()
     }

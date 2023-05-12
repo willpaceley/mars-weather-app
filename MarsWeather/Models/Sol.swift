@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Sol: Codable {
+struct Sol: Codable, Identifiable {
     let id: String
     let terrestrialDate : String
     let sol: String
