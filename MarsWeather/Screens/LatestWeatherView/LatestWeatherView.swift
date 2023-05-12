@@ -12,30 +12,21 @@ struct LatestWeatherView: View {
     
     var body: some View {
         ScrollView {
+            AppTitleView()
+            
             if !sols.isEmpty {
-                VStack(alignment: .leading) {
-                    AppTitleView()
+                VStack(alignment: .leading, spacing: 0) {
+                    SubHeaderView(title: "Latest Report")
+            
+                    MarsDateView(sol: sols[0])
+                        .padding(.bottom, 10)
                     
-                    LatestReportTitleView(sol: sols[0])
-                                        
-                    VStack(alignment: .center) {
-                        HStack {
-                            TemperatureView(sol: sols[0])
-                            SunPositionTimeView(sol: sols[0])
-                        }
-
-                        HStack {
-                            ConditionsView(atmoOpacity: sols[0].atmoOpacity)
-                            PressureView(sol: sols[0])
-                            UVIrradianceView(irradianceIndex: sols[0].localUvIrradianceIndex)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
+                    WeatherDetailsView(sol: sols[0])
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
             Spacer()
         }
-        .navigationTitle("Mars Weather")
         .padding()
     }
 }
