@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor final class MarsWeatherTabViewModel: ObservableObject {
-    @Published var sols: [Sol]?
+    @Published var sols = [Sol]()
     @Published var isLoading = false
     @Published var isPresentingAlert = false
     @Published var alert = AlertContext.defaultAlert

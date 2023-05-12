@@ -8,26 +8,26 @@
 import SwiftUI
 
 struct LatestWeatherView: View {
-    @Binding var sols: [Sol]?
+    let sols: [Sol]
     
     var body: some View {
         ScrollView {
-            if let latestReports = sols {
+            if !sols.isEmpty {
                 VStack(alignment: .leading) {
                     AppTitleView()
                     
-                    LatestReportTitleView(sol: latestReports[0])
+                    LatestReportTitleView(sol: sols[0])
                                         
                     VStack(alignment: .center) {
                         HStack {
-                            TemperatureView(sol: latestReports[0])
-                            SunPositionTimeView(sol: latestReports[0])
+                            TemperatureView(sol: sols[0])
+                            SunPositionTimeView(sol: sols[0])
                         }
 
                         HStack {
-                            ConditionsView(atmoOpacity: latestReports[0].atmoOpacity)
-                            PressureView(sol: latestReports[0])
-                            UVIrradianceView(irradianceIndex: latestReports[0].localUvIrradianceIndex)
+                            ConditionsView(atmoOpacity: sols[0].atmoOpacity)
+                            PressureView(sol: sols[0])
+                            UVIrradianceView(irradianceIndex: sols[0].localUvIrradianceIndex)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -43,6 +43,6 @@ struct LatestWeatherView: View {
 
 struct LatestWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestWeatherView(sols: .constant(MockData.sols))
+        LatestWeatherView(sols: MockData.sols)
     }
 }
