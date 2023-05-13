@@ -8,13 +8,34 @@
 import SwiftUI
 
 struct ReportListCellView: View {
+    let report: Report
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            VStack(alignment: .leading) {
+                Text("Sol \(report.sol)")
+                    .foregroundColor(Color.accentColor)
+                
+                Text(report.terrestrialDate.formattedDate())
+                    .foregroundColor(Color.secondary)
+                    .font(Font.subheadline)
+            }
+            
+            Spacer()
+            
+            HStack {
+                Text("Max: \(report.maxTemp) °C")
+                Text("Min: \(report.minTemp) °C")
+            }
+        }
+        .padding(10)
+        .background(Color.gray.opacity(0.25))
+        .cornerRadius(5)
     }
 }
 
 struct ReportListCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportListCellView()
+        ReportListCellView(report: MockData.report)
     }
 }

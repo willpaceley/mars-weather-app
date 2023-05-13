@@ -23,6 +23,7 @@ struct MarsDateView: View {
                     .foregroundColor(.secondary)
             }
         }
+        .padding(.bottom, 5)
     }
 }
 

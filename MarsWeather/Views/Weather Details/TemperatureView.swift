@@ -13,7 +13,7 @@ struct TemperatureView: View {
     var body: some View {
         HStack(spacing: 15) {
             VStack(spacing: 7) {
-                Text("High")
+                Text("Max")
                     .fontWeight(.semibold)
                 
                 WeatherIconView(systemName: "thermometer.high")
@@ -24,7 +24,7 @@ struct TemperatureView: View {
             Spacer()
             
             VStack(spacing: 7) {
-                Text("Low")
+                Text("Min")
                     .fontWeight(.semibold)
                 
                 WeatherIconView(systemName: "thermometer.low")

@@ -10,13 +10,9 @@ import SwiftUI
 struct LatestWeatherView: View {
     let reports: [Report]
     var recentReports: [Report] {
-        let length = reports.count
-        
-        if length > 6 {
-            return Array(reports[0..<7])
-        } else {
-            return Array(reports[0..<length])
-        }
+        let count = reports.count
+        let range = count > 9 ? 0..<9 : 0..<count
+        return Array(reports[range])
     }
     
     var body: some View {
@@ -28,18 +24,20 @@ struct LatestWeatherView: View {
                     SubHeaderView(title: "Latest Report")
             
                     MarsDateView(report: reports[0])
-                        .padding(.bottom, 10)
                     
                     WeatherDetailsView(report: reports[0])
                     
                     Divider()
                         .padding(.top)
-                        .padding(.bottom)
                     
-                    SubHeaderView(title: "Last 7 Days")
+                    SubHeaderView(title: "Last 10 Days")
+                        .padding(.top, 10)
+                        .padding(.bottom, 10)
                     
-                    ForEach(recentReports) { report in
-                        Text(report.sol)
+                    VStack(spacing: 10) {
+                        ForEach(recentReports) { report in
+                            ReportListCellView(report: report)
+                        }
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
