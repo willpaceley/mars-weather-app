@@ -10,5 +10,5 @@ import Foundation
 
 struct MarsWeatherData: Codable {
     let descriptions: Descriptions
-    let soles: [Sol]
+    let soles: [Report]
 }

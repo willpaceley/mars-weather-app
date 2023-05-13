@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct LatestWeatherView: View {
-    let sols: [Sol]
-    var recentReports: [Sol] {
-        let length = sols.count
+    let reports: [Report]
+    var recentReports: [Report] {
+        let length = reports.count
         
         if length > 6 {
-            return Array(sols[0..<7])
+            return Array(reports[0..<7])
         } else {
-            return Array(sols[0..<length])
+            return Array(reports[0..<length])
         }
     }
     
@@ -23,14 +23,14 @@ struct LatestWeatherView: View {
         ScrollView {
             AppTitleView()
             
-            if !sols.isEmpty {
+            if !reports.isEmpty {
                 VStack(alignment: .leading, spacing: 0) {
                     SubHeaderView(title: "Latest Report")
             
-                    MarsDateView(sol: sols[0])
+                    MarsDateView(report: reports[0])
                         .padding(.bottom, 10)
                     
-                    WeatherDetailsView(sol: sols[0])
+                    WeatherDetailsView(report: reports[0])
                     
                     Divider()
                         .padding(.top)
@@ -52,6 +52,6 @@ struct LatestWeatherView: View {
 
 struct LatestWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestWeatherView(sols: MockData.getMockWeatherData())
+        LatestWeatherView(reports: MockData.getMockWeatherData())
     }
 }

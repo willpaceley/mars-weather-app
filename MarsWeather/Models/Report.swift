@@ -1,5 +1,5 @@
 //
-//  Sol.swift
+//  Report.swift
 //  MarsWeather
 //
 //  Created by Will Paceley on 2023-04-28.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Sol: Codable, Identifiable {
+struct Report: Codable, Identifiable {
     let id: String
     let terrestrialDate : String
     let sol: String

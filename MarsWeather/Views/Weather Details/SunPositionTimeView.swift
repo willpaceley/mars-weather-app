@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SunPositionTimeView: View {
-    let sol: Sol
+    let report: Report
     
     var body: some View {
         HStack {
@@ -18,7 +18,7 @@ struct SunPositionTimeView: View {
                 
                 WeatherIconView(systemName: "sunrise.fill")
                 
-                Text(sol.sunrise)
+                Text(report.sunrise)
                     .font(.callout)
             }
             
@@ -30,12 +30,11 @@ struct SunPositionTimeView: View {
                 
                 WeatherIconView(systemName: "sunset.fill")
                 
-                Text(sol.sunset)
+                Text(report.sunset)
                     .font(.callout)
             }
         }
         .padding()
-//        .frame(minWidth: 150, maxWidth: 200, minHeight: 120)
         .frame(width: 178.5, height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
@@ -44,6 +43,6 @@ struct SunPositionTimeView: View {
 
 struct SunPositionTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        SunPositionTimeView(sol: MockData.sol)
+        SunPositionTimeView(report: MockData.report)
     }
 }

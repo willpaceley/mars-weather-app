@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct MarsDateView: View {
-    let sol: Sol
+    let report: Report
     
     var body: some View {
         VStack(alignment: .leading, spacing: 2.5) {
             HStack(spacing: 10) {
-                Text("Sol " + sol.sol)
+                Text("Sol " + report.sol)
                     .foregroundColor(.accentColor)
                 
                 Divider()
                 
-                Text(sol.terrestrialDate.formattedDate())
+                Text(report.terrestrialDate.formattedDate())
                     .font(.callout)
                     .foregroundColor(.secondary)
             }
@@ -28,6 +28,6 @@ struct MarsDateView: View {
 
 struct LatestReportTitleView_Previews: PreviewProvider {
     static var previews: some View {
-        MarsDateView(sol: MockData.sol)
+        MarsDateView(report: MockData.report)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TemperatureView: View {
-    let sol: Sol
+    let report: Report
     
     var body: some View {
         HStack(spacing: 15) {
@@ -18,7 +18,7 @@ struct TemperatureView: View {
                 
                 WeatherIconView(systemName: "thermometer.high")
                 
-                Text("\(sol.maxTemp) °C")
+                Text("\(report.maxTemp) °C")
             }
             
             Spacer()
@@ -29,11 +29,10 @@ struct TemperatureView: View {
                 
                 WeatherIconView(systemName: "thermometer.low")
                 
-                Text("\(sol.minTemp) °C")
+                Text("\(report.minTemp) °C")
             }
         }
         .padding()
-//        .frame(minWidth: 150, maxWidth: 200, minHeight: 120)
         .frame(width: 178.5, height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
@@ -42,6 +41,6 @@ struct TemperatureView: View {
 
 struct TemperatureView_Previews: PreviewProvider {
     static var previews: some View {
-        TemperatureView(sol: MockData.sol)
+        TemperatureView(report: MockData.report)
     }
 }

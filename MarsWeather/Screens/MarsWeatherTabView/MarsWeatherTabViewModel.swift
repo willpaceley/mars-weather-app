@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor final class MarsWeatherTabViewModel: ObservableObject {
-    @Published var sols = [Sol]()
+    @Published var reports = [Report]()
     @Published var isLoading = false
     @Published var isPresentingAlert = false
     @Published var alert = AlertContext.defaultAlert
@@ -21,7 +21,7 @@ import SwiftUI
         Task {
             do {
                 let weatherData = try await NetworkProvider.shared.getMarsWeatherData()
-                sols = weatherData.soles
+                reports = weatherData.soles
                 descriptions = weatherData.descriptions
                 isLoading = false
             } catch {

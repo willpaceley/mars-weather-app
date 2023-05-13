@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct WeatherDetailsView: View {
-    let sol: Sol
+    let report: Report
     
     var body: some View {
         VStack(alignment: .center) {
             HStack {
-                TemperatureView(sol: sol)
-                SunPositionTimeView(sol: sol)
+                TemperatureView(report: report)
+                SunPositionTimeView(report: report)
             }
 
             HStack {
-                ConditionsView(atmoOpacity: sol.atmoOpacity)
-                PressureView(sol: sol)
-                UVIrradianceView(irradianceIndex: sol.localUvIrradianceIndex)
+                ConditionsView(atmoOpacity: report.atmoOpacity)
+                PressureView(report: report)
+                UVIrradianceView(irradianceIndex: report.localUvIrradianceIndex)
             }
         }
     }
@@ -28,6 +28,6 @@ struct WeatherDetailsView: View {
 
 struct WeatherDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherDetailsView(sol: MockData.sol)
+        WeatherDetailsView(report: MockData.report)
     }
 }

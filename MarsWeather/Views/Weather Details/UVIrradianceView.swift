@@ -52,7 +52,7 @@ struct UVIrradianceView: View {
 
 struct UVIrradianceView_Previews: PreviewProvider {
     static var previews: some View {
-        UVIrradianceView(irradianceIndex: MockData.sol.localUvIrradianceIndex)
+        UVIrradianceView(irradianceIndex: MockData.report.localUvIrradianceIndex)
 //        UVIrradianceView(irradianceIndex: .low)
     }
 }

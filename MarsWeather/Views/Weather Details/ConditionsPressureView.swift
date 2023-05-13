@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct ConditionsPressureView: View {
-    let sol: Sol
+    let report: Report
     
     var body: some View {
         HStack {
-            ConditionsView(atmoOpacity: sol.atmoOpacity)
+            ConditionsView(atmoOpacity: report.atmoOpacity)
             
             Spacer()
             
-            PressureView(sol: sol)
+            PressureView(report: report)
         }
         .padding()
-//        .frame(minWidth: 150, maxWidth: 200, minHeight: 120)
         .frame(width: 200, height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
@@ -28,6 +27,6 @@ struct ConditionsPressureView: View {
 
 struct ConditionsPressureView_Previews: PreviewProvider {
     static var previews: some View {
-        ConditionsPressureView(sol: MockData.sol)
+        ConditionsPressureView(report: MockData.report)
     }
 }

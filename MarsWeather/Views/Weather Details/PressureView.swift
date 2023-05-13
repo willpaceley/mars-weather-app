@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PressureView: View {
-    let sol: Sol
+    let report: Report
     
     var icon: String {
-        switch sol.pressureString {
+        switch report.pressureString {
         case "Higher":
             return "gauge.high"
         case "Lower":
@@ -28,7 +28,7 @@ struct PressureView: View {
             
             WeatherIconView(systemName: icon)
             
-            Text(sol.pressure + " Pa")
+            Text(report.pressure + " Pa")
         }
         .padding()
         .frame(width: 110, height: 120)
@@ -39,6 +39,6 @@ struct PressureView: View {
 
 struct PressureView_Previews: PreviewProvider {
     static var previews: some View {
-        PressureView(sol: MockData.sol)
+        PressureView(report: MockData.report)
     }
 }

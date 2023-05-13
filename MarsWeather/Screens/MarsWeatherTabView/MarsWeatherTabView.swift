@@ -13,7 +13,7 @@ struct MarsWeatherTabView: View {
     var body: some View {
         ZStack {
             TabView {
-                LatestWeatherView(sols: vm.sols)
+                LatestWeatherView(reports: vm.reports)
                     .tabItem {
                         Label("Latest", systemImage: "thermometer.sun")
                     }
