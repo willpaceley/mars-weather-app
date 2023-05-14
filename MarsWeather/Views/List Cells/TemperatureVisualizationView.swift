@@ -14,8 +14,37 @@ struct TemperatureVisualizationView: View {
     let maxTemp: Int
     
     // calculate "size" of each degree
+    var widthPerTemp: Double {
+        return totalWidth / Double(maxTemp - minTemp)
+    }
     // calculate width of report temp range
-    // calculate offset
+    var reportRangeWidth: Double {
+        if let maxTemp = Double(report.maxTemp),
+           let minTemp = Double(report.minTemp) {
+            return widthPerTemp * (maxTemp - minTemp)
+        }
+        return 0
+    }
+    
+    // CALCULATE OFFSET
+    // determine white space (totalWidth - reportRangeWidth)
+    // white space / 2 is the available space on left or right
+    // determine which way it needs to shift?
+    // determine alignment strategy
+    // middle section of reportRangeWidth needs to match corresponding temp?
+    
+    var offset: CGFloat {
+        if let maxReportTemp = Double(report.maxTemp),
+           let minReportTemp = Double(report.minTemp) {
+            let medianReportTemp = (maxReportTemp - minReportTemp) / 2
+            print("medianReportTemp: \(medianReportTemp)")
+            
+            // calculate median total temp, which is x pos 0
+            // determine x distance between both medians to calculate offset
+        }
+        
+        return CGFloat(0)
+    }
     
     var body: some View {
         ZStack {
@@ -32,9 +61,9 @@ struct TemperatureVisualizationView: View {
                 .frame(width: totalWidth)
                 .mask {
                     Rectangle()
-                        .frame(width: 100, height: 5)
+                        .frame(width: reportRangeWidth, height: 5)
                         .cornerRadius(5)
-                        .offset(x: -50, y: 0)
+                        .offset(x: 0, y: 0)
                 }
         }
     }
@@ -43,7 +72,7 @@ struct TemperatureVisualizationView: View {
 struct TemperatureVisualizationView_Previews: PreviewProvider {
     static var previews: some View {
         TemperatureVisualizationView(report: MockData.report,
-                                     minTemp: 0,
-                                     maxTemp: 10)
+                                     minTemp: -100,
+                                     maxTemp: 0)
     }
 }
