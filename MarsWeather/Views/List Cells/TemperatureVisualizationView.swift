@@ -10,8 +10,8 @@ import SwiftUI
 struct TemperatureVisualizationView: View {
     let totalWidth: Double = 125
     let report: Report
-    let minTemp: Int
-    let maxTemp: Int
+    let lowestTemp: Int
+    let highestTemp: Int
     
     var reportRangeWidth: Double {
         calculateRangeWidth(for: report)
@@ -47,8 +47,8 @@ struct TemperatureVisualizationView: View {
 struct TemperatureVisualizationView_Previews: PreviewProvider {
     static var previews: some View {
         TemperatureVisualizationView(report: MockData.report,
-                                     minTemp: -90,
-                                     maxTemp: -18)
+                                     lowestTemp: -90,
+                                     highestTemp: -18)
     }
 }
 
@@ -57,7 +57,7 @@ extension TemperatureVisualizationView {
     func calculateRangeWidth(for report: Report) -> Double {
         if let maxReportTemp = Double(report.maxTemp),
            let minReportTemp = Double(report.minTemp) {
-            let widthPerDegree = totalWidth / Double(maxTemp - minTemp)
+            let widthPerDegree = totalWidth / Double(highestTemp - lowestTemp)
             return widthPerDegree * (maxReportTemp - minReportTemp)
         }
         return 0
@@ -68,14 +68,14 @@ extension TemperatureVisualizationView {
         if let maxReportTemp = Double(report.maxTemp),
            let minReportTemp = Double(report.minTemp) {
             // calculate midrange total temp, which is represented @ x pos 0
-            let midrangeTotalTemp = Double((maxTemp + minTemp) / 2)
+            let midrangeTotalTemp = Double((highestTemp + lowestTemp) / 2)
             
             // determine degree difference between total and report temp midranges
             let midrangeReportTemp = (maxReportTemp + minReportTemp) / 2
             let midrangeDifference = midrangeTotalTemp - midrangeReportTemp
             
             // calculate ratio of degrees of temp to UI pts
-            let degreesToPtsRatio = totalWidth / Double(maxTemp - minTemp)
+            let degreesToPtsRatio = totalWidth / Double(highestTemp - lowestTemp)
             
             // calculate offset by converting midrange difference to UI pts
             var calculatedOffset = midrangeDifference * degreesToPtsRatio

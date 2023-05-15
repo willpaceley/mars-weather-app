@@ -29,8 +29,8 @@ struct ReportListCellView: View {
                 Text("\(report.minTemp)°")
                 
                 TemperatureVisualizationView(report: report,
-                                             minTemp: lowestTemp,
-                                             maxTemp: highestTemp)
+                                             lowestTemp: lowestTemp,
+                                             highestTemp: highestTemp)
                 Text("\(report.maxTemp)°")
             }
             .frame(width: 225)
