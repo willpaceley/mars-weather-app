@@ -13,44 +13,11 @@ struct TemperatureVisualizationView: View {
     let minTemp: Int
     let maxTemp: Int
     
-    // calculate "size" of each degree
-    var widthPerTemp: Double {
-        return totalWidth / Double(maxTemp - minTemp)
-    }
-    // calculate width of report temp range
     var reportRangeWidth: Double {
-        if let maxTemp = Double(report.maxTemp),
-           let minTemp = Double(report.minTemp) {
-            return widthPerTemp * (maxTemp - minTemp)
-        }
-        return 0
+        calculateRangeWidth(for: report)
     }
-    
-    // CALCULATE OFFSET
     var offset: CGFloat {
-        if let maxReportTemp = Double(report.maxTemp),
-           let minReportTemp = Double(report.minTemp) {
-            let medianReportTemp = (maxReportTemp + minReportTemp) / 2
-            print("medianReportTemp: \(medianReportTemp)")
-            
-            // calculate median total temp, which is x pos 0
-            let medianTotalTemp = Double((maxTemp + minTemp) / 2)
-            print("medianTotalTemp: \(medianTotalTemp)")
-            
-            // determine x distance between both medians to calculate offset
-            let medianTempDifference = medianTotalTemp - medianReportTemp
-            print("medianTempDifference: \(medianTempDifference)")
-            
-            let tempRange = Double(maxTemp - minTemp)
-            let tempToPtsConversion = totalWidth / tempRange
-            var calculatedOffset = medianTempDifference * tempToPtsConversion
-            print("calculatedOffset: \(calculatedOffset)")
-            if medianReportTemp < medianTotalTemp { calculatedOffset *= -1 }
-            print("calculatedOffset: \(calculatedOffset)")
-            return calculatedOffset
-        }
-        
-        return CGFloat(0)
+        calculateOffset(for: report)
     }
     
     var body: some View {
@@ -80,7 +47,44 @@ struct TemperatureVisualizationView: View {
 struct TemperatureVisualizationView_Previews: PreviewProvider {
     static var previews: some View {
         TemperatureVisualizationView(report: MockData.report,
-                                     minTemp: -100,
-                                     maxTemp: 0)
+                                     minTemp: -90,
+                                     maxTemp: -18)
+    }
+}
+
+extension TemperatureVisualizationView {
+    // calculate width for given report's temperature range
+    func calculateRangeWidth(for report: Report) -> Double {
+        if let maxReportTemp = Double(report.maxTemp),
+           let minReportTemp = Double(report.minTemp) {
+            let widthPerDegree = totalWidth / Double(maxTemp - minTemp)
+            return widthPerDegree * (maxReportTemp - minReportTemp)
+        }
+        return 0
+    }
+    
+    // calculate offset of report temperature bar
+    func calculateOffset(for report: Report) -> CGFloat {
+        if let maxReportTemp = Double(report.maxTemp),
+           let minReportTemp = Double(report.minTemp) {
+            // calculate midrange total temp, which is represented @ x pos 0
+            let midrangeTotalTemp = Double((maxTemp + minTemp) / 2)
+            
+            // determine degree difference between total and report temp midranges
+            let midrangeReportTemp = (maxReportTemp + minReportTemp) / 2
+            let midrangeDifference = midrangeTotalTemp - midrangeReportTemp
+            
+            // calculate ratio of degrees of temp to UI pts
+            let degreesToPtsRatio = totalWidth / Double(maxTemp - minTemp)
+            
+            // calculate offset by converting midrange difference to UI pts
+            var calculatedOffset = midrangeDifference * degreesToPtsRatio
+            
+            // determine if the offset needs to shift left or right
+            if midrangeReportTemp < midrangeTotalTemp { calculatedOffset *= -1 }
+            
+            return calculatedOffset
+        }
+        return CGFloat(0)
     }
 }
