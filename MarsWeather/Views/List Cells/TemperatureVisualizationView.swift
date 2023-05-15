@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TemperatureVisualizationView: View {
-    let totalWidth: Double = 175
+    let totalWidth: Double = 125
     let report: Report
     let minTemp: Int
     let maxTemp: Int
@@ -27,12 +27,6 @@ struct TemperatureVisualizationView: View {
     }
     
     // CALCULATE OFFSET
-    // determine white space (totalWidth - reportRangeWidth)
-    // white space / 2 is the available space on left or right
-    // determine which way it needs to shift?
-    // determine alignment strategy
-    // middle section of reportRangeWidth needs to match corresponding temp?
-    
     var offset: CGFloat {
         if let maxReportTemp = Double(report.maxTemp),
            let minReportTemp = Double(report.minTemp) {
@@ -79,6 +73,7 @@ struct TemperatureVisualizationView: View {
                         .offset(x: offset, y: 0)
                 }
         }
+        .frame(width: totalWidth)
     }
 }
 

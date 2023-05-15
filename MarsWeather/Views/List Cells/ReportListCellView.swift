@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ReportListCellView: View {
     let report: Report
+    let lowestTemp: Int
+    let highestTemp: Int
     
     var body: some View {
         HStack {
@@ -24,9 +26,13 @@ struct ReportListCellView: View {
             Spacer()
             
             HStack {
-                Text("Max: \(report.maxTemp) °C")
-                Text("Min: \(report.minTemp) °C")
+                Text("\(report.minTemp)°")
+                TemperatureVisualizationView(report: report,
+                                             minTemp: lowestTemp,
+                                             maxTemp: highestTemp)
+                Text("\(report.maxTemp)°")
             }
+            .frame(width: 225)
         }
         .padding(10)
         .background(Color.gray.opacity(0.25))
@@ -36,6 +42,8 @@ struct ReportListCellView: View {
 
 struct ReportListCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportListCellView(report: MockData.report)
+        ReportListCellView(report: MockData.report,
+                           lowestTemp: -80,
+                           highestTemp: -18)
     }
 }
