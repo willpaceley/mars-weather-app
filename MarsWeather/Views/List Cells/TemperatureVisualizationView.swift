@@ -36,11 +36,24 @@ struct TemperatureVisualizationView: View {
     var offset: CGFloat {
         if let maxReportTemp = Double(report.maxTemp),
            let minReportTemp = Double(report.minTemp) {
-            let medianReportTemp = (maxReportTemp - minReportTemp) / 2
+            let medianReportTemp = (maxReportTemp + minReportTemp) / 2
             print("medianReportTemp: \(medianReportTemp)")
             
             // calculate median total temp, which is x pos 0
+            let medianTotalTemp = Double((maxTemp + minTemp) / 2)
+            print("medianTotalTemp: \(medianTotalTemp)")
+            
             // determine x distance between both medians to calculate offset
+            let medianTempDifference = medianTotalTemp - medianReportTemp
+            print("medianTempDifference: \(medianTempDifference)")
+            
+            let tempRange = Double(maxTemp - minTemp)
+            let tempToPtsConversion = totalWidth / tempRange
+            var calculatedOffset = medianTempDifference * tempToPtsConversion
+            print("calculatedOffset: \(calculatedOffset)")
+            if medianReportTemp < medianTotalTemp { calculatedOffset *= -1 }
+            print("calculatedOffset: \(calculatedOffset)")
+            return calculatedOffset
         }
         
         return CGFloat(0)
@@ -63,7 +76,7 @@ struct TemperatureVisualizationView: View {
                     Rectangle()
                         .frame(width: reportRangeWidth, height: 5)
                         .cornerRadius(5)
-                        .offset(x: 0, y: 0)
+                        .offset(x: offset, y: 0)
                 }
         }
     }
