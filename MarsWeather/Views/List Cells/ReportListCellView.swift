@@ -27,6 +27,7 @@ struct ReportListCellView: View {
             
             HStack {
                 Text("\(report.minTemp)°")
+                
                 TemperatureVisualizationView(report: report,
                                              minTemp: lowestTemp,
                                              maxTemp: highestTemp)

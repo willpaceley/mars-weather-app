@@ -19,16 +19,20 @@ struct LatestWeatherView: View {
             return Int(a.minTemp) ?? 0 < Int(b.minTemp) ?? 0
         }
         if let lowestReport {
-            return Int(lowestReport.minTemp) ?? 0
+            let lowest = Int(lowestReport.minTemp) ?? 0
+            print("Lowest Temp: \(lowest)")
+            return lowest
         }
         return 0
     }
     var highestTemp: Int {
         let highestReport = recentReports.max { a, b in
-            return Int(a.maxTemp) ?? 0 > Int(b.maxTemp) ?? 0
+            return Int(a.maxTemp) ?? 0 < Int(b.maxTemp) ?? 0
         }
         if let highestReport {
-            return Int(highestReport.maxTemp) ?? 0
+            let highest = Int(highestReport.maxTemp) ?? 0
+            print("Highest Temp: \(highest)")
+            return highest
         }
         return 0
     }
