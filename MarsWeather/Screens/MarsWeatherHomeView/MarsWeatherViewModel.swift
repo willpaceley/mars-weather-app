@@ -1,5 +1,5 @@
 //
-//  LatestWeatherViewModel.swift
+//  MarsWeatherViewModel.swift
 //  MarsWeather
 //
 //  Created by Will Paceley on 2023-05-03.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@MainActor final class LatestWeatherViewModel: ObservableObject {
+@MainActor final class MarsWeatherViewModel: ObservableObject {
     @Published var reports = [Report]()
     @Published var isLoading = false
     @Published var isPresentingAlert = false
