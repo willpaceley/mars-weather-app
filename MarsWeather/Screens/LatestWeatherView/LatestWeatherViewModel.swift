@@ -1,5 +1,5 @@
 //
-//  MarsWeatherTabViewModel.swift
+//  LatestWeatherViewModel.swift
 //  MarsWeather
 //
 //  Created by Will Paceley on 2023-05-03.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@MainActor final class MarsWeatherTabViewModel: ObservableObject {
+@MainActor final class LatestWeatherViewModel: ObservableObject {
     @Published var reports = [Report]()
     @Published var isLoading = false
     @Published var isPresentingAlert = false
@@ -17,7 +17,7 @@ import SwiftUI
     
     func getWeatherData() {
         isLoading = true
-        
+
         Task {
             do {
                 let weatherData = try await NetworkProvider.shared.getMarsWeatherData()
@@ -29,23 +29,31 @@ import SwiftUI
                     switch mwError {
                     case .invalidURL:
                         alert = AlertContext.invalidURL
-                        
+
                     case .invalidData:
                         alert = AlertContext.invalidData
-                        
+
                     case .invalidResponse:
                         alert = AlertContext.invalidResponse
-                        
+
                     case .unableToComplete:
                         alert = AlertContext.unableToComplete
                     }
                 } else {
                     alert = AlertContext.defaultAlert
                 }
-                
+
                 isLoading = false
                 isPresentingAlert = true
             }
+        }
+    }
+    
+    func getMockWeatherData() {
+        do {
+            reports = try JSONDecoder().decode([Report].self, from: MockData.reportsJSON)
+        } catch {
+            print("An error occurred decoding the mock weather data JSON.")
         }
     }
 }

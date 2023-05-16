@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct LatestWeatherView: View {
-    let reports: [Report]
+    @StateObject var vm = LatestWeatherViewModel()
+    
     var recentReports: [Report] {
-        let count = reports.count
+        let count = vm.reports.count
         let range = count > 9 ? 0..<9 : 0..<count
-        return Array(reports[range])
+        return Array(vm.reports[range])
     }
     var lowestTemp: Int {
         calculateLowestTemp(from: recentReports)
@@ -22,46 +23,58 @@ struct LatestWeatherView: View {
     }
     
     var body: some View {
-        VStack {
-            AppTitleView()
-            
-            if !reports.isEmpty {
-                VStack(alignment: .leading, spacing: 0) {
-                    SubHeaderView(title: "Latest Report")
-            
-                    MarsDateView(report: reports[0])
-                        .padding(.bottom, 5)
-                    
-                    WeatherDetailsView(report: reports[0])
-                    
-                    Divider()
-                        .padding(.top)
-                    
-                    SubHeaderView(title: "Last 10 Days")
-                        .padding(.top, 10)
-                        .padding(.bottom, 10)
-                    
-                    ScrollView {
-                        LazyVStack(spacing: 10) {
-                            ForEach(recentReports) { report in
-                                ReportListCellView(report: report,
-                                                   lowestTemp: lowestTemp,
-                                                   highestTemp: highestTemp)
+        ZStack {
+            VStack {
+                AppTitleView()
+                
+                if !vm.reports.isEmpty {
+                    VStack(alignment: .leading, spacing: 0) {
+                        SubHeaderView(title: "Latest Report")
+                
+                        MarsDateView(report: vm.reports[0])
+                            .padding(.bottom, 5)
+                        
+                        WeatherDetailsView(report: vm.reports[0])
+                        
+                        Divider()
+                            .padding(.top)
+                        
+                        SubHeaderView(title: "Last 10 Days")
+                            .padding(.top, 10)
+                            .padding(.bottom, 10)
+                        
+                        ScrollView {
+                            LazyVStack(spacing: 10) {
+                                ForEach(recentReports) { report in
+                                    ReportListCellView(report: report,
+                                                       lowestTemp: lowestTemp,
+                                                       highestTemp: highestTemp)
+                                }
                             }
                         }
                     }
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity)
+            }
+            .padding()
+            
+            if vm.isLoading {
+                LoadingView()
             }
         }
-        .padding()
+        .preferredColorScheme(.dark)
+        .task {
+//            vm.getWeatherData()
+            vm.getMockWeatherData()
+        }
+        .alert(isPresented: $vm.isPresentingAlert) { vm.alert }
     }
 }
 
 
 struct LatestWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestWeatherView(reports: MockData.getMockWeatherData())
+        LatestWeatherView()
     }
 }
 
