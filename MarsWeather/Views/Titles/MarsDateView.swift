@@ -11,7 +11,7 @@ struct MarsDateView: View {
     let report: Report
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 2.5) {
+        HStack {
             HStack(spacing: 10) {
                 Text("Sol " + report.sol)
                     .foregroundColor(.accentColor)
@@ -22,8 +22,10 @@ struct MarsDateView: View {
                     .font(.callout)
                     .foregroundColor(.secondary)
             }
+            
+            Spacer()
         }
-        .padding(.bottom, 5)
+        .frame(height: 25)
     }
 }
 

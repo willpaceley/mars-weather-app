@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TemperatureVisualizationView: View {
-    let totalWidth: Double = 125
+    let totalWidth: Double = 115
     let report: Report
     let lowestTemp: Int
     let highestTemp: Int
@@ -40,7 +40,6 @@ struct TemperatureVisualizationView: View {
                         .offset(x: offset, y: 0)
                 }
         }
-        .frame(width: totalWidth)
     }
 }
 

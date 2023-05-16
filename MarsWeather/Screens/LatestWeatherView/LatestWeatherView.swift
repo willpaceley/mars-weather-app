@@ -22,7 +22,7 @@ struct LatestWeatherView: View {
     }
     
     var body: some View {
-        ScrollView {
+        VStack {
             AppTitleView()
             
             if !reports.isEmpty {
@@ -30,6 +30,7 @@ struct LatestWeatherView: View {
                     SubHeaderView(title: "Latest Report")
             
                     MarsDateView(report: reports[0])
+                        .padding(.bottom, 5)
                     
                     WeatherDetailsView(report: reports[0])
                     
@@ -40,11 +41,13 @@ struct LatestWeatherView: View {
                         .padding(.top, 10)
                         .padding(.bottom, 10)
                     
-                    VStack(spacing: 10) {
-                        ForEach(recentReports) { report in
-                            ReportListCellView(report: report,
-                                               lowestTemp: lowestTemp,
-                                               highestTemp: highestTemp)
+                    ScrollView {
+                        LazyVStack(spacing: 10) {
+                            ForEach(recentReports) { report in
+                                ReportListCellView(report: report,
+                                                   lowestTemp: lowestTemp,
+                                                   highestTemp: highestTemp)
+                            }
                         }
                     }
                 }

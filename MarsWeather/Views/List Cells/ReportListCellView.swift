@@ -26,14 +26,16 @@ struct ReportListCellView: View {
             Spacer()
             
             HStack {
+                Spacer()
+                
                 Text("\(report.minTemp)°")
                 
                 TemperatureVisualizationView(report: report,
                                              lowestTemp: lowestTemp,
                                              highestTemp: highestTemp)
+                
                 Text("\(report.maxTemp)°")
             }
-            .frame(width: 225)
         }
         .padding(10)
         .background(Color.gray.opacity(0.25))
