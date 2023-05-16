@@ -15,16 +15,21 @@ struct ConditionsView: View {
     }
     
     var body: some View {
-        VStack(spacing: 15) {
-            Text("Condition")
-                .fontWeight(.semibold)
+        HStack {
+            Spacer()
             
-            WeatherIconView(systemName: icon)
+            VStack(spacing: 15) {
+                Text("Condition")
+                    .fontWeight(.semibold)
+                
+                WeatherIconView(systemName: icon)
+                
+                Text(atmoOpacity)
+            }
             
-            Text(atmoOpacity)
+            Spacer()
         }
-        .padding()
-        .frame(width: 110, height: 120)
+        .frame(height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }

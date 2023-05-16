@@ -11,7 +11,7 @@ struct TemperatureView: View {
     let report: Report
     
     var body: some View {
-        HStack(spacing: 15) {
+        HStack {
             VStack(spacing: 7) {
                 Text("Max")
                     .fontWeight(.semibold)
@@ -33,7 +33,7 @@ struct TemperatureView: View {
             }
         }
         .padding()
-        .frame(width: 178.5, height: 120)
+        .frame(height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }

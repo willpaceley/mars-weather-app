@@ -35,7 +35,7 @@ struct SunPositionTimeView: View {
             }
         }
         .padding()
-        .frame(width: 178.5, height: 120)
+        .frame(height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }

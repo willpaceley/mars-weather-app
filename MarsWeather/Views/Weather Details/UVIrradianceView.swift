@@ -24,27 +24,32 @@ struct UVIrradianceView: View {
     }
     
     var body: some View {
-        VStack(spacing: 22.5) {
-            Text("Irradiance")
-                .fontWeight(.semibold)
+        HStack {
+            Spacer()
             
-            ZStack {
-                Rectangle()
-                    .fill(LinearGradient(colors: [.yellow, .orange, .red], startPoint: .leading, endPoint: .trailing))
-                    .frame(height: 10)
-                    .cornerRadius(5)
-                    .frame(width: 100)
+            VStack(spacing: 22.5) {
+                Text("Irradiance")
+                    .fontWeight(.semibold)
                 
-                Circle()
-                    .fill(.white)
-                    .frame(width: 15, height: 15)
-                    .offset(CGSize(width: sliderOffset, height: 0))
+                ZStack {
+                    Rectangle()
+                        .fill(LinearGradient(colors: [.yellow, .orange, .red], startPoint: .leading, endPoint: .trailing))
+                        .frame(height: 10)
+                        .cornerRadius(5)
+                        .frame(width: 100)
+                    
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 15, height: 15)
+                        .offset(CGSize(width: sliderOffset, height: 0))
+                }
+                
+                Text(irradianceIndex == .veryHigh ? "Very High" : irradianceIndex.rawValue)
             }
             
-            Text(irradianceIndex == .veryHigh ? "Very High" : irradianceIndex.rawValue)
+            Spacer()
         }
-        .padding()
-        .frame(width: 130, height: 120)
+        .frame(height: 120)
         .background(Color.gray.opacity(0.25))
         .cornerRadius(5)
     }

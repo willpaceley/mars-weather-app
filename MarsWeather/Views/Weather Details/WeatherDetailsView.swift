@@ -11,13 +11,13 @@ struct WeatherDetailsView: View {
     let report: Report
     
     var body: some View {
-        VStack(alignment: .center) {
-            HStack {
+        VStack {
+            HStack(spacing: 8) {
                 TemperatureView(report: report)
                 SunPositionTimeView(report: report)
             }
 
-            HStack {
+            HStack(spacing: 8) {
                 ConditionsView(atmoOpacity: report.atmoOpacity)
                 PressureView(report: report)
                 UVIrradianceView(irradianceIndex: report.localUvIrradianceIndex)
