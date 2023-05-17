@@ -18,7 +18,7 @@ import Foundation
     
     var recentReports: [Report] {
         let count = reports.count
-        let range = count > 9 ? 0..<9 : 0..<count
+        let range = count > 13 ? 0..<13 : 0..<count
         return Array(reports[range])
     }
     var lowestTemp: Int {

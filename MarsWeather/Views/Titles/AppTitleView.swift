@@ -12,11 +12,10 @@ struct AppTitleView: View {
         VStack(alignment: .center) {
             Text("Mars Weather")
                 .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.accentColor)
+                .fontWeight(.semibold)
+                .foregroundStyle(LinearGradient(colors: [.orange, .accentColor], startPoint: .top, endPoint: .bottom))
         }
         .frame(maxWidth: .infinity)
-        .padding(.bottom, 5)
     }
 }
 

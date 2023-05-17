@@ -17,7 +17,7 @@ extension String {
             return dateFormatter.string(from: Date())
         }
         
-        dateFormatter.dateFormat = "MMMM d, yyyy"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         return dateFormatter.string(from: date)
     }
 }

@@ -12,7 +12,7 @@ struct MarsWeatherHomeView: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 5) {
                 if !vm.reports.isEmpty {
                     AppTitleView()
                     

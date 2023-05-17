@@ -12,8 +12,6 @@ struct LatestWeatherView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            SubHeaderView(title: "Latest Report")
-            
             MarsDateView(report: vm.selectedReport)
                 .padding(.bottom, 5)
             
@@ -22,7 +20,7 @@ struct LatestWeatherView: View {
             Divider()
                 .padding(.top)
             
-            SubHeaderView(title: "Last 10 Days")
+            SubHeaderView(title: "Last 14 Days")
                 .padding(.top, 10)
                 .padding(.bottom, 10)
             
