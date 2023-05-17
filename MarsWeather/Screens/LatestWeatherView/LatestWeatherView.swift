@@ -31,7 +31,11 @@ struct LatestWeatherView: View {
                     ForEach(vm.recentReports) { report in
                         ReportListCellView(report: report,
                                            lowestTemp: vm.lowestTemp,
-                                           highestTemp: vm.highestTemp)
+                                           highestTemp: vm.highestTemp,
+                                           isSelected: report.id == vm.selectedReport.id)
+                        .onTapGesture {
+                            vm.selectedReport = report
+                        }
                     }
                 }
             }

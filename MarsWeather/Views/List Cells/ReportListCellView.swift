@@ -11,6 +11,7 @@ struct ReportListCellView: View {
     let report: Report
     let lowestTemp: Int
     let highestTemp: Int
+    let isSelected: Bool
     
     var body: some View {
         HStack {
@@ -38,7 +39,7 @@ struct ReportListCellView: View {
             }
         }
         .padding(10)
-        .background(Color.gray.opacity(0.25))
+        .background(isSelected ? Color.gray.opacity(0.5) : Color.gray.opacity(0.25))
         .cornerRadius(5)
     }
 }
@@ -47,6 +48,7 @@ struct ReportListCellView_Previews: PreviewProvider {
     static var previews: some View {
         ReportListCellView(report: MockData.report,
                            lowestTemp: -80,
-                           highestTemp: -18)
+                           highestTemp: -18,
+                           isSelected: true)
     }
 }
