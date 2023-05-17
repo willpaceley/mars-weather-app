@@ -12,7 +12,14 @@ struct MarsWeatherHomeView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 5) {
+            LinearGradient(colors: [Color.accentColor.opacity(0.25),
+                                    Color.accentColor.opacity(0.15),
+                                    Color.accentColor.opacity(0.05)],
+                           startPoint: .bottomTrailing,
+                           endPoint: .topLeading)
+                .ignoresSafeArea()
+            
+            VStack(spacing: 0) {
                 if !vm.reports.isEmpty {
                     AppTitleView()
                     

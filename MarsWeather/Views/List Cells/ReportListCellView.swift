@@ -49,6 +49,6 @@ struct ReportListCellView_Previews: PreviewProvider {
         ReportListCellView(report: MockData.report,
                            lowestTemp: -80,
                            highestTemp: -18,
-                           isSelected: true)
+                           isSelected: false)
     }
 }
