@@ -13,18 +13,17 @@ struct MarsWeatherHomeView: View {
     var body: some View {
         ZStack {
             VStack {
-                AppTitleView()
-                
                 if !vm.reports.isEmpty {
-                    LatestWeatherView(reports: vm.reports)
+                    AppTitleView()
+                    
+                    LatestWeatherView(vm: LatestWeatherViewModel(reports: vm.reports))
+                }
+                
+                if vm.isLoading {
+                    LoadingView()
                 }
             }
-            
-            if vm.isLoading {
-                LoadingView()
-            }
         }
-        .padding()
         .preferredColorScheme(.dark)
         .task {
             vm.getMockWeatherData()

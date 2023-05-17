@@ -8,28 +8,16 @@
 import SwiftUI
 
 struct LatestWeatherView: View {
-    let reports: [Report]
-    
-    var recentReports: [Report] {
-        let count = reports.count
-        let range = count > 9 ? 0..<9 : 0..<count
-        return Array(reports[range])
-    }
-    var lowestTemp: Int {
-        calculateLowestTemp(from: recentReports)
-    }
-    var highestTemp: Int {
-        calculateHighestTemp(from: recentReports)
-    }
+    @ObservedObject var vm: LatestWeatherViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             SubHeaderView(title: "Latest Report")
             
-            MarsDateView(report: reports[0])
+            MarsDateView(report: vm.reports[0])
                 .padding(.bottom, 5)
             
-            WeatherDetailsView(report: reports[0])
+            WeatherDetailsView(report: vm.reports[0])
             
             Divider()
                 .padding(.top)
@@ -40,10 +28,10 @@ struct LatestWeatherView: View {
             
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    ForEach(recentReports) { report in
+                    ForEach(vm.recentReports) { report in
                         ReportListCellView(report: report,
-                                           lowestTemp: lowestTemp,
-                                           highestTemp: highestTemp)
+                                           lowestTemp: vm.lowestTemp,
+                                           highestTemp: vm.highestTemp)
                     }
                 }
             }
@@ -55,28 +43,6 @@ struct LatestWeatherView: View {
 
 struct LatestWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestWeatherView(reports: MockData.getMockWeatherData())
-    }
-}
-
-extension LatestWeatherView {
-    func calculateLowestTemp(from recentReports: [Report]) -> Int {
-        let lowestReport = recentReports.min { a, b in
-            return Int(a.minTemp) ?? 0 < Int(b.minTemp) ?? 0
-        }
-        if let lowestReport {
-            return Int(lowestReport.minTemp) ?? 0
-        }
-        return 0
-    }
-    
-    func calculateHighestTemp(from recentReports: [Report]) -> Int {
-        let highestReport = recentReports.max { a, b in
-            return Int(a.maxTemp) ?? 0 < Int(b.maxTemp) ?? 0
-        }
-        if let highestReport {
-            return Int(highestReport.maxTemp) ?? 0
-        }
-        return 0
+        LatestWeatherView(vm: LatestWeatherViewModel(reports: MockData.getMockWeatherData()))
     }
 }
