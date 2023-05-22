@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func formattedDate() -> String {
+    func formatDate(format: DateFormat) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
@@ -17,7 +17,12 @@ extension String {
             return dateFormatter.string(from: Date())
         }
         
-        dateFormatter.dateFormat = "MMM d, yyyy"
+        dateFormatter.dateFormat = format.rawValue
         return dateFormatter.string(from: date)
     }
+}
+
+enum DateFormat: String {
+    case full = "MMMM d, yyyy"
+    case abbreviated = "MMM d, yyyy"
 }

@@ -18,7 +18,7 @@ struct MarsDateView: View {
                 
                 Divider()
                 
-                Text(report.terrestrialDate.formattedDate())
+                Text(report.terrestrialDate.formatDate(format: .full))
                     .font(.callout)
                     .foregroundColor(.secondary)
             }

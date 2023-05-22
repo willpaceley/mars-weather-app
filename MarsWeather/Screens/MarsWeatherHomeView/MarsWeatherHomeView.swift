@@ -13,7 +13,6 @@ struct MarsWeatherHomeView: View {
     var body: some View {
         ZStack {
             LinearGradient(colors: [Color.accentColor.opacity(0.25),
-                                    Color.accentColor.opacity(0.15),
                                     Color.accentColor.opacity(0.05)],
                            startPoint: .bottomTrailing,
                            endPoint: .topLeading)

@@ -19,7 +19,7 @@ struct ReportListCellView: View {
                 Text("Sol \(report.sol)")
                     .foregroundColor(Color.accentColor)
                 
-                Text(report.terrestrialDate.formattedDate())
+                Text(report.terrestrialDate.formatDate(format: .abbreviated))
                     .foregroundColor(Color.secondary)
                     .font(Font.subheadline)
             }
