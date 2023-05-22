@@ -20,6 +20,7 @@
 		07D982032A09880200DBB317 /* ConditionsPressureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D982022A09880200DBB317 /* ConditionsPressureView.swift */; };
 		07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DBE2412A15063F0017BE32 /* LatestWeatherViewModel.swift */; };
 		07DBE2452A1BF8740017BE32 /* WeatherDetailsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DBE2442A1BF8740017BE32 /* WeatherDetailsChartView.swift */; };
+		07DBE2482A1C0D7A0017BE32 /* WeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DBE2472A1C0D7A0017BE32 /* WeatherDetailsViewModel.swift */; };
 		07ED94E32A0297350075B8D4 /* MarsWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED94E22A0297350075B8D4 /* MarsWeatherViewModel.swift */; };
 		07ED94E82A02A0860075B8D4 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED94E72A02A0860075B8D4 /* NetworkProvider.swift */; };
 		07ED94EB2A02B6330075B8D4 /* MWError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED94EA2A02B6330075B8D4 /* MWError.swift */; };
@@ -54,6 +55,7 @@
 		07D982022A09880200DBB317 /* ConditionsPressureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsPressureView.swift; sourceTree = "<group>"; };
 		07DBE2412A15063F0017BE32 /* LatestWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWeatherViewModel.swift; sourceTree = "<group>"; };
 		07DBE2442A1BF8740017BE32 /* WeatherDetailsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsChartView.swift; sourceTree = "<group>"; };
+		07DBE2472A1C0D7A0017BE32 /* WeatherDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewModel.swift; sourceTree = "<group>"; };
 		07ED94E22A0297350075B8D4 /* MarsWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsWeatherViewModel.swift; sourceTree = "<group>"; };
 		07ED94E72A02A0860075B8D4 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		07ED94EA2A02B6330075B8D4 /* MWError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWError.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				075FAB952A140DDE00692B42 /* MarsWeatherHomeView */,
 				07D8299429FB19EA00587495 /* LatestWeatherView */,
+				07DBE2492A1C0FAB0017BE32 /* WeatherDetailsView */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -166,6 +169,15 @@
 				07DBE2442A1BF8740017BE32 /* WeatherDetailsChartView.swift */,
 			);
 			path = "Details Charts";
+			sourceTree = "<group>";
+		};
+		07DBE2492A1C0FAB0017BE32 /* WeatherDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				07EF559F2A0EC72E0050BBA8 /* WeatherDetailsView.swift */,
+				07DBE2472A1C0D7A0017BE32 /* WeatherDetailsViewModel.swift */,
+			);
+			path = WeatherDetailsView;
 			sourceTree = "<group>";
 		};
 		07ED94E52A02A06E0075B8D4 /* Utilities */ = {
@@ -208,7 +220,7 @@
 			children = (
 				07F886762A0EF2990009AA7C /* List Cells */,
 				07DBE2432A1BF8340017BE32 /* Details Charts */,
-				07F108A029FF4C5700EC2D6A /* Weather Details */,
+				07F108A029FF4C5700EC2D6A /* Detail Subviews */,
 				07F1089D29FDCA0700EC2D6A /* Titles */,
 				07F1089729FC5C6500EC2D6A /* LoadingView.swift */,
 			);
@@ -225,7 +237,7 @@
 			path = Titles;
 			sourceTree = "<group>";
 		};
-		07F108A029FF4C5700EC2D6A /* Weather Details */ = {
+		07F108A029FF4C5700EC2D6A /* Detail Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				07F108A229FF4D2A00EC2D6A /* SunPositionTimeView.swift */,
@@ -235,9 +247,8 @@
 				07ED94F12A053BA50075B8D4 /* UVIrradianceView.swift */,
 				07D982002A097E0400DBB317 /* PressureView.swift */,
 				07D982022A09880200DBB317 /* ConditionsPressureView.swift */,
-				07EF559F2A0EC72E0050BBA8 /* WeatherDetailsView.swift */,
 			);
-			path = "Weather Details";
+			path = "Detail Subviews";
 			sourceTree = "<group>";
 		};
 		07F886762A0EF2990009AA7C /* List Cells */ = {
@@ -324,6 +335,7 @@
 				07F108A329FF4D2A00EC2D6A /* SunPositionTimeView.swift in Sources */,
 				07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */,
 				07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */,
+				07DBE2482A1C0D7A0017BE32 /* WeatherDetailsViewModel.swift in Sources */,
 				07D8298829FB141100587495 /* LatestWeatherView.swift in Sources */,
 				07D982012A097E0400DBB317 /* PressureView.swift in Sources */,
 				07F108AB2A004B8300EC2D6A /* ConditionsView.swift in Sources */,
