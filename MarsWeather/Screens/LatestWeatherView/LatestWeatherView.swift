@@ -15,7 +15,7 @@ struct LatestWeatherView: View {
             MarsDateView(report: vm.selectedReport)
                 .padding(.bottom, 5)
             
-            WeatherDetailsView(vm: WeatherDetailsViewModel(selectedReport: vm.selectedReport,                                                  reports: vm.reports))
+            WeatherReportView(vm: WeatherReportViewModel(selectedReport: vm.selectedReport,                                                  reports: vm.reports))
             
             Divider()
                 .padding(.top)

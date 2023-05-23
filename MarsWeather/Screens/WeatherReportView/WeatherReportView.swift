@@ -1,5 +1,5 @@
 //
-//  WeatherDetailsView.swift
+//  WeatherReportView.swift
 //  MarsWeather
 //
 //  Created by Will Paceley on 2023-05-12.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct WeatherDetailsView: View {
-    @ObservedObject var vm: WeatherDetailsViewModel
+struct WeatherReportView: View {
+    @ObservedObject var vm: WeatherReportViewModel
     
     var body: some View {
         VStack {
@@ -16,7 +16,7 @@ struct WeatherDetailsView: View {
                 TemperatureView(report: vm.selectedReport)
                     .onTapGesture { vm.showChart(for: .temperature) }
                 
-                SunPositionTimeView(report: vm.selectedReport)
+                SunlightView(report: vm.selectedReport)
                     .onTapGesture { vm.showChart(for: .sunlight) }
             }
 
@@ -41,7 +41,7 @@ struct WeatherDetailsView: View {
 
 struct WeatherDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherDetailsView(vm: WeatherDetailsViewModel(selectedReport: MockData.report,
+        WeatherReportView(vm: WeatherReportViewModel(selectedReport: MockData.report,
                                                        reports: MockData.getMockWeatherData()))
     }
 }

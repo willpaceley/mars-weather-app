@@ -1,5 +1,5 @@
 //
-//  SunPositionTimeView.swift
+//  SunlightView.swift
 //  MarsWeather
 //
 //  Created by Will Paceley on 2023-04-30.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SunPositionTimeView: View {
+struct SunlightView: View {
     let report: Report
     
     var body: some View {
@@ -43,6 +43,6 @@ struct SunPositionTimeView: View {
 
 struct SunPositionTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        SunPositionTimeView(report: MockData.report)
+        SunlightView(report: MockData.report)
     }
 }
