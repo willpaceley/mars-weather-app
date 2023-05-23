@@ -10,15 +10,16 @@ import SwiftUI
 @MainActor final class WeatherDetailsViewModel: ObservableObject {
     @Published var isShowingChartSheet = false
     
-    let report: Report
+    let selectedReport: Report
+    let reports: [Report]
     var selectedWeatherDetail: WeatherDetail?
     
-    init(report: Report) {
-        self.report = report
+    init(selectedReport: Report, reports: [Report]) {
+        self.selectedReport = selectedReport
+        self.reports = reports
     }
     
     func showChart(for weatherDetail: WeatherDetail) {
-        print("Clicked on \(weatherDetail)")
         selectedWeatherDetail = weatherDetail
         isShowingChartSheet = true
     }

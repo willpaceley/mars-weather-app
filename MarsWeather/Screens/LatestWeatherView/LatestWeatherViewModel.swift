@@ -8,8 +8,9 @@
 import Foundation
 
 @MainActor final class LatestWeatherViewModel: ObservableObject {
-    @Published var reports: [Report]
     @Published var selectedReport: Report
+    
+    let reports: [Report]
     
     init(reports: [Report]) {
         self.reports = reports

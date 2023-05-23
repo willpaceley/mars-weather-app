@@ -13,21 +13,21 @@ struct WeatherDetailsView: View {
     var body: some View {
         VStack {
             HStack(spacing: 8) {
-                TemperatureView(report: vm.report)
+                TemperatureView(report: vm.selectedReport)
                     .onTapGesture { vm.showChart(for: .temperature) }
                 
-                SunPositionTimeView(report: vm.report)
+                SunPositionTimeView(report: vm.selectedReport)
                     .onTapGesture { vm.showChart(for: .sunlight) }
             }
 
             HStack(spacing: 8) {
-                ConditionsView(atmoOpacity: vm.report.atmoOpacity)
+                ConditionsView(atmoOpacity: vm.selectedReport.atmoOpacity)
                     .onTapGesture { vm.showChart(for: .conditions) }
                 
-                PressureView(report: vm.report)
+                PressureView(report: vm.selectedReport)
                     .onTapGesture { vm.showChart(for: .pressure) }
                 
-                UVIrradianceView(irradianceIndex: vm.report.localUvIrradianceIndex)
+                UVIrradianceView(irradianceIndex: vm.selectedReport.localUvIrradianceIndex)
                     .onTapGesture { vm.showChart(for: .irradiance) }
             }
         }
@@ -41,6 +41,7 @@ struct WeatherDetailsView: View {
 
 struct WeatherDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherDetailsView(vm: WeatherDetailsViewModel(report: MockData.report))
+        WeatherDetailsView(vm: WeatherDetailsViewModel(selectedReport: MockData.report,
+                                                       reports: MockData.getMockWeatherData()))
     }
 }
