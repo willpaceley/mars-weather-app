@@ -31,9 +31,10 @@ struct WeatherReportView: View {
                     .onTapGesture { vm.showChart(for: .irradiance) }
             }
         }
-        .sheet(isPresented: $vm.isShowingChartSheet) {
+        .sheet(isPresented: $vm.isShowingDetailsChart) {
             if let weatherDetail = vm.selectedWeatherDetail {
-                WeatherDetailsChartView(weatherDetail: weatherDetail)
+                WeatherDetailsChartView(weatherDetail: weatherDetail,
+                                        isShowingDetailChart: $vm.isShowingDetailsChart)
             }
         }
     }

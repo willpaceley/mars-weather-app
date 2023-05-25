@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor final class WeatherReportViewModel: ObservableObject {
-    @Published var isShowingChartSheet = false
+    @Published var isShowingDetailsChart = false
     
     let selectedReport: Report
     let reports: [Report]
@@ -21,7 +21,7 @@ import SwiftUI
     
     func showChart(for weatherDetail: WeatherDetail) {
         selectedWeatherDetail = weatherDetail
-        isShowingChartSheet = true
+        isShowingDetailsChart = true
     }
 }
 
