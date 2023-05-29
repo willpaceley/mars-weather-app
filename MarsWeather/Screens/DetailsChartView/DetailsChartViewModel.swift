@@ -12,18 +12,7 @@ import SwiftUI
     let reports: [Report]
     
     var icon: String {
-        switch weatherDetail {
-        case .temperature:
-            return "thermometer.medium"
-        case .sunlight:
-            return "sun.and.horizon.fill"
-        case .conditions:
-            return "cloud.sun.fill"
-        case .pressure:
-            return "gauge.medium"
-        case .irradiance:
-            return "sun.max.fill"
-        }
+        getIcon(for: self.weatherDetail)
     }
     
     var description: String {
@@ -35,6 +24,21 @@ import SwiftUI
         self.reports = reports
     }
     
+    private func getIcon(for weatherDetail: WeatherDetail) -> String {
+        switch weatherDetail {
+        case .temperature:
+            return "thermometer.medium"
+        case .daylight:
+            return "sun.and.horizon.fill"
+        case .conditions:
+            return "cloud.sun.fill"
+        case .pressure:
+            return "gauge.medium"
+        case .irradiance:
+            return "sun.max.fill"
+        }
+    }
+    
     private func getDescription(for weatherDetail: WeatherDetail) -> String {
         switch weatherDetail {
         case .temperature:
@@ -44,7 +48,7 @@ import SwiftUI
             hence the difference between day and night's temperatures is more pronounced than in our planet.
             """
             
-        case .sunlight:
+        case .daylight:
             return """
             The duration of a Martian day (sol) is about 24 hours and 40 minutes. \
             The duration of daylight varies along the Martian year, as on Earth.

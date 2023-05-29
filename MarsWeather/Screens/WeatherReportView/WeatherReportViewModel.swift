@@ -27,7 +27,7 @@ import SwiftUI
 
 enum WeatherDetail: String {
     case temperature
-    case sunlight
+    case daylight
     case conditions
     case pressure
     case irradiance

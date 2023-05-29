@@ -16,8 +16,8 @@ struct WeatherReportView: View {
                 TemperatureView(report: vm.selectedReport)
                     .onTapGesture { vm.showChart(for: .temperature) }
                 
-                SunlightView(report: vm.selectedReport)
-                    .onTapGesture { vm.showChart(for: .sunlight) }
+                DaylightView(report: vm.selectedReport)
+                    .onTapGesture { vm.showChart(for: .daylight) }
             }
 
             HStack(spacing: 8) {

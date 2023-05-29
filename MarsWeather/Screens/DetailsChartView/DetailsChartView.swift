@@ -39,7 +39,7 @@ struct DetailsChartView: View {
 
 struct WeatherDetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsChartView(vm: DetailsChartViewModel(weatherDetail: .pressure,
+        DetailsChartView(vm: DetailsChartViewModel(weatherDetail: .temperature,
                                                    reports: MockData.getMockWeatherData()),
                          isShowingChart: .constant(true))
     }
