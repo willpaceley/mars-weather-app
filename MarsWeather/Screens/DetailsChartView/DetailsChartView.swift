@@ -18,6 +18,12 @@ struct DetailsChartView: View {
                 .bold()
                 .padding()
             
+            Text(vm.description)
+                .padding()
+                .background(Color.gray.opacity(0.25))
+                .cornerRadius(10)
+                .padding()
+            
             Spacer()
         }
         .frame(maxWidth: .infinity)
@@ -33,7 +39,7 @@ struct DetailsChartView: View {
 
 struct WeatherDetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsChartView(vm: DetailsChartViewModel(weatherDetail: .temperature,
+        DetailsChartView(vm: DetailsChartViewModel(weatherDetail: .pressure,
                                                    reports: MockData.getMockWeatherData()),
                          isShowingChart: .constant(true))
     }
