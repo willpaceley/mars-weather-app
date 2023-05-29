@@ -33,8 +33,9 @@ struct WeatherReportView: View {
         }
         .sheet(isPresented: $vm.isShowingDetailsChart) {
             if let weatherDetail = vm.selectedWeatherDetail {
-                WeatherDetailsChartView(weatherDetail: weatherDetail,
-                                        isShowingDetailChart: $vm.isShowingDetailsChart)
+                DetailsChartView(vm: DetailsChartViewModel(weatherDetail: weatherDetail,
+                                                           reports: vm.reports),
+                                 isShowingChart: $vm.isShowingDetailsChart)
             }
         }
     }

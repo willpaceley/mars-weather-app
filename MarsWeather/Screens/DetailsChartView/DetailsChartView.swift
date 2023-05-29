@@ -1,5 +1,5 @@
 //
-//  WeatherDetailsChartView.swift
+//  DetailsChartView.swift
 //  MarsWeather
 //
 //  Created by Will Paceley on 2023-05-22.
@@ -7,29 +7,14 @@
 
 import SwiftUI
 
-struct WeatherDetailsChartView: View {
+struct DetailsChartView: View {
     
-    let weatherDetail: WeatherDetail
-    @Binding var isShowingDetailChart: Bool
-    
-    private var icon: String {
-        switch weatherDetail {
-        case .temperature:
-            return "thermometer.medium"
-        case .sunlight:
-            return "sun.and.horizon.fill"
-        case .conditions:
-            return "cloud.sun.fill"
-        case .pressure:
-            return "gauge.medium"
-        case .irradiance:
-            return "sun.max.fill"
-        }
-    }
+    @StateObject var vm: DetailsChartViewModel
+    @Binding var isShowingChart: Bool
     
     var body: some View {
         VStack {
-            Label(weatherDetail.rawValue.capitalized, systemImage: icon)
+            Label(vm.weatherDetail.rawValue.capitalized, systemImage: vm.icon)
                 .bold()
                 .padding()
             
@@ -38,7 +23,7 @@ struct WeatherDetailsChartView: View {
         .frame(maxWidth: .infinity)
         .overlay(alignment: .topTrailing) {
             Button {
-                isShowingDetailChart = false
+                isShowingChart = false
             } label: {
                 DismissButton()
             }
@@ -48,8 +33,9 @@ struct WeatherDetailsChartView: View {
 
 struct WeatherDetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherDetailsChartView(weatherDetail: .temperature,
-                                isShowingDetailChart: .constant(true))
+        DetailsChartView(vm: DetailsChartViewModel(weatherDetail: .temperature,
+                                                   reports: MockData.getMockWeatherData()),
+                         isShowingChart: .constant(true))
     }
 }
 
