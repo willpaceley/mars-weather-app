@@ -18,6 +18,25 @@ struct DetailsChartView: View {
                 .bold()
                 .padding()
             
+            Picker("Time Range", selection: $vm.selectedTimeCoordinate) {
+                Text("Month").tag(TimeCoordinate.month)
+                Text("Year").tag(TimeCoordinate.year)
+            }
+            .pickerStyle(.segmented)
+            .padding()
+            
+            HStack {
+                Picker("Month", selection: $vm.selectedMonth) {
+                    ForEach(MarsMonth.allCases) { month in
+                        Text(month.rawValue)
+                    }
+                }
+                .pickerStyle(.automatic)
+                
+                Spacer()
+            }
+            .padding(.leading)
+            
             Text(vm.description)
                 .padding()
                 .background(Color.gray.opacity(0.25))

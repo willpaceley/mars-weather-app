@@ -12,7 +12,7 @@ struct MockData {
                          terrestrialDate: "2023-04-24",
                          sol: "3809",
                          ls: "55",
-                         season: .month2,
+                         month: .month2,
                          minTemp: "-79",
                          maxTemp: "-26",
                          pressure: "852",

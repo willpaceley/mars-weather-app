@@ -12,7 +12,7 @@ struct Report: Codable, Identifiable {
     let terrestrialDate : String
     let sol: String
     let ls: String
-    let season: Season
+    let month: MarsMonth
     let minTemp, maxTemp: String
     let pressure, pressureString: String
     let absHumidity: String
@@ -25,7 +25,8 @@ struct Report: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id
         case terrestrialDate = "terrestrial_date"
-        case sol, ls, season
+        case sol, ls
+        case month = "season"
         case minTemp = "min_temp"
         case maxTemp = "max_temp"
         case pressure
@@ -49,7 +50,7 @@ enum LocalUvIrradianceIndex: String, Codable {
     case veryHigh = "Very_High"
 }
 
-enum Season: String, Codable {
+enum MarsMonth: String, Codable, CaseIterable, Identifiable {
     case month1 = "Month 1"
     case month2 = "Month 2"
     case month3 = "Month 3"
@@ -62,4 +63,5 @@ enum Season: String, Codable {
     case month10 = "Month 10"
     case month11 = "Month 11"
     case month12 = "Month 12"
+    var id: Self { self }
 }

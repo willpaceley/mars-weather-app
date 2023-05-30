@@ -8,6 +8,9 @@
 import SwiftUI
 
 @MainActor final class DetailsChartViewModel: ObservableObject {
+    @Published var selectedTimeCoordinate: TimeCoordinate = .month
+    @Published var selectedMonth: MarsMonth
+    
     let weatherDetail: WeatherDetail
     let reports: [Report]
     
@@ -22,6 +25,7 @@ import SwiftUI
     init(weatherDetail: WeatherDetail, reports: [Report]) {
         self.weatherDetail = weatherDetail
         self.reports = reports
+        selectedMonth = reports[0].month
     }
     
     private func getIcon(for weatherDetail: WeatherDetail) -> String {
@@ -83,4 +87,9 @@ import SwiftUI
             """
         }
     }
+}
+
+enum TimeCoordinate {
+    case month
+    case year
 }
