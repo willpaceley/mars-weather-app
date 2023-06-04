@@ -19,34 +19,14 @@ struct DetailsChartView: View {
                 .padding()
             
             Picker("Time Range", selection: $vm.selectedTimeCoordinate) {
-                Text("Monthly").tag(TimeCoordinate.month)
-                Text("Yearly").tag(TimeCoordinate.year)
+                Text("Month").tag(TimeCoordinate.month)
+                Text("6 Month").tag(TimeCoordinate.sixMonth)
+                Text("Year").tag(TimeCoordinate.year)
+                Text("2 Year").tag(TimeCoordinate.twoYear)
+                Text("ALL").tag(TimeCoordinate.all)
             }
             .pickerStyle(.segmented)
             .padding()
-            
-            HStack {
-                Spacer()
-                
-                if vm.selectedTimeCoordinate == .month {
-                    Picker("Month", selection: $vm.selectedMonth) {
-                        ForEach(MarsMonth.allCases) { month in
-                            Text(month.rawValue)
-                        }
-                    }
-                    .background(Color.gray.opacity(0.25))
-                    .cornerRadius(5)
-                }
-                
-                Picker("Year", selection: $vm.selectedYear) {
-                    ForEach(vm.yearRange, id: \.self) { year in
-                        Text(String(year))
-                    }
-                }
-                .background(Color.gray.opacity(0.25))
-                .cornerRadius(5)
-            }
-            .padding(.trailing)
             
             Text(vm.description)
                 .padding()

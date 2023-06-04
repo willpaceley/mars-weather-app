@@ -9,17 +9,9 @@ import SwiftUI
 
 @MainActor final class DetailsChartViewModel: ObservableObject {
     @Published var selectedTimeCoordinate: TimeCoordinate = .month
-    @Published var selectedMonth: MarsMonth
-    @Published var selectedYear: Int
     
     let weatherDetail: WeatherDetail
     let reports: [Report]
-    let minimumYear = 2013
-    
-    var yearRange: ClosedRange<Int> {
-        let currentYear = Calendar.current.component(.year, from: Date())
-        return minimumYear...currentYear
-    }
     
     var icon: String {
         getIcon(for: self.weatherDetail)
@@ -32,9 +24,6 @@ import SwiftUI
     init(weatherDetail: WeatherDetail, reports: [Report]) {
         self.weatherDetail = weatherDetail
         self.reports = reports
-        selectedMonth = reports[0].month
-        // TODO: Set selected year to latest year from reports
-        selectedYear = minimumYear
     }
     
     func getMonthNumber(of month: MarsMonth) -> Int {
@@ -106,5 +95,8 @@ import SwiftUI
 
 enum TimeCoordinate {
     case month
+    case sixMonth
     case year
+    case twoYear
+    case all
 }
