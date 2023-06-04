@@ -13,6 +13,10 @@ import SwiftUI
     let weatherDetail: WeatherDetail
     let reports: [Report]
     
+    var selectedReports: [Report] {
+        getReportSelection(for: selectedTimeCoordinate)
+    }
+    
     var icon: String {
         getIcon(for: self.weatherDetail)
     }
@@ -30,6 +34,21 @@ import SwiftUI
         let numberString = String(month.rawValue.split(separator: " ")[1])
         let monthNumber = Int(numberString)!
         return monthNumber
+    }
+    
+    private func getReportSelection(for timeCoordinate: TimeCoordinate) -> [Report] {
+        switch timeCoordinate {
+        case .month:
+            return Array(reports[0..<31])
+        case .sixMonth:
+            return Array(reports[0..<180])
+        case .year:
+            return Array(reports[0..<365])
+        case .twoYear:
+            return Array(reports[0..<730])
+        case .all:
+            return reports
+        }
     }
     
     private func getIcon(for weatherDetail: WeatherDetail) -> String {
