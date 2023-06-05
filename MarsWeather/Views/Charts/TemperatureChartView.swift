@@ -16,16 +16,14 @@ struct TemperatureChartView: View {
         
         reports.forEach {
             let date = $0.terrestrialDate.toDate()!
-            let maxTemp = MarsTemperature(type: .maxTemp,
-                                          temperature: Int($0.maxTemp)!,
-                                          date: date)
-            temperatures.append(maxTemp)
             
-            let minTemp = MarsTemperature(type: .minTemp,
-                                          temperature: Int($0.minTemp)!,
-                                          date: date)
-            
-            temperatures.append(minTemp)
+            if let maxTempValue = Int($0.maxTemp), let minTempValue = Int($0.minTemp) {
+                let maxTemp = MarsTemperature(type: .maxTemp, temperature: maxTempValue, date: date)
+                let minTemp = MarsTemperature(type: .minTemp, temperature: minTempValue, date: date)
+                
+                temperatures.append(maxTemp)
+                temperatures.append(minTemp)
+            }
         }
         
         return temperatures
@@ -39,13 +37,13 @@ struct TemperatureChartView: View {
             )
             .foregroundStyle(by: .value("Type", $0.type.rawValue))
         }
-        .frame(maxHeight: 250)
+        .frame(maxHeight: 300)
     }
 }
 
 struct TemperatureChartView_Previews: PreviewProvider {
     static var previews: some View {
-        TemperatureChartView(reports: Array(MockData.getMockWeatherData()[0..<14]))
+        TemperatureChartView(reports: Array(MockData.getMockWeatherData()[0..<31]))
     }
 }
 

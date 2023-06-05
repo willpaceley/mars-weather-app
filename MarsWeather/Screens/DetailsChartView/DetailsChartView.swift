@@ -28,6 +28,9 @@ struct DetailsChartView: View {
             .pickerStyle(.segmented)
             .padding()
             
+            TemperatureChartView(reports: vm.selectedReports)
+                .padding()
+            
             Text(vm.description)
                 .padding()
                 .background(Color.gray.opacity(0.25))
