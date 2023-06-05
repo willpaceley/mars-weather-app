@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		075FAB942A10343100692B42 /* TemperatureVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FAB932A10343100692B42 /* TemperatureVisualizationView.swift */; };
 		075FAB972A140DF800692B42 /* MarsWeatherHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FAB962A140DF800692B42 /* MarsWeatherHomeView.swift */; };
+		07670ECA2A2D39A5007A9814 /* TemperatureChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07670EC92A2D39A5007A9814 /* TemperatureChartView.swift */; };
 		07D8298629FB141100587495 /* MarsWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8298529FB141100587495 /* MarsWeatherApp.swift */; };
 		07D8298829FB141100587495 /* LatestWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D8298729FB141100587495 /* LatestWeatherView.swift */; };
 		07D8298A29FB141300587495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D8298929FB141300587495 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		075FAB932A10343100692B42 /* TemperatureVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureVisualizationView.swift; sourceTree = "<group>"; };
 		075FAB962A140DF800692B42 /* MarsWeatherHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsWeatherHomeView.swift; sourceTree = "<group>"; };
+		07670EC92A2D39A5007A9814 /* TemperatureChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureChartView.swift; sourceTree = "<group>"; };
 		07D8298229FB141100587495 /* MarsWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D8298529FB141100587495 /* MarsWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsWeatherApp.swift; sourceTree = "<group>"; };
 		07D8298729FB141100587495 /* LatestWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWeatherView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 				07ED94E22A0297350075B8D4 /* MarsWeatherViewModel.swift */,
 			);
 			path = MarsWeatherHomeView;
+			sourceTree = "<group>";
+		};
+		07670EC82A2D398C007A9814 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				07670EC92A2D39A5007A9814 /* TemperatureChartView.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		07D8297929FB141100587495 = {
@@ -222,6 +232,7 @@
 		07F1089629FC5B3D00EC2D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				07670EC82A2D398C007A9814 /* Charts */,
 				07F886762A0EF2990009AA7C /* List Cells */,
 				07F108A029FF4C5700EC2D6A /* Detail Subviews */,
 				07F1089D29FDCA0700EC2D6A /* Titles */,
@@ -335,6 +346,7 @@
 			files = (
 				07DBE24C2A24D9730017BE32 /* DetailsChartViewModel.swift in Sources */,
 				075FAB942A10343100692B42 /* TemperatureVisualizationView.swift in Sources */,
+				07670ECA2A2D39A5007A9814 /* TemperatureChartView.swift in Sources */,
 				07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */,
 				07F108A329FF4D2A00EC2D6A /* DaylightView.swift in Sources */,
 				07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */,

@@ -20,6 +20,18 @@ extension String {
         dateFormatter.dateFormat = format.rawValue
         return dateFormatter.string(from: date)
     }
+    
+    func toDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            print("A problem occurred converting \(self) to a Date type. Returning today's date.")
+            return nil
+        }
+    }
 }
 
 enum DateFormat: String {
