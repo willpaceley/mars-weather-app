@@ -41,6 +41,7 @@
 		07F108A92A00416800EC2D6A /* WeatherIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F108A82A00416800EC2D6A /* WeatherIconView.swift */; };
 		07F108AB2A004B8300EC2D6A /* ConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F108AA2A004B8300EC2D6A /* ConditionsView.swift */; };
 		07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F886772A0EF2BC0009AA7C /* ReportListCellView.swift */; };
+		07FAD91F2A2FE6F600D554EC /* DetailsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		07F108A82A00416800EC2D6A /* WeatherIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconView.swift; sourceTree = "<group>"; };
 		07F108AA2A004B8300EC2D6A /* ConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsView.swift; sourceTree = "<group>"; };
 		07F886772A0EF2BC0009AA7C /* ReportListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListCellView.swift; sourceTree = "<group>"; };
+		07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		07670EC82A2D398C007A9814 /* Charts */ = {
 			isa = PBXGroup;
 			children = (
+				07FAD91D2A2FE6DE00D554EC /* DetailsChartView */,
 				0704F5D12A2EC6060066103B /* TemperatureChartView */,
 			);
 			path = Charts;
@@ -285,6 +288,14 @@
 			path = "List Cells";
 			sourceTree = "<group>";
 		};
+		07FAD91D2A2FE6DE00D554EC /* DetailsChartView */ = {
+			isa = PBXGroup;
+			children = (
+				07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */,
+			);
+			path = DetailsChartView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -377,6 +388,7 @@
 				07ED94E82A02A0860075B8D4 /* NetworkProvider.swift in Sources */,
 				07D8298629FB141100587495 /* MarsWeatherApp.swift in Sources */,
 				07EF55A02A0EC72E0050BBA8 /* WeatherReportView.swift in Sources */,
+				07FAD91F2A2FE6F600D554EC /* DetailsChartView.swift in Sources */,
 				07ED94F02A0533AD0075B8D4 /* String+Ext.swift in Sources */,
 				07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */,
 				07F1089A29FC63CF00EC2D6A /* MockData.swift in Sources */,

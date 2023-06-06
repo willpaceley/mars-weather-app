@@ -8,17 +8,19 @@
 import SwiftUI
 
 @MainActor final class TemperatureChartViewModel: ObservableObject {
-    @Published var isShowingAirTemp = true
-    @Published var isShowingGroundTemp = false
-    
     let reports: [Report]
+    
+    var isShowingAirTemp: Binding<Bool>
+    var isShowingGroundTemp: Binding<Bool>
     
     var temperatureData: [MarsTemperature] {
         getMarsTemperatures(from: reports)
     }
     
-    init(reports: [Report]) {
+    init(reports: [Report], isShowingAirTemp: Binding<Bool>, isShowingGroundTemp: Binding<Bool>) {
         self.reports = reports
+        self.isShowingAirTemp = isShowingAirTemp
+        self.isShowingGroundTemp = isShowingGroundTemp
     }
     
     private func getMarsTemperatures(from reports: [Report]) -> [MarsTemperature] {
@@ -27,7 +29,7 @@ import SwiftUI
         reports.forEach {
             let date = $0.terrestrialDate.toDate()!
             
-            if isShowingAirTemp {
+            if isShowingAirTemp.wrappedValue {
                 if let maxTempValue = Int($0.maxTemp), let minTempValue = Int($0.minTemp)
                 {
                     let maxAirTemp = MarsTemperature(type: .maxAirTemp, temperature: maxTempValue, date: date)
@@ -38,7 +40,7 @@ import SwiftUI
                 }
             }
             
-            if isShowingGroundTemp {
+            if isShowingGroundTemp.wrappedValue {
                 if let maxGtsValue = Int($0.maxGtsTemp), let minGtsValue = Int($0.minGtsTemp) {
                     let maxGtsTemp = MarsTemperature(type: .maxGroundTemp, temperature: maxGtsValue, date: date)
                     let minGtsTemp = MarsTemperature(type: .minGroundTemp, temperature: minGtsValue, date: date)

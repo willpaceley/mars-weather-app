@@ -22,19 +22,21 @@ struct TemperatureChartView: View {
             }
             .frame(maxHeight: 300)
             
-            Toggle("Air Temperature", isOn: $vm.isShowingAirTemp)
+            Toggle("Air Temperature", isOn: vm.isShowingAirTemp)
                 .foregroundColor(.secondary)
-                .disabled(!vm.isShowingGroundTemp)
+                .disabled(!vm.isShowingGroundTemp.wrappedValue)
             
-            Toggle("Ground Temperature", isOn: $vm.isShowingGroundTemp)
+            Toggle("Ground Temperature", isOn: vm.isShowingGroundTemp)
                 .foregroundColor(.secondary)
-                .disabled(!vm.isShowingAirTemp)
+                .disabled(!vm.isShowingAirTemp.wrappedValue)
         }
     }
 }
 
 struct TemperatureChartView_Previews: PreviewProvider {
     static var previews: some View {
-        TemperatureChartView(vm: TemperatureChartViewModel(reports: Array(MockData.getMockWeatherData()[0..<31])))
+        TemperatureChartView(vm: TemperatureChartViewModel(reports: Array(MockData.getMockWeatherData()[0..<31]),
+                                                           isShowingAirTemp: .constant(true),
+                                                           isShowingGroundTemp: .constant(false)))
     }
 }

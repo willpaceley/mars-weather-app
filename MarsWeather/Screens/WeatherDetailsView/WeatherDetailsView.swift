@@ -28,7 +28,7 @@ struct WeatherDetailsView: View {
             .pickerStyle(.segmented)
             .padding()
             
-            TemperatureChartView(vm: TemperatureChartViewModel(reports: vm.selectedReports))
+            DetailsChartView(vm: vm)
                 .padding()
             
             Text(vm.description)
