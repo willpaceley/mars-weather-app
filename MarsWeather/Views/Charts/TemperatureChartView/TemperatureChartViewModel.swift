@@ -1,20 +1,27 @@
 //
-//  TemperatureChartView.swift
+//  TemperatureChartViewModel.swift
 //  MarsWeather
 //
-//  Created by Will Paceley on 2023-06-04.
+//  Created by Will Paceley on 2023-06-05.
 //
 
 import SwiftUI
-import Charts
 
-struct TemperatureChartView: View {
+@MainActor final class TemperatureChartViewModel: ObservableObject {
+    @Published var isShowingAirTemp = true
+    @Published var isShowingGroundTemp = false
+    
     let reports: [Report]
     
-    @State private var isShowingAirTemp = true
-    @State private var isShowingGroundTemp = false
-    
     var temperatureData: [MarsTemperature] {
+        getMarsTemperatures(from: reports)
+    }
+    
+    init(reports: [Report]) {
+        self.reports = reports
+    }
+    
+    private func getMarsTemperatures(from reports: [Report]) -> [MarsTemperature] {
         var temperatures = [MarsTemperature]()
         
         reports.forEach {
@@ -43,33 +50,6 @@ struct TemperatureChartView: View {
         }
         
         return temperatures
-    }
-    
-    var body: some View {
-        VStack {
-            Chart(temperatureData) {
-                LineMark(
-                    x: .value("Date", $0.date),
-                    y: .value("Temperature", $0.temperature)
-                )
-                .foregroundStyle(by: .value("Type", $0.type.rawValue))
-            }
-            .frame(maxHeight: 300)
-            
-            Toggle("Air Temperature", isOn: $isShowingAirTemp)
-                .foregroundColor(.secondary)
-                .disabled(!isShowingGroundTemp)
-            
-            Toggle("Ground Temperature", isOn: $isShowingGroundTemp)
-                .foregroundColor(.secondary)
-                .disabled(!isShowingAirTemp)
-        }
-    }
-}
-
-struct TemperatureChartView_Previews: PreviewProvider {
-    static var previews: some View {
-        TemperatureChartView(reports: Array(MockData.getMockWeatherData()[0..<31]))
     }
 }
 
