@@ -1,5 +1,5 @@
 //
-//  DetailsChartViewModel.swift
+//  WeatherDetailsViewModel.swift
 //  MarsWeather
 //
 //  Created by Will Paceley on 2023-05-29.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-@MainActor final class DetailsChartViewModel: ObservableObject {
-    @Published var selectedTimeCoordinate: TimeCoordinate = .month
+@MainActor final class WeatherDetailsViewModel: ObservableObject {
+    @Published var selectedTimeRange: TimeRange = .month
     
     let weatherDetail: WeatherDetail
     let reports: [Report]
     
     var selectedReports: [Report] {
-        getReportSelection(for: selectedTimeCoordinate)
+        getReportSelection(for: selectedTimeRange)
     }
     
     var icon: String {
@@ -36,8 +36,8 @@ import SwiftUI
         return monthNumber
     }
     
-    private func getReportSelection(for timeCoordinate: TimeCoordinate) -> [Report] {
-        switch timeCoordinate {
+    private func getReportSelection(for timeRange: TimeRange) -> [Report] {
+        switch timeRange {
         case .month:
             return Array(reports[0..<31])
         case .sixMonth:
@@ -112,7 +112,7 @@ import SwiftUI
     }
 }
 
-enum TimeCoordinate {
+enum TimeRange {
     case month
     case sixMonth
     case year

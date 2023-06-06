@@ -1,5 +1,5 @@
 //
-//  DetailsChartView.swift
+//  WeatherDetailsView.swift
 //  MarsWeather
 //
 //  Created by Will Paceley on 2023-05-22.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct DetailsChartView: View {
+struct WeatherDetailsView: View {
     
-    @StateObject var vm: DetailsChartViewModel
+    @StateObject var vm: WeatherDetailsViewModel
     @Binding var isShowingChart: Bool
     
     var body: some View {
@@ -18,12 +18,12 @@ struct DetailsChartView: View {
                 .bold()
                 .padding()
             
-            Picker("Time Range", selection: $vm.selectedTimeCoordinate) {
-                Text("Month").tag(TimeCoordinate.month)
-                Text("6 Month").tag(TimeCoordinate.sixMonth)
-                Text("Year").tag(TimeCoordinate.year)
-                Text("2 Year").tag(TimeCoordinate.twoYear)
-                Text("ALL").tag(TimeCoordinate.all)
+            Picker("Time Range", selection: $vm.selectedTimeRange) {
+                Text("Month").tag(TimeRange.month)
+                Text("6 Month").tag(TimeRange.sixMonth)
+                Text("Year").tag(TimeRange.year)
+                Text("2 Year").tag(TimeRange.twoYear)
+                Text("ALL").tag(TimeRange.all)
             }
             .pickerStyle(.segmented)
             .padding()
@@ -52,7 +52,7 @@ struct DetailsChartView: View {
 
 struct WeatherDetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsChartView(vm: DetailsChartViewModel(weatherDetail: .temperature,
+        WeatherDetailsView(vm: WeatherDetailsViewModel(weatherDetail: .temperature,
                                                    reports: MockData.getMockWeatherData()),
                          isShowingChart: .constant(true))
     }
