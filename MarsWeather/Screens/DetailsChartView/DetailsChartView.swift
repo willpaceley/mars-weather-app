@@ -13,7 +13,7 @@ struct DetailsChartView: View {
     @Binding var isShowingChart: Bool
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Label(vm.weatherDetail.rawValue.capitalized, systemImage: vm.icon)
                 .bold()
                 .padding()
