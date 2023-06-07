@@ -13,7 +13,8 @@ struct DetailsChartView: View {
     var body: some View {
         switch vm.weatherDetail {
         default:
-            TemperatureChartView(vm: TemperatureChartViewModel(reports: vm.selectedReports,                                                                     isShowingAirTemp: $vm.isShowingAirTemp,
+            TemperatureChartView(vm: TemperatureChartViewModel(reports: vm.selectedReports,
+                                                               isShowingAirTemp: $vm.isShowingAirTemp,
                                                                isShowingGroundTemp: $vm.isShowingGroundTemp))
         }
     }

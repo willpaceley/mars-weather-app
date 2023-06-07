@@ -10,8 +10,8 @@ import SwiftUI
 @MainActor final class TemperatureChartViewModel: ObservableObject {
     let reports: [Report]
     
-    var isShowingAirTemp: Binding<Bool>
-    var isShowingGroundTemp: Binding<Bool>
+    let isShowingAirTemp: Binding<Bool>
+    let isShowingGroundTemp: Binding<Bool>
     
     var temperatureData: [MarsTemperature] {
         getMarsTemperatures(from: reports)

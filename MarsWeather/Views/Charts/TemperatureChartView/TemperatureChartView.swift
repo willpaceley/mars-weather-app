@@ -15,7 +15,7 @@ struct TemperatureChartView: View {
         VStack {
             Chart(vm.temperatureData) {
                 LineMark(
-                    x: .value("Date", $0.date),
+                    x: .value("Date", $0.date, unit: .day),
                     y: .value("Temperature", $0.temperature)
                 )
                 .foregroundStyle(by: .value("Type", $0.type.rawValue))
