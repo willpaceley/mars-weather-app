@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct SunlightChartView: View {
     let reports: [Report]
@@ -14,12 +15,12 @@ struct SunlightChartView: View {
         var sunlightData = [MarsSunlight]()
 
         reports.forEach {
-            let day = $0.terrestrialDate.toDate()!
-            let sunriseTime = getSunlightTime(date: $0.terrestrialDate, time: $0.sunrise)!
-            let sunsetTime = getSunlightTime(date: $0.terrestrialDate, time: $0.sunset)!
+            let date = $0.terrestrialDate.toDate()!
+            let sunriseTime = getSunlightTime(for: $0.sunrise)!
+            let sunsetTime = getSunlightTime(for: $0.sunset)!
             
-            let sunrise = MarsSunlight(type: .sunrise, day: day, time: sunriseTime)
-            let sunset = MarsSunlight(type: .sunset, day: day, time: sunsetTime)
+            let sunrise = MarsSunlight(type: .sunrise, date: date, time: sunriseTime)
+            let sunset = MarsSunlight(type: .sunset, date: date, time: sunsetTime)
             
             sunlightData.append(sunrise)
             sunlightData.append(sunset)
@@ -29,26 +30,30 @@ struct SunlightChartView: View {
     }
     
     var body: some View {
-        Text("Hello, World!")
+        Chart(sunlightData) {
+            LineMark(x: .value("Date", $0.date, unit: .day),
+                     y: .value("Time", $0.time, unit: .minute))
+            .foregroundStyle(by: .value("Type", $0.type.rawValue))
+        }
+        .frame(height: 300)
     }
 }
 
 struct SunlightChartView_Previews: PreviewProvider {
     static var previews: some View {
-        SunlightChartView(reports: Array(MockData.getMockWeatherData()[0..<14]))
+        SunlightChartView(reports: Array(MockData.getMockWeatherData()[0..<90]))
     }
 }
 
 extension SunlightChartView {
-    private func getSunlightTime(date: String, time: String) -> Date? {
+    private func getSunlightTime(for time: String) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.dateFormat = "HH:mm"
 
-        if let date = dateFormatter.date(from: "\(date) \(time)") {
+        if let date = dateFormatter.date(from: time) {
             return date
         } else {
-            print("Date conversion failed in getSunlightTime function.")
+            print("Date from time conversion failed in getSunlightTime function.")
             return nil
         }
     }
@@ -57,7 +62,7 @@ extension SunlightChartView {
 struct MarsSunlight: Identifiable {
     let id = UUID()
     let type: SunlightType
-    let day: Date
+    let date: Date
     let time: Date
 }
 
