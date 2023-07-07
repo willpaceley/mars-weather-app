@@ -12,6 +12,12 @@ struct DetailsChartView: View {
     
     var body: some View {
         switch vm.weatherDetail {
+        case .temperature:
+            TemperatureChartView(vm: TemperatureChartViewModel(reports: vm.selectedReports,
+                                                               isShowingAirTemp: $vm.isShowingAirTemp,
+                                                               isShowingGroundTemp: $vm.isShowingGroundTemp))
+        case .daylight:
+            SunlightChartView(vm: SunlightChartViewModel(reports: vm.selectedReports))
         default:
             TemperatureChartView(vm: TemperatureChartViewModel(reports: vm.selectedReports,
                                                                isShowingAirTemp: $vm.isShowingAirTemp,

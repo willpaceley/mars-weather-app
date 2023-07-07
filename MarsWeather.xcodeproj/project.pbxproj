@@ -42,6 +42,7 @@
 		07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F886772A0EF2BC0009AA7C /* ReportListCellView.swift */; };
 		07FAD91F2A2FE6F600D554EC /* DetailsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */; };
 		07FAD9222A30BEE600D554EC /* SunlightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD9212A30BEE600D554EC /* SunlightChartView.swift */; };
+		BE655EDF2A58A76B0066E2B6 /* SunlightChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		07F886772A0EF2BC0009AA7C /* ReportListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListCellView.swift; sourceTree = "<group>"; };
 		07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsChartView.swift; sourceTree = "<group>"; };
 		07FAD9212A30BEE600D554EC /* SunlightChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightChartView.swift; sourceTree = "<group>"; };
+		BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightChartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				07FAD9212A30BEE600D554EC /* SunlightChartView.swift */,
+				BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */,
 			);
 			path = SunlightChartView;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				0704F5D32A2EC6210066103B /* TemperatureChartViewModel.swift in Sources */,
 				07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */,
 				07DBE2482A1C0D7A0017BE32 /* WeatherReportViewModel.swift in Sources */,
+				BE655EDF2A58A76B0066E2B6 /* SunlightChartViewModel.swift in Sources */,
 				07D8298829FB141100587495 /* LatestWeatherView.swift in Sources */,
 				07D982012A097E0400DBB317 /* PressureView.swift in Sources */,
 				07F108AB2A004B8300EC2D6A /* ConditionsView.swift in Sources */,
