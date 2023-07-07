@@ -12,19 +12,32 @@ struct SunlightChartView: View {
     @ObservedObject var vm: SunlightChartViewModel
     
     var body: some View {
-        Chart(vm.sunlightData) {
-            LineMark(x: .value("Date", $0.date, unit: .day),
-                     y: .value("Time", $0.time, unit: .minute))
-            .foregroundStyle(by: .value("Type", $0.type.rawValue))
+        VStack {
+            Chart(vm.sunlightData) {
+                LineMark(x: .value("Date", $0.date, unit: .day),
+                         y: .value("Time", $0.time, unit: .minute))
+                .foregroundStyle(by: .value("Type", $0.type.rawValue))
+                .interpolationMethod(.catmullRom)
+            }
+            .frame(maxHeight: 300)
+            
+            Toggle("Sunrise", isOn: vm.isShowingSunrise)
+                .foregroundColor(.secondary)
+                .disabled(!vm.isShowingSunset.wrappedValue)
+            
+            Toggle("Sunset", isOn: vm.isShowingSunset)
+                .foregroundColor(.secondary)
+                .disabled(!vm.isShowingSunrise.wrappedValue)
         }
-        .frame(height: 300)
     }
 }
 
 struct SunlightChartView_Previews: PreviewProvider {
     static var previews: some View {
         SunlightChartView(vm: SunlightChartViewModel(
-            reports: Array(MockData.getMockWeatherData()[0..<31]))
+            reports: Array(MockData.getMockWeatherData()[0..<90]),
+            isShowingSunrise: .constant(true),
+            isShowingSunset: .constant(false))
         )
     }
 }

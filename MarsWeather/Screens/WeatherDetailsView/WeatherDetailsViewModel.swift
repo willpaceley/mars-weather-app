@@ -9,8 +9,12 @@ import SwiftUI
 
 @MainActor final class WeatherDetailsViewModel: ObservableObject {
     @Published var selectedTimeRange: TimeRange = .month
+    // TemperatureChartView Toggle bindings
     @Published var isShowingAirTemp = true
     @Published var isShowingGroundTemp = false
+    // SunlightChartView Toggle bindings
+    @Published var isShowingSunrise = true
+    @Published var isShowingSunset = false
     
     let weatherDetail: WeatherDetail
     let reports: [Report]

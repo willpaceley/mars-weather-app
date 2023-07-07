@@ -14,7 +14,7 @@ import SwiftUI
     let isShowingGroundTemp: Binding<Bool>
     
     var temperatureData: [MarsTemperature] {
-        getMarsTemperatures(from: reports)
+        getTemperatureData(from: reports)
     }
     
     init(reports: [Report], isShowingAirTemp: Binding<Bool>, isShowingGroundTemp: Binding<Bool>) {
@@ -23,7 +23,7 @@ import SwiftUI
         self.isShowingGroundTemp = isShowingGroundTemp
     }
     
-    private func getMarsTemperatures(from reports: [Report]) -> [MarsTemperature] {
+    private func getTemperatureData(from reports: [Report]) -> [MarsTemperature] {
         var temperatures = [MarsTemperature]()
         
         reports.forEach {

@@ -9,27 +9,39 @@ import SwiftUI
 
 @MainActor final class SunlightChartViewModel: ObservableObject {
     let reports: [Report]
+    let isShowingSunrise: Binding<Bool>
+    let isShowingSunset: Binding<Bool>
     
     var sunlightData: [MarsSunlight] {
+        getSunlightData(from: reports)
+    }
+    
+    init(reports: [Report], isShowingSunrise: Binding<Bool>, isShowingSunset: Binding<Bool>) {
+        self.reports = reports
+        self.isShowingSunrise = isShowingSunrise
+        self.isShowingSunset = isShowingSunset
+    }
+    
+    private func getSunlightData(from: [Report]) -> [MarsSunlight] {
         var sunlightData = [MarsSunlight]()
 
         reports.forEach {
             let date = $0.terrestrialDate.toDate()!
-            let sunriseTime = getSunlightTime(for: $0.sunrise)!
-            let sunsetTime = getSunlightTime(for: $0.sunset)!
             
-            let sunrise = MarsSunlight(type: .sunrise, date: date, time: sunriseTime)
-            let sunset = MarsSunlight(type: .sunset, date: date, time: sunsetTime)
+            if isShowingSunrise.wrappedValue {
+                let sunriseTime = getSunlightTime(for: $0.sunrise)!
+                let sunrise = MarsSunlight(type: .sunrise, date: date, time: sunriseTime)
+                sunlightData.append(sunrise)
+            }
             
-            sunlightData.append(sunrise)
-            sunlightData.append(sunset)
+            if isShowingSunset.wrappedValue {
+                let sunsetTime = getSunlightTime(for: $0.sunset)!
+                let sunset = MarsSunlight(type: .sunset, date: date, time: sunsetTime)
+                sunlightData.append(sunset)
+            }
         }
         
         return sunlightData
-    }
-    
-    init(reports: [Report]) {
-        self.reports = reports
     }
     
     private func getSunlightTime(for time: String) -> Date? {

@@ -17,7 +17,9 @@ struct DetailsChartView: View {
                                                                isShowingAirTemp: $vm.isShowingAirTemp,
                                                                isShowingGroundTemp: $vm.isShowingGroundTemp))
         case .daylight:
-            SunlightChartView(vm: SunlightChartViewModel(reports: vm.selectedReports))
+            SunlightChartView(vm: SunlightChartViewModel(reports: vm.selectedReports,
+                                                         isShowingSunrise: $vm.isShowingSunrise,
+                                                         isShowingSunset: $vm.isShowingSunset))
         default:
             TemperatureChartView(vm: TemperatureChartViewModel(reports: vm.selectedReports,
                                                                isShowingAirTemp: $vm.isShowingAirTemp,
