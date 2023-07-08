@@ -43,6 +43,7 @@
 		07FAD91F2A2FE6F600D554EC /* DetailsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */; };
 		07FAD9222A30BEE600D554EC /* SunlightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD9212A30BEE600D554EC /* SunlightChartView.swift */; };
 		BE655EDF2A58A76B0066E2B6 /* SunlightChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */; };
+		BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsChartView.swift; sourceTree = "<group>"; };
 		07FAD9212A30BEE600D554EC /* SunlightChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightChartView.swift; sourceTree = "<group>"; };
 		BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightChartViewModel.swift; sourceTree = "<group>"; };
+		BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */,
 				0704F5D12A2EC6060066103B /* TemperatureChartView */,
 				07FAD9202A30BEAF00D554EC /* SunlightChartView */,
+				BE655EE02A5981160066E2B6 /* ConditionsChartView */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -299,6 +302,14 @@
 			path = SunlightChartView;
 			sourceTree = "<group>";
 		};
+		BE655EE02A5981160066E2B6 /* ConditionsChartView */ = {
+			isa = PBXGroup;
+			children = (
+				BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */,
+			);
+			path = ConditionsChartView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,6 +383,7 @@
 				07DBE24C2A24D9730017BE32 /* WeatherDetailsViewModel.swift in Sources */,
 				075FAB942A10343100692B42 /* TemperatureVisualizationView.swift in Sources */,
 				07670ECA2A2D39A5007A9814 /* TemperatureChartView.swift in Sources */,
+				BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */,
 				07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */,
 				07F108A329FF4D2A00EC2D6A /* DaylightView.swift in Sources */,
 				07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */,
