@@ -21,7 +21,7 @@ struct DetailsChartView: View {
                                                          isShowingSunrise: $vm.isShowingSunrise,
                                                          isShowingSunset: $vm.isShowingSunset))
         case .conditions:
-            ConditionsChartView(reports: vm.selectedReports)
+            ConditionsChartView(vm: ConditionsChartViewModel(reports: vm.selectedReports))
         default:
             TemperatureChartView(vm: TemperatureChartViewModel(reports: vm.selectedReports,
                                                                isShowingAirTemp: $vm.isShowingAirTemp,
