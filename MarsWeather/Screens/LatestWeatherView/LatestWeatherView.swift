@@ -38,7 +38,7 @@ struct LatestWeatherView: View {
                 }
             }
         }
-        .padding(.top)
+//        .padding(.top)
         .padding(.leading)
         .padding(.trailing)
         .frame(maxWidth: .infinity)

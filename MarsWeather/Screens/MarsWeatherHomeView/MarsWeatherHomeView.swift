@@ -14,7 +14,20 @@ struct MarsWeatherHomeView: View {
         ZStack {
             VStack(spacing: 0) {
                 if !vm.reports.isEmpty {
-                    AppTitleView()
+                    HStack {
+                        AppTitleView()
+                        
+                        Spacer()
+                        
+                        Image(systemName: "info.circle")
+                            .font(.title)
+                            .foregroundStyle(.secondary)
+                            .onTapGesture {
+                                vm.isShowingInfo = true
+                            }
+                    }
+                    .padding(.leading)
+                    .padding(.trailing)
                     
                     LatestWeatherView(vm: LatestWeatherViewModel(reports: vm.reports))
                 }
@@ -26,10 +39,13 @@ struct MarsWeatherHomeView: View {
         }
         .preferredColorScheme(.dark)
         .task {
-//            vm.getMockWeatherData()
-            vm.getWeatherData()
+            vm.getMockWeatherData()
+//            vm.getWeatherData()
         }
         .alert(isPresented: $vm.isPresentingAlert) { vm.alert }
+        .sheet(isPresented: $vm.isShowingInfo) {
+            AttributionView(isShowingInfo: $vm.isShowingInfo)
+        }
     }
 }
 

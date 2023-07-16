@@ -15,7 +15,7 @@ struct AppTitleView: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(LinearGradient(colors: [.orange, .accentColor], startPoint: .top, endPoint: .bottom))
         }
-        .frame(maxWidth: .infinity)
+//        .frame(maxWidth: .infinity)
     }
 }
 

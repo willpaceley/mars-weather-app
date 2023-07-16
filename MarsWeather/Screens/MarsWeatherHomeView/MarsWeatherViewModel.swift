@@ -11,6 +11,7 @@ import SwiftUI
     @Published var reports = [Report]()
     @Published var isLoading = false
     @Published var isPresentingAlert = false
+    @Published var isShowingInfo = false
     @Published var alert = AlertContext.defaultAlert
     
     var descriptions: Descriptions?
