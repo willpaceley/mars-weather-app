@@ -20,7 +20,7 @@ struct MarsWeatherHomeView: View {
                         Spacer()
                         
                         Image(systemName: "info.circle")
-                            .font(.title)
+                            .font(.title2)
                             .foregroundStyle(.secondary)
                             .onTapGesture {
                                 vm.isShowingInfo = true
@@ -39,8 +39,8 @@ struct MarsWeatherHomeView: View {
         }
         .preferredColorScheme(.dark)
         .task {
-            vm.getMockWeatherData()
-//            vm.getWeatherData()
+//            vm.getMockWeatherData()
+            vm.getWeatherData()
         }
         .alert(isPresented: $vm.isPresentingAlert) { vm.alert }
         .sheet(isPresented: $vm.isShowingInfo) {

@@ -21,18 +21,23 @@ struct AttributionView: View {
      """
     
     var body: some View {
-        HStack {
-            Spacer()
-            
-            DismissButton()
-                .onTapGesture {
-                    isShowingInfo = false
-                }
-        }
-        
-        ScrollView {
-            Text(ATTRIBUTION_TEXT)
+        VStack {
+            Label("About", systemImage: "info.circle")
+                .bold()
                 .padding()
+            
+            ScrollView {
+                Text(ATTRIBUTION_TEXT)
+                    .padding(.leading)
+                    .padding(.trailing)
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            Button {
+                isShowingInfo = false
+            } label: {
+                DismissButton()
+            }
         }
     }
 }
