@@ -31,13 +31,13 @@ struct WeatherDetailsView: View {
             DetailsChartView(vm: vm)
                 .padding()
             
-            Text(vm.description)
-                .padding()
-                .background(Color.gray.opacity(0.25))
-                .cornerRadius(10)
-                .padding()
-            
-            Spacer()
+            ScrollView {
+                Text(vm.description)
+                    .padding()
+                    .background(Color.gray.opacity(0.25))
+                    .cornerRadius(10)
+                    .padding()
+            }
         }
         .frame(maxWidth: .infinity)
         .overlay(alignment: .topTrailing) {
@@ -52,7 +52,7 @@ struct WeatherDetailsView: View {
 
 struct WeatherDetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherDetailsView(vm: WeatherDetailsViewModel(weatherDetail: .temperature,
+        WeatherDetailsView(vm: WeatherDetailsViewModel(weatherDetail: .pressure,
                                                    reports: MockData.getMockWeatherData()),
                          isShowingChart: .constant(true))
     }
