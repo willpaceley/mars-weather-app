@@ -24,10 +24,8 @@ struct DetailsChartView: View {
             ConditionsChartView(vm: ConditionsChartViewModel(reports: vm.selectedReports))
         case .pressure:
             PressureChartView(vm: PressureChartViewModel(reports: vm.selectedReports))
-        default:
-            TemperatureChartView(vm: TemperatureChartViewModel(reports: vm.selectedReports,
-                                                               isShowingAirTemp: $vm.isShowingAirTemp,
-                                                               isShowingGroundTemp: $vm.isShowingGroundTemp))
+        case .irradiance:
+            IrradianceChartView(vm: IrradianceChartViewModel(reports: vm.selectedReports))
         }
     }
 }

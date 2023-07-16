@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UVIrradianceView: View {
-    let irradianceIndex: LocalUvIrradianceIndex
+    let irradianceIndex: UVIrradianceIndex
     
     var sliderOffset: Double {
         switch irradianceIndex {

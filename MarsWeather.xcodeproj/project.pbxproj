@@ -47,6 +47,8 @@
 		BE655EE42A5A117E0066E2B6 /* ConditionsChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */; };
 		BE655EE72A5A17F00066E2B6 /* PressureChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */; };
 		BE655EE92A5A1C6D0066E2B6 /* PressureChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE82A5A1C6D0066E2B6 /* PressureChartViewModel.swift */; };
+		BEC810C82A6385C300971F82 /* IrradianceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC810C72A6385C300971F82 /* IrradianceChartView.swift */; };
+		BEC810CA2A642D4E00971F82 /* IrradianceChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC810C92A642D4E00971F82 /* IrradianceChartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartViewModel.swift; sourceTree = "<group>"; };
 		BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureChartView.swift; sourceTree = "<group>"; };
 		BE655EE82A5A1C6D0066E2B6 /* PressureChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureChartViewModel.swift; sourceTree = "<group>"; };
+		BEC810C72A6385C300971F82 /* IrradianceChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrradianceChartView.swift; sourceTree = "<group>"; };
+		BEC810C92A642D4E00971F82 /* IrradianceChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrradianceChartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				07FAD9202A30BEAF00D554EC /* SunlightChartView */,
 				BE655EE02A5981160066E2B6 /* ConditionsChartView */,
 				BE655EE52A5A17D20066E2B6 /* PressureChartView */,
+				BEC810C62A63859A00971F82 /* IrradianceChartView */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -327,6 +332,15 @@
 			path = PressureChartView;
 			sourceTree = "<group>";
 		};
+		BEC810C62A63859A00971F82 /* IrradianceChartView */ = {
+			isa = PBXGroup;
+			children = (
+				BEC810C72A6385C300971F82 /* IrradianceChartView.swift */,
+				BEC810C92A642D4E00971F82 /* IrradianceChartViewModel.swift */,
+			);
+			path = IrradianceChartView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -398,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07DBE24C2A24D9730017BE32 /* WeatherDetailsViewModel.swift in Sources */,
+				BEC810C82A6385C300971F82 /* IrradianceChartView.swift in Sources */,
 				075FAB942A10343100692B42 /* TemperatureVisualizationView.swift in Sources */,
 				07670ECA2A2D39A5007A9814 /* TemperatureChartView.swift in Sources */,
 				BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */,
@@ -421,6 +436,7 @@
 				07ED94EB2A02B6330075B8D4 /* MWError.swift in Sources */,
 				07D982032A09880200DBB317 /* ConditionsPressureView.swift in Sources */,
 				07ED94E82A02A0860075B8D4 /* NetworkProvider.swift in Sources */,
+				BEC810CA2A642D4E00971F82 /* IrradianceChartViewModel.swift in Sources */,
 				07D8298629FB141100587495 /* MarsWeatherApp.swift in Sources */,
 				07FAD9222A30BEE600D554EC /* SunlightChartView.swift in Sources */,
 				07EF55A02A0EC72E0050BBA8 /* WeatherReportView.swift in Sources */,

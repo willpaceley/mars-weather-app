@@ -20,7 +20,7 @@ struct LatestWeatherView: View {
             Divider()
                 .padding(.top)
             
-            SubHeaderView(title: "Last 14 Days")
+            SubHeaderView(title: "Last 30 Days")
                 .padding(.top, 10)
                 .padding(.bottom, 10)
             

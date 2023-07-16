@@ -19,7 +19,7 @@ struct Report: Codable, Identifiable {
     let windSpeed, windDirection: String
     let atmoOpacity: String
     let sunrise, sunset: String
-    let localUvIrradianceIndex: LocalUvIrradianceIndex
+    let localUvIrradianceIndex: UVIrradianceIndex
     let minGtsTemp, maxGtsTemp: String
 
     enum CodingKeys: String, CodingKey {
@@ -42,7 +42,7 @@ struct Report: Codable, Identifiable {
     }
 }
 
-enum LocalUvIrradianceIndex: String, Codable {
+enum UVIrradianceIndex: String, Codable {
     case empty = "--"
     case low = "Low"
     case moderate = "Moderate"
