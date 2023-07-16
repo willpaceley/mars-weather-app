@@ -12,6 +12,10 @@ struct DaylightView: View {
     
     var body: some View {
         HStack {
+            if UIDevice.isIPad {
+                Spacer()
+            }
+            
             VStack(spacing: 7) {
                 Text("Sunrise")
                     .fontWeight(.semibold)
@@ -32,6 +36,10 @@ struct DaylightView: View {
                 
                 Text(report.sunset)
                     .font(.callout)
+            }
+            
+            if UIDevice.isIPad {
+                Spacer()
             }
         }
         .padding()

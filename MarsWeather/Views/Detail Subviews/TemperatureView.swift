@@ -12,10 +12,14 @@ struct TemperatureView: View {
     
     var body: some View {
         HStack {
+            if UIDevice.isIPad {
+                Spacer()
+            }
+            
             VStack(spacing: 7) {
                 Text("Max")
                     .fontWeight(.semibold)
-                
+
                 WeatherIconView(systemName: "thermometer.high")
                 
                 Text("\(report.maxTemp) °C")
@@ -30,6 +34,10 @@ struct TemperatureView: View {
                 WeatherIconView(systemName: "thermometer.low")
                 
                 Text("\(report.minTemp) °C")
+            }
+            
+            if UIDevice.isIPad {
+                Spacer()
             }
         }
         .padding()

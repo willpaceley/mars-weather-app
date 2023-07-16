@@ -42,6 +42,7 @@
 		07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F886772A0EF2BC0009AA7C /* ReportListCellView.swift */; };
 		07FAD91F2A2FE6F600D554EC /* DetailsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */; };
 		07FAD9222A30BEE600D554EC /* SunlightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD9212A30BEE600D554EC /* SunlightChartView.swift */; };
+		BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */; };
 		BE655EDF2A58A76B0066E2B6 /* SunlightChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */; };
 		BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */; };
 		BE655EE42A5A117E0066E2B6 /* ConditionsChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */; };
@@ -88,6 +89,7 @@
 		07F886772A0EF2BC0009AA7C /* ReportListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListCellView.swift; sourceTree = "<group>"; };
 		07FAD91E2A2FE6F600D554EC /* DetailsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsChartView.swift; sourceTree = "<group>"; };
 		07FAD9212A30BEE600D554EC /* SunlightChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightChartView.swift; sourceTree = "<group>"; };
+		BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightChartViewModel.swift; sourceTree = "<group>"; };
 		BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartView.swift; sourceTree = "<group>"; };
 		BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartViewModel.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				07ED94EF2A0533AD0075B8D4 /* String+Ext.swift */,
+				BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */,
 				BE655EE42A5A117E0066E2B6 /* ConditionsChartViewModel.swift in Sources */,
 				07F108A329FF4D2A00EC2D6A /* DaylightView.swift in Sources */,
+				BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */,
 				07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */,
 				0704F5D32A2EC6210066103B /* TemperatureChartViewModel.swift in Sources */,
 				07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */,
