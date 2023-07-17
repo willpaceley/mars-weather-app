@@ -20,7 +20,7 @@ struct TemperatureChartView: View {
                 )
                 .foregroundStyle(by: .value("Type", $0.type.rawValue))
             }
-            .frame(maxHeight: 300)
+            .frame(height: 300)
             
             Toggle("Air Temperature", isOn: vm.isShowingAirTemp)
                 .foregroundColor(.secondary)

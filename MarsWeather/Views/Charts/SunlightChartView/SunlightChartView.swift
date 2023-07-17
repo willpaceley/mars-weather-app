@@ -19,7 +19,7 @@ struct SunlightChartView: View {
                 .foregroundStyle(by: .value("Type", $0.type.rawValue))
                 .interpolationMethod(.catmullRom)
             }
-            .frame(maxHeight: 300)
+            .frame(height: 300)
             
             Toggle("Sunrise", isOn: vm.isShowingSunrise)
                 .foregroundColor(.secondary)
