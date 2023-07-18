@@ -14,13 +14,13 @@ struct MarsWeatherHomeView: View {
         ZStack {
             VStack(spacing: 0) {
                 if !vm.reports.isEmpty {
-                    HStack {
+                    HStack(alignment: .firstTextBaseline) {
                         AppTitleView()
                         
                         Spacer()
                         
                         Image(systemName: "info.circle")
-                            .font(.title2)
+                            .font(.title)
                             .foregroundStyle(.secondary)
                             .onTapGesture {
                                 vm.isShowingInfo = true
