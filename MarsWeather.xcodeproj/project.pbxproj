@@ -45,6 +45,7 @@
 		BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */; };
 		BE19E9F92A649F5E0065E5C2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19E9F82A649F5E0065E5C2 /* AboutView.swift */; };
 		BE19EA1F2A66BDD30065E5C2 /* MSL_REMS.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BE19EA1E2A66BDD30065E5C2 /* MSL_REMS.mp4 */; };
+		BE19EA222A6730FB0065E5C2 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA212A6730FB0065E5C2 /* AboutViewModel.swift */; };
 		BE655EDF2A58A76B0066E2B6 /* SunlightChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */; };
 		BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */; };
 		BE655EE42A5A117E0066E2B6 /* ConditionsChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */; };
@@ -94,6 +95,7 @@
 		BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		BE19E9F82A649F5E0065E5C2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		BE19EA1E2A66BDD30065E5C2 /* MSL_REMS.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = MSL_REMS.mp4; sourceTree = "<group>"; };
+		BE19EA212A6730FB0065E5C2 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		BE655EDE2A58A76B0066E2B6 /* SunlightChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightChartViewModel.swift; sourceTree = "<group>"; };
 		BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartView.swift; sourceTree = "<group>"; };
 		BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartViewModel.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				07D8299429FB19EA00587495 /* LatestWeatherView */,
 				07DBE2492A1C0FAB0017BE32 /* WeatherReportView */,
 				07DBE24A2A24D8D20017BE32 /* WeatherDetailsView */,
+				BE19EA202A6730E50065E5C2 /* AboutView */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -276,7 +279,6 @@
 				07F108A029FF4C5700EC2D6A /* Detail Subviews */,
 				07F1089D29FDCA0700EC2D6A /* Titles */,
 				07F1089729FC5C6500EC2D6A /* LoadingView.swift */,
-				BE19E9F82A649F5E0065E5C2 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +331,15 @@
 				BE19EA1E2A66BDD30065E5C2 /* MSL_REMS.mp4 */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		BE19EA202A6730E50065E5C2 /* AboutView */ = {
+			isa = PBXGroup;
+			children = (
+				BE19E9F82A649F5E0065E5C2 /* AboutView.swift */,
+				BE19EA212A6730FB0065E5C2 /* AboutViewModel.swift */,
+			);
+			path = AboutView;
 			sourceTree = "<group>";
 		};
 		BE655EE02A5981160066E2B6 /* ConditionsChartView */ = {
@@ -450,6 +461,7 @@
 				07D829A129FC1E1000587495 /* Report.swift in Sources */,
 				07F108A72A0002FD00EC2D6A /* TemperatureView.swift in Sources */,
 				07D829A329FC1E4200587495 /* Descriptions.swift in Sources */,
+				BE19EA222A6730FB0065E5C2 /* AboutViewModel.swift in Sources */,
 				07F108A529FFF62800EC2D6A /* MarsDateView.swift in Sources */,
 				07F108A92A00416800EC2D6A /* WeatherIconView.swift in Sources */,
 				07ED94EB2A02B6330075B8D4 /* MWError.swift in Sources */,

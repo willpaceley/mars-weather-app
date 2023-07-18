@@ -44,7 +44,7 @@ struct MarsWeatherHomeView: View {
         }
         .alert(isPresented: $vm.isPresentingAlert) { vm.alert }
         .sheet(isPresented: $vm.isShowingInfo) {
-            AboutView(isShowingInfo: $vm.isShowingInfo)
+            AboutView(vm: AboutViewModel(isShowingInfo: $vm.isShowingInfo))
         }
     }
 }
