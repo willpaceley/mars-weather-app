@@ -17,6 +17,10 @@ import SwiftUI
         getTemperatureData(from: reports)
     }
     
+    var averageTemperature: Int {
+        calculateAverageTemperature(from: temperatureData)
+    }
+        
     init(reports: [Report], isShowingAirTemp: Binding<Bool>, isShowingGroundTemp: Binding<Bool>) {
         self.reports = reports
         self.isShowingAirTemp = isShowingAirTemp
@@ -52,6 +56,16 @@ import SwiftUI
         }
         
         return temperatures
+    }
+    
+    private func calculateAverageTemperature(from temps: [MarsTemperature]) -> Int {
+        var totalTemperature = 0
+        
+        for temp in temps {
+            totalTemperature += temp.temperature
+        }
+        
+        return totalTemperature / temps.count
     }
 }
 

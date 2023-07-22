@@ -16,7 +16,7 @@ struct TemperatureChartView: View {
             GroupBox("Average Temperature") {
                 
                 HStack {
-                    Text("-50.5 celcius")
+                    Text("\(vm.averageTemperature) °C")
                         .bold()
                         .foregroundStyle(.primary)
                     
