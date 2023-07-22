@@ -13,14 +13,28 @@ struct TemperatureChartView: View {
     
     var body: some View {
         VStack {
-            Chart(vm.temperatureData) {
-                LineMark(
-                    x: .value("Date", $0.date, unit: .day),
-                    y: .value("Temperature", $0.temperature)
-                )
-                .foregroundStyle(by: .value("Type", $0.type.rawValue))
+            GroupBox("Average Temperature") {
+                
+                HStack {
+                    Text("-50.5 celcius")
+                        .bold()
+                        .foregroundStyle(.primary)
+                    
+                    Spacer()
+                }
+                
+                Chart(vm.temperatureData) {
+                    LineMark(
+                        x: .value("Date", $0.date, unit: .day),
+                        y: .value("Temperature", $0.temperature)
+                    )
+                    .foregroundStyle(by: .value("Type", $0.type.rawValue))
+                }
             }
-            .frame(height: 300)
+            .fontWeight(.regular)
+            .foregroundStyle(.secondary)
+            .frame(height: 350)
+            
             
             Toggle("Air Temperature", isOn: vm.isShowingAirTemp)
                 .foregroundColor(.secondary)
