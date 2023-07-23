@@ -13,13 +13,27 @@ struct SunlightChartView: View {
     
     var body: some View {
         VStack {
-            Chart(vm.sunlightData) {
-                LineMark(x: .value("Date", $0.date, unit: .day),
-                         y: .value("Time", $0.time, unit: .minute))
-                .foregroundStyle(by: .value("Type", $0.type.rawValue))
-                .interpolationMethod(.catmullRom)
+            GroupBox("Average Daylight Duration") {
+                
+                HStack {
+                    Text(vm.averageDaylightLabel)
+                        .bold()
+                        .foregroundStyle(.primary)
+                    
+                    Spacer()
+                }
+                
+                Chart(vm.sunlightData) {
+                    LineMark(x: .value("Date", $0.date, unit: .day),
+                             y: .value("Time", $0.time, unit: .minute))
+                    .foregroundStyle(by: .value("Type", $0.type.rawValue))
+                    .interpolationMethod(.catmullRom)
+                }
+                
             }
-            .frame(height: 300)
+            .fontWeight(.regular)
+            .foregroundStyle(.secondary)
+            .frame(height: 350)
             
             Toggle("Sunrise", isOn: vm.isShowingSunrise)
                 .foregroundColor(.secondary)
