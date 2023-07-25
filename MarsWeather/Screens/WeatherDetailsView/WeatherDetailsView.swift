@@ -13,7 +13,7 @@ struct WeatherDetailsView: View {
     @Binding var isShowingChart: Bool
     
     var body: some View {
-        VStack(spacing: 0) {
+        ScrollView {
             Label(vm.weatherDetail.rawValue.capitalized, systemImage: vm.icon)
                 .bold()
                 .padding()
@@ -52,7 +52,7 @@ struct WeatherDetailsView: View {
 
 struct WeatherDetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherDetailsView(vm: WeatherDetailsViewModel(weatherDetail: .pressure,
+        WeatherDetailsView(vm: WeatherDetailsViewModel(weatherDetail: .temperature,
                                                    reports: MockData.getMockWeatherData()),
                          isShowingChart: .constant(true))
     }

@@ -12,12 +12,25 @@ struct ConditionsChartView: View {
     @ObservedObject var vm: ConditionsChartViewModel
     
     var body: some View {
-        Chart(vm.conditionsData) {
-            BarMark(x: .value("Condition", $0.description),
-                    y: .value("Number of Days", $0.numberOfDays),
-                    width: .fixed(50))
+        GroupBox("Percentage of Sunny Days") {
+            HStack {
+                Text(String(format: "%.1f", vm.sunnyPercentage * 100) + "%")
+                    .bold()
+                    .foregroundStyle(.primary)
+                
+                Spacer()
+            }
+            
+            Chart(vm.conditionsData) {
+                BarMark(x: .value("Condition", $0.description),
+                        y: .value("Number of Days", $0.numberOfDays),
+                        width: .fixed(50))
+                .foregroundStyle(Color.accentColor)
+            }
         }
-        .frame(height: 300)
+        .fontWeight(.regular)
+        .foregroundStyle(.secondary)
+        .frame(height: 350)
     }
 }
 
