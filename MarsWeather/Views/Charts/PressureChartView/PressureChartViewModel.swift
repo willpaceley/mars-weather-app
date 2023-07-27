@@ -22,6 +22,18 @@ import SwiftUI
         return pressureData
     }
     
+    var averagePressure: Double {
+        var totalPressure: Double = 0
+        
+        reports.forEach {
+            if let pressure = Double($0.pressure) {
+                totalPressure += pressure
+            }
+        }
+        
+        return totalPressure / Double(reports.count)
+    }
+    
     init(reports: [Report]) {
         self.reports = reports
     }

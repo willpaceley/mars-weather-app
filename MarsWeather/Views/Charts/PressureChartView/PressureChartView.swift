@@ -12,11 +12,24 @@ struct PressureChartView: View {
     @ObservedObject var vm: PressureChartViewModel
     
     var body: some View {
-        Chart(vm.pressureData) {
-            LineMark(x: .value("Date", $0.date),
-                     y: .value("Pressure (Pa)", $0.pressure))
+        GroupBox("Average Pressure") {
+            HStack {
+                Text(String(format: "%.2f", vm.averagePressure) + " Pa")
+                    .bold()
+                    .foregroundStyle(.primary)
+                
+                Spacer()
+            }
+            
+            Chart(vm.pressureData) {
+                LineMark(x: .value("Date", $0.date),
+                         y: .value("Pressure (Pa)", $0.pressure))
+                .foregroundStyle(Color.accentColor)
+            }
         }
-        .frame(height: 300)
+        .fontWeight(.regular)
+        .foregroundStyle(.secondary)
+        .frame(height: 350)
     }
 }
 
