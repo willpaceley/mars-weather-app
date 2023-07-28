@@ -12,11 +12,24 @@ struct IrradianceChartView: View {
     @ObservedObject var vm: IrradianceChartViewModel
     
     var body: some View {
-        Chart(vm.irradianceData) {
-            PointMark(x: .value("Date", $0.date),
-                      y: .value("Irradiance", $0.irradiance))
+        GroupBox("Most Frequent UV Index") {
+            HStack {
+                Text(vm.mostFrequentUVIndex)
+                    .bold()
+                    .foregroundStyle(.primary)
+                
+                Spacer()
+            }
+            
+            Chart(vm.irradianceData) {
+                PointMark(x: .value("Date", $0.date),
+                          y: .value("Irradiance", $0.irradiance))
+                .foregroundStyle(Color.accentColor)
+            }
         }
-        .frame(height: 300)
+        .fontWeight(.regular)
+        .foregroundStyle(.secondary)
+        .frame(height: 350)
     }
 }
 
