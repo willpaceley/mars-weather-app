@@ -14,32 +14,28 @@ struct WeatherDetailsView: View {
     
     var body: some View {
         ScrollView {
-            Label(vm.weatherDetail.rawValue.capitalized, systemImage: vm.icon)
-                .bold()
-                .padding()
-            
-            Picker("Time Range", selection: $vm.selectedTimeRange) {
-                Text("3 Month").tag(TimeRange.threeMonth)
-                Text("6 Month").tag(TimeRange.sixMonth)
-                Text("Year").tag(TimeRange.year)
-                Text("2 Year").tag(TimeRange.twoYear)
-                Text("ALL").tag(TimeRange.all)
-            }
-            .pickerStyle(.segmented)
-            .padding()
-            
-            DetailsChartView(vm: vm)
-                .padding()
-            
-            ScrollView {
+            VStack(spacing: 20) {
+                Label(vm.weatherDetail.rawValue.capitalized, systemImage: vm.icon)
+                    .bold()
+                
+                Picker("Time Range", selection: $vm.selectedTimeRange) {
+                    Text("3 Month").tag(TimeRange.threeMonth)
+                    Text("6 Month").tag(TimeRange.sixMonth)
+                    Text("Year").tag(TimeRange.year)
+                    Text("2 Year").tag(TimeRange.twoYear)
+                    Text("ALL").tag(TimeRange.all)
+                }
+                .pickerStyle(.segmented)
+                
+                DetailsChartView(vm: vm)
+                
                 Text(vm.description)
                     .padding()
                     .background(Color.gray.opacity(0.25))
                     .cornerRadius(10)
-                    .padding()
             }
         }
-        .frame(maxWidth: .infinity)
+        .padding()
         .overlay(alignment: .topTrailing) {
             Button {
                 isShowingChart = false

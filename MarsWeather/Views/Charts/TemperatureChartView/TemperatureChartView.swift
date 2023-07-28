@@ -30,19 +30,21 @@ struct TemperatureChartView: View {
                     )
                     .foregroundStyle(by: .value("Type", $0.type.rawValue))
                 }
+                .frame(height: 275)
+                
+                Toggle("Air Temperature", isOn: vm.isShowingAirTemp)
+                    .foregroundColor(.secondary)
+                    .disabled(!vm.isShowingGroundTemp.wrappedValue)
+                
+                Toggle("Ground Temperature", isOn: vm.isShowingGroundTemp)
+                    .foregroundColor(.secondary)
+                    .disabled(!vm.isShowingAirTemp.wrappedValue)
             }
             .fontWeight(.regular)
             .foregroundStyle(.secondary)
-            .frame(height: 350)
             
             
-            Toggle("Air Temperature", isOn: vm.isShowingAirTemp)
-                .foregroundColor(.secondary)
-                .disabled(!vm.isShowingGroundTemp.wrappedValue)
             
-            Toggle("Ground Temperature", isOn: vm.isShowingGroundTemp)
-                .foregroundColor(.secondary)
-                .disabled(!vm.isShowingAirTemp.wrappedValue)
         }
     }
 }
