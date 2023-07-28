@@ -15,7 +15,7 @@ struct WeatherDetailsView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                Label(vm.weatherDetail.rawValue.capitalized, systemImage: vm.icon)
+                Label(vm.chartType.rawValue.capitalized, systemImage: vm.icon)
                     .bold()
                 
                 Picker("Time Range", selection: $vm.selectedTimeRange) {

@@ -16,7 +16,7 @@ import SwiftUI
     @Published var isShowingSunrise = true
     @Published var isShowingSunset = false
     
-    let weatherDetail: WeatherDetail
+    let chartType: WeatherDetail
     let reports: [Report]
     
     var selectedReports: [Report] {
@@ -24,15 +24,19 @@ import SwiftUI
     }
     
     var icon: String {
-        getIcon(for: self.weatherDetail)
+        getIcon(for: self.chartType)
     }
     
     var description: String {
-        getDescription(for: self.weatherDetail)
+        getDescription(for: self.chartType)
+    }
+    
+    var chartSummaryTitle: String {
+        getSummaryTitle(for: chartType)
     }
     
     init(weatherDetail: WeatherDetail, reports: [Report]) {
-        self.weatherDetail = weatherDetail
+        self.chartType = weatherDetail
         self.reports = reports
     }
     
@@ -42,6 +46,7 @@ import SwiftUI
         return monthNumber
     }
     
+    // MARK: - Private Methods
     private func getReportSelection(for timeRange: TimeRange) -> [Report] {
         switch timeRange {
         case .threeMonth:
@@ -69,6 +74,22 @@ import SwiftUI
             return "gauge.medium"
         case .irradiance:
             return "sun.max.fill"
+        }
+    }
+    
+    // MARK: - Summaries
+    private func getSummaryTitle(for chartType: WeatherDetail) -> String {
+        switch chartType {
+        case .temperature:
+            return "Average Temperature"
+        case .daylight:
+            return "Average Daylight Duration"
+        case .conditions:
+            return "Percentage of Sunny Days"
+        case .pressure:
+            return "Average Pressure"
+        case .irradiance:
+            return "Most Frequent UV Index"
         }
     }
     
