@@ -19,7 +19,7 @@ struct WeatherDetailsView: View {
                 .padding()
             
             Picker("Time Range", selection: $vm.selectedTimeRange) {
-                Text("Month").tag(TimeRange.month)
+                Text("3 Month").tag(TimeRange.threeMonth)
                 Text("6 Month").tag(TimeRange.sixMonth)
                 Text("Year").tag(TimeRange.year)
                 Text("2 Year").tag(TimeRange.twoYear)

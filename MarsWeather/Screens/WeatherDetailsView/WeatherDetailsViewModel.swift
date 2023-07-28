@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor final class WeatherDetailsViewModel: ObservableObject {
-    @Published var selectedTimeRange: TimeRange = .month
+    @Published var selectedTimeRange: TimeRange = .threeMonth
     // TemperatureChartView Toggle bindings
     @Published var isShowingAirTemp = true
     @Published var isShowingGroundTemp = false
@@ -44,8 +44,8 @@ import SwiftUI
     
     private func getReportSelection(for timeRange: TimeRange) -> [Report] {
         switch timeRange {
-        case .month:
-            return Array(reports[0..<31])
+        case .threeMonth:
+            return Array(reports[0..<90])
         case .sixMonth:
             return Array(reports[0..<180])
         case .year:
@@ -119,7 +119,7 @@ import SwiftUI
 }
 
 enum TimeRange {
-    case month
+    case threeMonth
     case sixMonth
     case year
     case twoYear
