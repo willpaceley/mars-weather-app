@@ -51,10 +51,6 @@ import SwiftUI
     }
     
     func getMockWeatherData() {
-        do {
-            reports = try JSONDecoder().decode([Report].self, from: MockData.reportsJSON)
-        } catch {
-            print("An error occurred decoding the mock weather data JSON.")
-        }
+        reports = MockData.getMockWeatherData()
     }
 }

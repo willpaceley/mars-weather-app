@@ -39,8 +39,8 @@ struct MarsWeatherHomeView: View {
         }
         .preferredColorScheme(.dark)
         .task {
-//            vm.getMockWeatherData()
-            vm.getWeatherData()
+            vm.getMockWeatherData()
+//            vm.getWeatherData()
         }
         .alert(isPresented: $vm.isPresentingAlert) { vm.alert }
         .sheet(isPresented: $vm.isShowingInfo) {
