@@ -6,19 +6,30 @@
 //
 
 import SwiftUI
+import Charts
 
 @MainActor final class WeatherDetailsViewModel: ObservableObject {
     @Published var selectedTimeRange: TimeRange = .threeMonth
-    // TemperatureChartView Toggle bindings
     @Published var isShowingAirTemp = true
     @Published var isShowingGroundTemp = false
-    // SunlightChartView Toggle bindings
     @Published var isShowingSunrise = true
     @Published var isShowingSunset = false
     
     let chartType: WeatherDetail
     let reports: [Report]
     
+    var chartData: [ChartData] {
+        switch chartType {
+        default:
+            WeatherDetailsViewModel.getTemperatureData(
+                from: selectedReports,
+                isShowingAirTemp: isShowingAirTemp,
+                isShowingGroundTemp: isShowingGroundTemp
+            )
+        }
+    }
+    
+    // TODO: Shouldn't need this after the end of the refactor?
     var selectedReports: [Report] {
         getReportSelection(for: selectedTimeRange)
     }
@@ -44,6 +55,27 @@ import SwiftUI
         let numberString = String(month.rawValue.split(separator: " ")[1])
         let monthNumber = Int(numberString)!
         return monthNumber
+    }
+    
+    func getSummary(for chartType: WeatherDetail, from reports: [Report]) -> String {
+        switch chartType {
+        case .temperature:
+            let temperatureData = WeatherDetailsViewModel.getTemperatureData(
+                from: selectedReports,
+                isShowingAirTemp: isShowingAirTemp,
+                isShowingGroundTemp: isShowingGroundTemp
+            )
+            let averageTemperature = calculateAverageTemperature(from: temperatureData)
+            return String(format: "%.1f", averageTemperature) + " °C"
+        case .daylight:
+            return "Daylight Summary"
+        case .conditions:
+            return "Conditions Summary"
+        case .pressure:
+            return "Pressure Summary"
+        case .irradiance:
+            return "Irradiance Summary"
+        }
     }
     
     // MARK: - Private Methods
@@ -77,7 +109,6 @@ import SwiftUI
         }
     }
     
-    // MARK: - Summaries
     private func getSummaryTitle(for chartType: WeatherDetail) -> String {
         switch chartType {
         case .temperature:
@@ -137,6 +168,48 @@ import SwiftUI
             """
         }
     }
+    
+    // MARK: - Chart Data Methods
+    // Chart methods must be static in order to call from Previews
+    static func getTemperatureData(from reports: [Report], isShowingAirTemp: Bool, isShowingGroundTemp: Bool) -> [ChartData] {
+        var chartData = [ChartData]()
+        
+        reports.forEach {
+            let date = $0.terrestrialDate.toDate()!
+            
+            if isShowingAirTemp {
+                if let maxTempValue = Int($0.maxTemp), let minTempValue = Int($0.minTemp)
+                {
+                    let maxAirTemp = ChartData(xAxis: date, yAxis: maxTempValue, type: .maxAirTemp)
+                    let minAirTemp = ChartData(xAxis: date, yAxis: minTempValue, type: .minAirTemp)
+                    
+                    chartData.append(maxAirTemp)
+                    chartData.append(minAirTemp)
+                }
+            }
+            
+            if isShowingGroundTemp {
+                if let maxGtsValue = Int($0.maxGtsTemp), let minGtsValue = Int($0.minGtsTemp) {
+                    let maxGtsTemp = ChartData(xAxis: date, yAxis: maxGtsValue, type: .maxGroundTemp)
+                    let minGtsTemp = ChartData(xAxis: date, yAxis: minGtsValue, type: .minGroundTemp)
+                    
+                    chartData.append(maxGtsTemp)
+                    chartData.append(minGtsTemp)
+                }
+            }
+        }
+        return chartData
+    }
+    
+    private func calculateAverageTemperature(from temperatureData: [ChartData]) -> Double {
+        var totalTemperature = 0
+        
+        for temp in temperatureData {
+            totalTemperature += temp.yAxis as! Int
+        }
+        
+        return Double(totalTemperature) / Double(temperatureData.count)
+    }
 }
 
 enum TimeRange {
@@ -145,4 +218,18 @@ enum TimeRange {
     case year
     case twoYear
     case all
+}
+
+struct ChartData: Identifiable {
+    let id = UUID()
+    let xAxis: any Plottable
+    let yAxis: any Plottable
+    var type: ChartDataType? = nil
+}
+
+enum ChartDataType: String {
+    case maxAirTemp = "Max Air"
+    case minAirTemp = "Min Air"
+    case maxGroundTemp = "Max Ground"
+    case minGroundTemp = "Min Ground"
 }

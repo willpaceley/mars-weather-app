@@ -14,7 +14,7 @@ struct DetailsChartView: View {
         VStack {
             GroupBox(vm.chartSummaryTitle) {
                 HStack {
-                    Text("Summary")
+                    Text(vm.getSummary(for: vm.chartType, from: vm.selectedReports))
                         .bold()
                         .foregroundStyle(.primary)
                     
@@ -23,13 +23,7 @@ struct DetailsChartView: View {
                 
                 switch vm.chartType {
                 case .temperature:
-                    TemperatureChartView(
-                        vm: TemperatureChartViewModel(
-                            reports: vm.selectedReports,
-                            isShowingAirTemp: $vm.isShowingAirTemp,
-                            isShowingGroundTemp: $vm.isShowingGroundTemp
-                        )
-                    )
+                    TemperatureChartView(temperatureData: vm.chartData)
                 case .daylight:
                     SunlightChartView(vm: SunlightChartViewModel(reports: vm.selectedReports,
                                                                  isShowingSunrise: $vm.isShowingSunrise,
