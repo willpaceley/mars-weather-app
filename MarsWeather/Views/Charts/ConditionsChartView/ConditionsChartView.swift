@@ -9,34 +9,44 @@ import SwiftUI
 import Charts
 
 struct ConditionsChartView: View {
-    @ObservedObject var vm: ConditionsChartViewModel
+    let reports: [Report]
     
     var body: some View {
-        GroupBox("Percentage of Sunny Days") {
-            HStack {
-                Text(String(format: "%.1f", vm.sunnyPercentage * 100) + "%")
-                    .bold()
-                    .foregroundStyle(.primary)
-                
-                Spacer()
-            }
-            
-            Chart(vm.conditionsData) {
+            Chart(getChartData(from: reports)) {
                 BarMark(x: .value("Condition", $0.description),
                         y: .value("Number of Days", $0.numberOfDays),
                         width: .fixed(50))
                 .foregroundStyle(Color.accentColor)
             }
-        }
-        .fontWeight(.regular)
-        .foregroundStyle(.secondary)
-        .frame(height: 350)
+            .frame(height: 275)
     }
 }
 
 struct ConditionsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ConditionsChartView(vm: ConditionsChartViewModel(
-            reports: Array(MockData.getMockWeatherData()[0..<31])))
+        ConditionsChartView(reports: Array(MockData.getMockWeatherData()[0..<31]))
+    }
+}
+
+extension ConditionsChartView {
+    private func getChartData(from reports: [Report]) -> [Condition] {
+        var conditionsData = [Condition]()
+        reports.forEach { report in
+            var description = report.atmoOpacity
+            // Display empty data as No Data to user
+            if description == "--" {
+                description = "No Data"
+            }
+            // If condition already exists in array
+            if let index = conditionsData.firstIndex(where: {$0.description == description}) {
+                // Add one to the count
+                conditionsData[index].numberOfDays += 1
+            } else {
+                // Else create new condition and add to array
+                let condition = Condition(description: description)
+                conditionsData.append(condition)
+            }
+        }
+        return conditionsData
     }
 }

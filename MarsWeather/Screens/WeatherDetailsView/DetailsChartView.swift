@@ -23,18 +23,25 @@ struct DetailsChartView: View {
                 
                 switch vm.chartType {
                 case .temperature:
-                    TemperatureChartView(temperatureData: vm.chartData)
+                    TemperatureChartView(
+                        reports: vm.selectedReports,
+                        isShowingAirTemp: vm.isShowingAirTemp,
+                        isShowingGroundTemp: vm.isShowingGroundTemp
+                    )
                 case .daylight:
-                    SunlightChartView(daylightData: vm.chartData)
+                    SunlightChartView(
+                        reports: vm.selectedReports,
+                        isShowingSunrise: vm.isShowingSunrise,
+                        isShowingSunset: vm.isShowingSunset
+                    )
                 case .conditions:
-                    ConditionsChartView(vm: ConditionsChartViewModel(reports: vm.selectedReports))
+                    ConditionsChartView(reports: vm.selectedReports)
                 case .pressure:
                     PressureChartView(vm: PressureChartViewModel(reports: vm.selectedReports))
                 case .irradiance:
                     IrradianceChartView(vm: IrradianceChartViewModel(reports: vm.selectedReports))
                 }
                 
-                // TODO: Refactor Toggles into separate view for readability
                 if vm.chartType == .temperature {
                     TemperatureChartToggles(
                         isShowingAirTemp: $vm.isShowingAirTemp,

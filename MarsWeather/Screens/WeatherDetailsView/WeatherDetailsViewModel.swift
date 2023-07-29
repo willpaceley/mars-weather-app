@@ -18,10 +18,6 @@ import Charts
     let chartType: WeatherDetail
     let reports: [Report]
     
-    var chartData: [ChartData] {
-        getChartData(for: chartType)
-    }
-    
     var selectedReports: [Report] {
         getReportSelection(for: selectedTimeRange)
     }
@@ -47,13 +43,7 @@ import Charts
     func getSummary(for chartType: WeatherDetail, from reports: [Report]) -> String {
         switch chartType {
         case .temperature:
-            let temperatureData = WeatherDetailsViewModel.getTemperatureData(
-                from: selectedReports,
-                isShowingAirTemp: isShowingAirTemp,
-                isShowingGroundTemp: isShowingGroundTemp
-            )
-            let averageTemperature = calculateAverageTemperature(from: temperatureData)
-            return String(format: "%.1f", averageTemperature) + " °C"
+            return String(format: "%.1f", calculateAverageTemperature(from: reports)) + " °C"
             
         case .daylight:
             return getAverageDaylightLabel(from: selectedReports)
@@ -113,29 +103,6 @@ import Charts
         }
     }
     
-    private func getChartData(for chartType: WeatherDetail) -> [ChartData] {
-        switch chartType {
-        case .temperature:
-            WeatherDetailsViewModel.getTemperatureData(
-                from: selectedReports,
-                isShowingAirTemp: isShowingAirTemp,
-                isShowingGroundTemp: isShowingGroundTemp
-            )
-        case .daylight:
-            WeatherDetailsViewModel.getDaylightData(
-                from: selectedReports,
-                isShowingSunset: isShowingSunset,
-                isShowingSunrise: isShowingSunrise
-            )
-        default:
-            WeatherDetailsViewModel.getTemperatureData(
-                from: selectedReports,
-                isShowingAirTemp: isShowingAirTemp,
-                isShowingGroundTemp: isShowingGroundTemp
-            )
-        }
-    }
-    
     private func getDescription(for weatherDetail: WeatherDetail) -> String {
         switch weatherDetail {
         case .temperature:
@@ -181,69 +148,29 @@ import Charts
         }
     }
     
-    // MARK: - Temperature Chart Methods
-    // Chart methods must be static in order to call from Previews
-    static func getTemperatureData(from reports: [Report], isShowingAirTemp: Bool, isShowingGroundTemp: Bool) -> [ChartData] {
-        var chartData = [ChartData]()
+    // MARK: - Summary Methods
+    private func calculateAverageTemperature(from reports: [Report]) -> Double {
+        var sumTemperature = 0
         
-        reports.forEach {
-            let date = $0.terrestrialDate.toDate()!
-            
+        for report in reports {
             if isShowingAirTemp {
-                if let maxTempValue = Int($0.maxTemp), let minTempValue = Int($0.minTemp)
-                {
-                    let maxAirTemp = ChartData(xAxis: date, yAxis: maxTempValue, type: .maxAirTemp)
-                    let minAirTemp = ChartData(xAxis: date, yAxis: minTempValue, type: .minAirTemp)
-                    
-                    chartData.append(maxAirTemp)
-                    chartData.append(minAirTemp)
+                if let minTemp = Int(report.minTemp), let maxTemp = Int(report.maxTemp) {
+                    sumTemperature += (minTemp + maxTemp)
                 }
             }
-            
             if isShowingGroundTemp {
-                if let maxGtsValue = Int($0.maxGtsTemp), let minGtsValue = Int($0.minGtsTemp) {
-                    let maxGtsTemp = ChartData(xAxis: date, yAxis: maxGtsValue, type: .maxGroundTemp)
-                    let minGtsTemp = ChartData(xAxis: date, yAxis: minGtsValue, type: .minGroundTemp)
-                    
-                    chartData.append(maxGtsTemp)
-                    chartData.append(minGtsTemp)
+                if let minTemp = Int(report.minGtsTemp), let maxTemp = Int(report.maxGtsTemp) {
+                    sumTemperature += (minTemp + maxTemp)
                 }
             }
         }
-        return chartData
-    }
-    
-    private func calculateAverageTemperature(from temperatureData: [ChartData]) -> Double {
-        var totalTemperature = 0
         
-        for temp in temperatureData {
-            totalTemperature += temp.yAxis as! Int
-        }
+        // Determine count of items in temperature sum
+        var temperatureCount = reports.count
+        if isShowingAirTemp { temperatureCount *= 2 }
+        if isShowingGroundTemp { temperatureCount *= 2 }
         
-        return Double(totalTemperature) / Double(temperatureData.count)
-    }
-    
-    // MARK: - Daylight Chart Methods
-    static func getDaylightData(from reports: [Report], isShowingSunset: Bool, isShowingSunrise: Bool) -> [ChartData] {
-        var daylightData = [ChartData]()
-
-        reports.forEach {
-            let date = $0.terrestrialDate.toDate()!
-
-            if isShowingSunrise {
-                let sunriseTime = $0.sunrise.getDaylightTime()!
-                let sunrise = ChartData(xAxis: date, yAxis: sunriseTime, type: .sunrise)
-                daylightData.append(sunrise)
-            }
-            
-            if isShowingSunset {
-                let sunsetTime = $0.sunset.getDaylightTime()!
-                let sunset = ChartData(xAxis: date, yAxis: sunsetTime, type: .sunset)
-                daylightData.append(sunset)
-            }
-        }
-        
-        return daylightData
+        return Double(sumTemperature) / Double(temperatureCount)
     }
     
     private func getAverageDaylightLabel(from reports: [Report]) -> String {

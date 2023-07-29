@@ -50,8 +50,4 @@ import SwiftUI
     }
 }
 
-struct Condition: Identifiable {
-    let id = UUID()
-    let description: String
-    var numberOfDays: Int = 0
-}
+

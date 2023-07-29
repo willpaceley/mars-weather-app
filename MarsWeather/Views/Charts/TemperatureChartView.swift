@@ -9,15 +9,17 @@ import SwiftUI
 import Charts
 
 struct TemperatureChartView: View {
-    let temperatureData: [ChartData]
+    let reports: [Report]
+    let isShowingAirTemp: Bool
+    let isShowingGroundTemp: Bool
     
     var body: some View {
-        Chart(temperatureData) {
+        Chart(getChartData(from: reports)) {
             LineMark(
-                x: .value("Date", $0.xAxis as! Date, unit: .day),
-                y: .value("Temperature", $0.yAxis as! Int)
+                x: .value("Date", $0.date, unit: .day),
+                y: .value("Temperature", $0.temperature)
             )
-            .foregroundStyle(by: .value("Type", $0.type!.rawValue))
+            .foregroundStyle(by: .value("Type", $0.type.rawValue))
         }
         .frame(height: 275)
     }
@@ -26,11 +28,58 @@ struct TemperatureChartView: View {
 struct TemperatureChartView_Previews: PreviewProvider {
     static var previews: some View {
         TemperatureChartView(
-            temperatureData: WeatherDetailsViewModel.getTemperatureData(
-                from: Array(MockData.getMockWeatherData()[0..<90]),
-                isShowingAirTemp: true,
-                isShowingGroundTemp: false
-            )
+            reports: MockData.getMockWeatherData(),
+            isShowingAirTemp: true,
+            isShowingGroundTemp: false
         )
     }
+}
+
+extension TemperatureChartView {
+    private func getChartData(from reports: [Report]) -> [MarsTemperature] {
+            var temperatures = [MarsTemperature]()
+            
+            reports.forEach {
+                let date = $0.terrestrialDate.toDate()!
+                
+                if isShowingAirTemp {
+                    if let maxTempValue = Int($0.maxTemp), let minTempValue = Int($0.minTemp)
+                    {
+                        let maxAirTemp = MarsTemperature(
+                            type: .maxAirTemp,
+                            temperature: maxTempValue,
+                            date: date
+                        )
+                        let minAirTemp = MarsTemperature(
+                            type: .minAirTemp,
+                            temperature: minTempValue,
+                            date: date
+                        )
+                        
+                        temperatures.append(maxAirTemp)
+                        temperatures.append(minAirTemp)
+                    }
+                }
+                
+                if isShowingGroundTemp {
+                    if let maxGtsValue = Int($0.maxGtsTemp), let minGtsValue = Int($0.minGtsTemp) {
+                        let maxGtsTemp = MarsTemperature(
+                            type: .maxGroundTemp,
+                            temperature: maxGtsValue,
+                            date: date
+                        )
+                        let minGtsTemp = MarsTemperature(
+                            type: .minGroundTemp,
+                            temperature: minGtsValue,
+                            date: date
+                        )
+                        
+                        temperatures.append(maxGtsTemp)
+                        temperatures.append(minGtsTemp)
+                    }
+                }
+            }
+            
+            return temperatures
+        }
 }
