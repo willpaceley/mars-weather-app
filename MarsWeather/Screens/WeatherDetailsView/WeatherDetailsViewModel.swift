@@ -18,8 +18,21 @@ import Charts
     let chartType: WeatherDetail
     let reports: [Report]
     
+    // TODO: Refactor logic into private function for readability
     var chartData: [ChartData] {
         switch chartType {
+        case .temperature:
+            WeatherDetailsViewModel.getTemperatureData(
+                from: selectedReports,
+                isShowingAirTemp: isShowingAirTemp,
+                isShowingGroundTemp: isShowingGroundTemp
+            )
+        case .daylight:
+            WeatherDetailsViewModel.getDaylightData(
+                from: selectedReports,
+                isShowingSunset: isShowingSunset,
+                isShowingSunrise: isShowingSunrise
+            )
         default:
             WeatherDetailsViewModel.getTemperatureData(
                 from: selectedReports,
@@ -29,17 +42,16 @@ import Charts
         }
     }
     
-    // TODO: Shouldn't need this after the end of the refactor?
     var selectedReports: [Report] {
         getReportSelection(for: selectedTimeRange)
     }
     
     var icon: String {
-        getIcon(for: self.chartType)
+        getIcon(for: chartType)
     }
     
     var description: String {
-        getDescription(for: self.chartType)
+        getDescription(for: chartType)
     }
     
     var chartSummaryTitle: String {
@@ -67,8 +79,10 @@ import Charts
             )
             let averageTemperature = calculateAverageTemperature(from: temperatureData)
             return String(format: "%.1f", averageTemperature) + " °C"
+            
         case .daylight:
-            return "Daylight Summary"
+            return getAverageDaylightLabel(from: selectedReports)
+            
         case .conditions:
             return "Conditions Summary"
         case .pressure:
@@ -169,7 +183,7 @@ import Charts
         }
     }
     
-    // MARK: - Chart Data Methods
+    // MARK: - Temperature Chart Methods
     // Chart methods must be static in order to call from Previews
     static func getTemperatureData(from reports: [Report], isShowingAirTemp: Bool, isShowingGroundTemp: Bool) -> [ChartData] {
         var chartData = [ChartData]()
@@ -210,6 +224,71 @@ import Charts
         
         return Double(totalTemperature) / Double(temperatureData.count)
     }
+    
+    // MARK: - Daylight Chart Methods
+    static func getDaylightData(from reports: [Report], isShowingSunset: Bool, isShowingSunrise: Bool) -> [ChartData] {
+        var daylightData = [ChartData]()
+
+        reports.forEach {
+            let date = $0.terrestrialDate.toDate()!
+
+            if isShowingSunrise {
+                let sunriseTime = $0.sunrise.getDaylightTime()!
+                let sunrise = ChartData(xAxis: date, yAxis: sunriseTime, type: .sunrise)
+                daylightData.append(sunrise)
+            }
+            
+            if isShowingSunset {
+                let sunsetTime = $0.sunset.getDaylightTime()!
+                let sunset = ChartData(xAxis: date, yAxis: sunsetTime, type: .sunset)
+                daylightData.append(sunset)
+            }
+        }
+        
+        return daylightData
+    }
+    
+    private func getAverageDaylightLabel(from reports: [Report]) -> String {
+        var totalMinutesOfSunlight = 0
+        
+        reports.forEach {
+            let sunriseTime = $0.sunrise.getDaylightTime()!
+            let sunsetTime = $0.sunset.getDaylightTime()!
+            
+            if let minutesOfSunlight = getMinutesOfSunlight(from: sunriseTime, to: sunsetTime) {
+                totalMinutesOfSunlight += minutesOfSunlight
+            }
+        }
+        
+        return getAverageSunlight(minutes: totalMinutesOfSunlight, reports: reports)
+    }
+    
+    private func getMinutesOfSunlight(from sunrise: Date, to sunset: Date) -> Int? {
+        let calendar = Calendar.current
+        let sunlightMinutes = calendar.dateComponents([.minute], from: sunrise, to: sunset).minute
+        return sunlightMinutes
+    }
+    
+    private func getAverageSunlight(minutes: Int, reports: [Report]) -> String {
+        // Calculate average sunlight minutes in each day
+        let numberOfDays = reports.count
+        let averageMinutes = minutes / numberOfDays
+        // Convert minutes into a string representing the hours and minutes
+        return formatMinutesToString(averageMinutes)
+    }
+    
+    private func formatMinutesToString(_ minutes: Int) -> String {
+        let hours = minutes / 60
+        let minutes = minutes % 60
+        
+        if hours < 1 {
+            return "\(minutes) Minutes"
+        } else if minutes == 0 {
+            return "\(hours) Hours"
+        }
+        
+        return "\(hours) Hours \(minutes) Minutes"
+    }
 }
 
 enum TimeRange {
@@ -232,4 +311,6 @@ enum ChartDataType: String {
     case minAirTemp = "Min Air"
     case maxGroundTemp = "Max Ground"
     case minGroundTemp = "Min Ground"
+    case sunrise = "Sunrise"
+    case sunset = "Sunset"
 }

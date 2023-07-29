@@ -32,6 +32,18 @@ extension String {
             return nil
         }
     }
+    
+    func getDaylightTime() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            print("Date from time conversion failed in getDaylightTime function.")
+            return nil
+        }
+    }
 }
 
 enum DateFormat: String {

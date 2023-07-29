@@ -25,9 +25,7 @@ struct DetailsChartView: View {
                 case .temperature:
                     TemperatureChartView(temperatureData: vm.chartData)
                 case .daylight:
-                    SunlightChartView(vm: SunlightChartViewModel(reports: vm.selectedReports,
-                                                                 isShowingSunrise: $vm.isShowingSunrise,
-                                                                 isShowingSunset: $vm.isShowingSunset))
+                    SunlightChartView(daylightData: vm.chartData)
                 case .conditions:
                     ConditionsChartView(vm: ConditionsChartViewModel(reports: vm.selectedReports))
                 case .pressure:
@@ -36,6 +34,7 @@ struct DetailsChartView: View {
                     IrradianceChartView(vm: IrradianceChartViewModel(reports: vm.selectedReports))
                 }
                 
+                // TODO: Refactor Toggles into separate view for readability
                 if vm.chartType == .temperature {
                     Toggle("Air Temperature", isOn: $vm.isShowingAirTemp)
                         .foregroundColor(.secondary)
@@ -44,6 +43,14 @@ struct DetailsChartView: View {
                     Toggle("Ground Temperature", isOn: $vm.isShowingGroundTemp)
                         .foregroundColor(.secondary)
                         .disabled(!vm.isShowingAirTemp)
+                } else if vm.chartType == .daylight {
+                    Toggle("Sunrise", isOn: $vm.isShowingSunrise)
+                        .foregroundColor(.secondary)
+                        .disabled(!vm.isShowingSunset)
+                    
+                    Toggle("Sunset", isOn: $vm.isShowingSunset)
+                        .foregroundColor(.secondary)
+                        .disabled(!vm.isShowingSunrise)
                 }
             }
             .fontWeight(.regular)
@@ -54,7 +61,7 @@ struct DetailsChartView: View {
 
 struct DetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsChartView(vm: WeatherDetailsViewModel(weatherDetail: .temperature,
+        DetailsChartView(vm: WeatherDetailsViewModel(weatherDetail: .daylight,
                                                      reports: Array(MockData.getMockWeatherData())))
     }
 }
