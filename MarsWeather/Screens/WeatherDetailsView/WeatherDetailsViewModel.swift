@@ -38,15 +38,10 @@ import Charts
         getSummaryTitle(for: chartType)
     }
     
+    // MARK: Initializer
     init(weatherDetail: WeatherDetail, reports: [Report]) {
         self.chartType = weatherDetail
         self.reports = reports
-    }
-    
-    func getMonthNumber(of month: MarsMonth) -> Int {
-        let numberString = String(month.rawValue.split(separator: " ")[1])
-        let monthNumber = Int(numberString)!
-        return monthNumber
     }
     
     func getSummary(for chartType: WeatherDetail, from reports: [Report]) -> String {
@@ -300,20 +295,4 @@ enum TimeRange {
     case year
     case twoYear
     case all
-}
-
-struct ChartData: Identifiable {
-    let id = UUID()
-    let xAxis: any Plottable
-    let yAxis: any Plottable
-    var type: ChartDataType? = nil
-}
-
-enum ChartDataType: String {
-    case maxAirTemp = "Max Air"
-    case minAirTemp = "Min Air"
-    case maxGroundTemp = "Max Ground"
-    case minGroundTemp = "Min Ground"
-    case sunrise = "Sunrise"
-    case sunset = "Sunset"
 }

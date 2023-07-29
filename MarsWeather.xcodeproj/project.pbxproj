@@ -47,6 +47,8 @@
 		BE19EA222A6730FB0065E5C2 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA212A6730FB0065E5C2 /* AboutViewModel.swift */; };
 		BE19EA4A2A7350500065E5C2 /* MarsWeatherAPIData.json in Resources */ = {isa = PBXBuildFile; fileRef = BE19EA492A7350500065E5C2 /* MarsWeatherAPIData.json */; };
 		BE19EA4C2A7350A60065E5C2 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA4B2A7350A60065E5C2 /* Bundle+Ext.swift */; };
+		BE19EA502A75B5050065E5C2 /* DismissButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA4F2A75B5050065E5C2 /* DismissButtonView.swift */; };
+		BE19EA522A75B5910065E5C2 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA512A75B5910065E5C2 /* ChartData.swift */; };
 		BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */; };
 		BE655EE42A5A117E0066E2B6 /* ConditionsChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */; };
 		BE655EE72A5A17F00066E2B6 /* PressureChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */; };
@@ -97,6 +99,8 @@
 		BE19EA212A6730FB0065E5C2 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		BE19EA492A7350500065E5C2 /* MarsWeatherAPIData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MarsWeatherAPIData.json; sourceTree = "<group>"; };
 		BE19EA4B2A7350A60065E5C2 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
+		BE19EA4F2A75B5050065E5C2 /* DismissButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButtonView.swift; sourceTree = "<group>"; };
+		BE19EA512A75B5910065E5C2 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartView.swift; sourceTree = "<group>"; };
 		BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartViewModel.swift; sourceTree = "<group>"; };
 		BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureChartView.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				07D8299E29FC1CD200587495 /* MarsWeatherData.swift */,
 				07D829A229FC1E4200587495 /* Descriptions.swift */,
 				07D829A029FC1E1000587495 /* Report.swift */,
+				BE19EA512A75B5910065E5C2 /* ChartData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				07F108A029FF4C5700EC2D6A /* Detail Subviews */,
 				07F1089D29FDCA0700EC2D6A /* Titles */,
 				07F1089729FC5C6500EC2D6A /* LoadingView.swift */,
+				BE19EA4F2A75B5050065E5C2 /* DismissButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -439,6 +445,7 @@
 				07DBE2482A1C0D7A0017BE32 /* WeatherReportViewModel.swift in Sources */,
 				07D8298829FB141100587495 /* LatestWeatherView.swift in Sources */,
 				07D982012A097E0400DBB317 /* PressureView.swift in Sources */,
+				BE19EA502A75B5050065E5C2 /* DismissButtonView.swift in Sources */,
 				BE655EE92A5A1C6D0066E2B6 /* PressureChartViewModel.swift in Sources */,
 				07F108AB2A004B8300EC2D6A /* ConditionsView.swift in Sources */,
 				07D829A129FC1E1000587495 /* Report.swift in Sources */,
@@ -466,6 +473,7 @@
 				07ED94F22A053BA50075B8D4 /* UVIrradianceView.swift in Sources */,
 				BE655EE72A5A17F00066E2B6 /* PressureChartView.swift in Sources */,
 				07EF559E2A0EBF6D0050BBA8 /* SubHeaderView.swift in Sources */,
+				BE19EA522A75B5910065E5C2 /* ChartData.swift in Sources */,
 				07DBE2452A1BF8740017BE32 /* WeatherDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

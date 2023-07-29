@@ -40,7 +40,7 @@ struct WeatherDetailsView: View {
             Button {
                 isShowingChart = false
             } label: {
-                DismissButton()
+                DismissButtonView()
             }
         }
     }
@@ -51,21 +51,5 @@ struct WeatherDetailsChartView_Previews: PreviewProvider {
         WeatherDetailsView(vm: WeatherDetailsViewModel(weatherDetail: .daylight,
                                                    reports: MockData.getMockWeatherData()),
                          isShowingChart: .constant(true))
-    }
-}
-
-struct DismissButton: View {
-    var body: some View {
-        ZStack {
-            Circle()
-                .frame(width: 30, height: 30)
-                .foregroundColor(.gray)
-                .opacity(0.25)
-            
-            Image(systemName: "xmark")
-                .imageScale(.small)
-                .frame(width: 44, height: 44)
-                .foregroundColor(.secondary)
-        }
     }
 }

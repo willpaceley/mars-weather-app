@@ -40,7 +40,7 @@ struct AboutView: View {
             Button {
                 vm.isShowingInfo.wrappedValue = false
             } label: {
-                DismissButton()
+                DismissButtonView()
             }
         }
     }
