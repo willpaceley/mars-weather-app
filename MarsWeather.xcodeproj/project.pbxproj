@@ -49,6 +49,8 @@
 		BE19EA4C2A7350A60065E5C2 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA4B2A7350A60065E5C2 /* Bundle+Ext.swift */; };
 		BE19EA502A75B5050065E5C2 /* DismissButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA4F2A75B5050065E5C2 /* DismissButtonView.swift */; };
 		BE19EA522A75B5910065E5C2 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA512A75B5910065E5C2 /* ChartData.swift */; };
+		BE19EA542A75B7780065E5C2 /* TemperatureChartToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA532A75B7780065E5C2 /* TemperatureChartToggles.swift */; };
+		BE19EA572A75B8A00065E5C2 /* DaylightChartToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA562A75B8A00065E5C2 /* DaylightChartToggles.swift */; };
 		BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */; };
 		BE655EE42A5A117E0066E2B6 /* ConditionsChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */; };
 		BE655EE72A5A17F00066E2B6 /* PressureChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */; };
@@ -101,6 +103,8 @@
 		BE19EA4B2A7350A60065E5C2 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
 		BE19EA4F2A75B5050065E5C2 /* DismissButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButtonView.swift; sourceTree = "<group>"; };
 		BE19EA512A75B5910065E5C2 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
+		BE19EA532A75B7780065E5C2 /* TemperatureChartToggles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureChartToggles.swift; sourceTree = "<group>"; };
+		BE19EA562A75B8A00065E5C2 /* DaylightChartToggles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaylightChartToggles.swift; sourceTree = "<group>"; };
 		BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartView.swift; sourceTree = "<group>"; };
 		BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartViewModel.swift; sourceTree = "<group>"; };
 		BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureChartView.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				07670EC82A2D398C007A9814 /* Charts */,
+				BE19EA552A75B8530065E5C2 /* Toggles */,
 				07F886762A0EF2990009AA7C /* List Cells */,
 				07F108A029FF4C5700EC2D6A /* Detail Subviews */,
 				07F1089D29FDCA0700EC2D6A /* Titles */,
@@ -330,6 +335,15 @@
 				BE19EA212A6730FB0065E5C2 /* AboutViewModel.swift */,
 			);
 			path = AboutView;
+			sourceTree = "<group>";
+		};
+		BE19EA552A75B8530065E5C2 /* Toggles */ = {
+			isa = PBXGroup;
+			children = (
+				BE19EA532A75B7780065E5C2 /* TemperatureChartToggles.swift */,
+				BE19EA562A75B8A00065E5C2 /* DaylightChartToggles.swift */,
+			);
+			path = Toggles;
 			sourceTree = "<group>";
 		};
 		BE655EE02A5981160066E2B6 /* ConditionsChartView */ = {
@@ -441,8 +455,10 @@
 				07F108A329FF4D2A00EC2D6A /* DaylightView.swift in Sources */,
 				BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */,
 				07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */,
+				BE19EA572A75B8A00065E5C2 /* DaylightChartToggles.swift in Sources */,
 				07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */,
 				07DBE2482A1C0D7A0017BE32 /* WeatherReportViewModel.swift in Sources */,
+				BE19EA542A75B7780065E5C2 /* TemperatureChartToggles.swift in Sources */,
 				07D8298829FB141100587495 /* LatestWeatherView.swift in Sources */,
 				07D982012A097E0400DBB317 /* PressureView.swift in Sources */,
 				BE19EA502A75B5050065E5C2 /* DismissButtonView.swift in Sources */,

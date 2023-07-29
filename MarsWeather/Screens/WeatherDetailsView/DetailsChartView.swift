@@ -36,21 +36,15 @@ struct DetailsChartView: View {
                 
                 // TODO: Refactor Toggles into separate view for readability
                 if vm.chartType == .temperature {
-                    Toggle("Air Temperature", isOn: $vm.isShowingAirTemp)
-                        .foregroundColor(.secondary)
-                        .disabled(!vm.isShowingGroundTemp)
-                    
-                    Toggle("Ground Temperature", isOn: $vm.isShowingGroundTemp)
-                        .foregroundColor(.secondary)
-                        .disabled(!vm.isShowingAirTemp)
+                    TemperatureChartToggles(
+                        isShowingAirTemp: $vm.isShowingAirTemp,
+                        isShowingGroundTemp: $vm.isShowingGroundTemp
+                    )
                 } else if vm.chartType == .daylight {
-                    Toggle("Sunrise", isOn: $vm.isShowingSunrise)
-                        .foregroundColor(.secondary)
-                        .disabled(!vm.isShowingSunset)
-                    
-                    Toggle("Sunset", isOn: $vm.isShowingSunset)
-                        .foregroundColor(.secondary)
-                        .disabled(!vm.isShowingSunrise)
+                    DaylightChartToggles(
+                        isShowingSunrise: $vm.isShowingSunrise,
+                        isShowingSunset: $vm.isShowingSunset
+                    )
                 }
             }
             .fontWeight(.regular)
@@ -61,7 +55,7 @@ struct DetailsChartView: View {
 
 struct DetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsChartView(vm: WeatherDetailsViewModel(weatherDetail: .daylight,
+        DetailsChartView(vm: WeatherDetailsViewModel(weatherDetail: .temperature,
                                                      reports: Array(MockData.getMockWeatherData())))
     }
 }
