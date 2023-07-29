@@ -18,28 +18,8 @@ import Charts
     let chartType: WeatherDetail
     let reports: [Report]
     
-    // TODO: Refactor logic into private function for readability
     var chartData: [ChartData] {
-        switch chartType {
-        case .temperature:
-            WeatherDetailsViewModel.getTemperatureData(
-                from: selectedReports,
-                isShowingAirTemp: isShowingAirTemp,
-                isShowingGroundTemp: isShowingGroundTemp
-            )
-        case .daylight:
-            WeatherDetailsViewModel.getDaylightData(
-                from: selectedReports,
-                isShowingSunset: isShowingSunset,
-                isShowingSunrise: isShowingSunrise
-            )
-        default:
-            WeatherDetailsViewModel.getTemperatureData(
-                from: selectedReports,
-                isShowingAirTemp: isShowingAirTemp,
-                isShowingGroundTemp: isShowingGroundTemp
-            )
-        }
+        getChartData(for: chartType)
     }
     
     var selectedReports: [Report] {
@@ -135,6 +115,29 @@ import Charts
             return "Average Pressure"
         case .irradiance:
             return "Most Frequent UV Index"
+        }
+    }
+    
+    private func getChartData(for chartType: WeatherDetail) -> [ChartData] {
+        switch chartType {
+        case .temperature:
+            WeatherDetailsViewModel.getTemperatureData(
+                from: selectedReports,
+                isShowingAirTemp: isShowingAirTemp,
+                isShowingGroundTemp: isShowingGroundTemp
+            )
+        case .daylight:
+            WeatherDetailsViewModel.getDaylightData(
+                from: selectedReports,
+                isShowingSunset: isShowingSunset,
+                isShowingSunrise: isShowingSunrise
+            )
+        default:
+            WeatherDetailsViewModel.getTemperatureData(
+                from: selectedReports,
+                isShowingAirTemp: isShowingAirTemp,
+                isShowingGroundTemp: isShowingGroundTemp
+            )
         }
     }
     
