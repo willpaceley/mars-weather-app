@@ -195,24 +195,9 @@ import Charts
     }
     
     private func getAverageSunlight(minutes: Int, reports: [Report]) -> String {
-        // Calculate average sunlight minutes in each day
         let numberOfDays = reports.count
         let averageMinutes = minutes / numberOfDays
-        // Convert minutes into a string representing the hours and minutes
-        return formatMinutesToString(averageMinutes)
-    }
-    
-    private func formatMinutesToString(_ minutes: Int) -> String {
-        let hours = minutes / 60
-        let minutes = minutes % 60
-        
-        if hours < 1 {
-            return "\(minutes) Minutes"
-        } else if minutes == 0 {
-            return "\(hours) Hours"
-        }
-        
-        return "\(hours) Hours \(minutes) Minutes"
+        return averageMinutes.formatMinutesToString()
     }
 }
 
