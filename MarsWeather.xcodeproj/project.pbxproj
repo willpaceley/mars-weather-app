@@ -53,7 +53,6 @@
 		BE19EA572A75B8A00065E5C2 /* DaylightChartToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA562A75B8A00065E5C2 /* DaylightChartToggles.swift */; };
 		BE19EA5B2A75FD5E0065E5C2 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19EA5A2A75FD5E0065E5C2 /* Int+Ext.swift */; };
 		BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */; };
-		BE655EE42A5A117E0066E2B6 /* ConditionsChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */; };
 		BE655EE72A5A17F00066E2B6 /* PressureChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */; };
 		BE655EE92A5A1C6D0066E2B6 /* PressureChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE655EE82A5A1C6D0066E2B6 /* PressureChartViewModel.swift */; };
 		BEC810C82A6385C300971F82 /* IrradianceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC810C72A6385C300971F82 /* IrradianceChartView.swift */; };
@@ -108,7 +107,6 @@
 		BE19EA562A75B8A00065E5C2 /* DaylightChartToggles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaylightChartToggles.swift; sourceTree = "<group>"; };
 		BE19EA5A2A75FD5E0065E5C2 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartView.swift; sourceTree = "<group>"; };
-		BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartViewModel.swift; sourceTree = "<group>"; };
 		BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureChartView.swift; sourceTree = "<group>"; };
 		BE655EE82A5A1C6D0066E2B6 /* PressureChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureChartViewModel.swift; sourceTree = "<group>"; };
 		BEC810C72A6385C300971F82 /* IrradianceChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrradianceChartView.swift; sourceTree = "<group>"; };
@@ -140,7 +138,7 @@
 			children = (
 				07670EC92A2D39A5007A9814 /* TemperatureChartView.swift */,
 				07FAD9212A30BEE600D554EC /* SunlightChartView.swift */,
-				BE655EE02A5981160066E2B6 /* ConditionsChartView */,
+				BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */,
 				BE655EE52A5A17D20066E2B6 /* PressureChartView */,
 				BEC810C62A63859A00971F82 /* IrradianceChartView */,
 			);
@@ -349,15 +347,6 @@
 			path = Toggles;
 			sourceTree = "<group>";
 		};
-		BE655EE02A5981160066E2B6 /* ConditionsChartView */ = {
-			isa = PBXGroup;
-			children = (
-				BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */,
-				BE655EE32A5A117E0066E2B6 /* ConditionsChartViewModel.swift */,
-			);
-			path = ConditionsChartView;
-			sourceTree = "<group>";
-		};
 		BE655EE52A5A17D20066E2B6 /* PressureChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,7 +443,6 @@
 				07670ECA2A2D39A5007A9814 /* TemperatureChartView.swift in Sources */,
 				BE655EE22A5981BD0066E2B6 /* ConditionsChartView.swift in Sources */,
 				07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */,
-				BE655EE42A5A117E0066E2B6 /* ConditionsChartViewModel.swift in Sources */,
 				07F108A329FF4D2A00EC2D6A /* DaylightView.swift in Sources */,
 				BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */,
 				07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */,

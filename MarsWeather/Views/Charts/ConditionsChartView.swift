@@ -24,7 +24,7 @@ struct ConditionsChartView: View {
 
 struct ConditionsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ConditionsChartView(reports: Array(MockData.getMockWeatherData()[0..<31]))
+        ConditionsChartView(reports: Array(MockData.getMockWeatherData()[0..<90]))
     }
 }
 

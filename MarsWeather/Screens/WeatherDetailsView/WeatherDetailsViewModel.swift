@@ -43,13 +43,13 @@ import Charts
     func getSummary(for chartType: WeatherDetail, from reports: [Report]) -> String {
         switch chartType {
         case .temperature:
-            return String(format: "%.1f", calculateAverageTemperature(from: reports)) + " °C"
+            return getAverageTemperatureLabel(from: selectedReports)
             
         case .daylight:
             return getAverageDaylightLabel(from: selectedReports)
             
         case .conditions:
-            return "Conditions Summary"
+            return getConditionLabel(from: selectedReports)
         case .pressure:
             return "Pressure Summary"
         case .irradiance:
@@ -148,7 +148,11 @@ import Charts
         }
     }
     
-    // MARK: - Summary Methods
+    // MARK: Temperature Summary
+    private func getAverageTemperatureLabel(from reports: [Report]) -> String {
+        String(format: "%.1f", calculateAverageTemperature(from: reports)) + " °C"
+    }
+    
     private func calculateAverageTemperature(from reports: [Report]) -> Double {
         var sumTemperature = 0
         
@@ -173,6 +177,7 @@ import Charts
         return Double(sumTemperature) / Double(temperatureCount)
     }
     
+    // MARK: Daylight Summary
     private func getAverageDaylightLabel(from reports: [Report]) -> String {
         var totalMinutesOfSunlight = 0
         
@@ -198,6 +203,22 @@ import Charts
         let numberOfDays = reports.count
         let averageMinutes = minutes / numberOfDays
         return averageMinutes.formatMinutesToString()
+    }
+    
+    // MARK: Condition Summary
+    private func getConditionLabel(from reports: [Report]) -> String {
+        let percentage = calculatePercentageSunnyDays(from: reports)
+        return String(format: "%.1f", percentage * 100) + "%"
+    }
+    
+    private func calculatePercentageSunnyDays(from reports: [Report]) -> Double {
+        var sunnyCount = 0
+        reports.forEach {
+            if $0.atmoOpacity == "Sunny" {
+                sunnyCount += 1
+            }
+        }
+        return Double(sunnyCount) / Double(reports.count)
     }
 }
 
