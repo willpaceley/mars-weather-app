@@ -7,12 +7,22 @@
 
 import Foundation
 
-final class NetworkProvider {
-    static let shared = NetworkProvider()
+final class NetworkManager {
     
+    static let shared = NetworkManager()
+    
+    private let cache = Cache<String, MarsWeatherData>()
+    private let WEATHER_DATA_KEY = "MarsWeatherData"
+        
     private init() {}
     
     func getMarsWeatherData() async throws -> MarsWeatherData {
+        // Check if there is already weather API data in the cache
+        if let weatherData = cache.value(forKey: WEATHER_DATA_KEY) {
+            return weatherData
+        }
+        
+        // If nothing in cache, fetch data from API
         guard let url = createWeatherURL() else {
             throw MWError.invalidURL
         }
@@ -21,6 +31,7 @@ final class NetworkProvider {
         
         do {
             let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
+            cache.insert(weatherData, forKey: WEATHER_DATA_KEY)
             return weatherData
         } catch {
             throw MWError.invalidData

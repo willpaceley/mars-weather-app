@@ -21,7 +21,7 @@ import SwiftUI
 
         Task {
             do {
-                let weatherData = try await NetworkProvider.shared.getMarsWeatherData()
+                let weatherData = try await NetworkManager.shared.getMarsWeatherData()
                 reports = weatherData.soles
                 descriptions = weatherData.descriptions
                 isLoading = false
