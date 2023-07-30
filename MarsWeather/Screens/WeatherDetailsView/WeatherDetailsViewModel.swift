@@ -116,7 +116,7 @@ import Charts
             
         case .daylight:
             return """
-            The duration of a Martian day (sol) is about 24 hours and 40 minutes. \
+            The duration of a Martian day (sol) is about 24 hours and 40 minutes.
             The duration of daylight varies along the Martian year, as on Earth.
             """
             

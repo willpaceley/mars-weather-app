@@ -35,7 +35,9 @@ struct WeatherDetailsView: View {
                     .cornerRadius(10)
             }
         }
-        .padding()
+        .padding(.top)
+        .padding(.leading)
+        .padding(.trailing)
         .overlay(alignment: .topTrailing) {
             Button {
                 isShowingChart = false
@@ -50,7 +52,7 @@ struct WeatherDetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherDetailsView(
             vm: WeatherDetailsViewModel(
-                weatherDetail: .temperature,
+                weatherDetail: .daylight,
                 reports: MockData.getMockWeatherData()
             ),
             isShowingChart: .constant(true)
