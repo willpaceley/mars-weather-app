@@ -14,7 +14,7 @@ struct DetailsChartView: View {
         VStack {
             GroupBox(vm.chartSummaryTitle) {
                 HStack {
-                    Text(vm.getSummary(for: vm.chartType, from: vm.selectedReports))
+                    Text(vm.chartSummary)
                         .bold()
                         .foregroundStyle(.primary)
                     
@@ -28,16 +28,20 @@ struct DetailsChartView: View {
                         isShowingAirTemp: vm.isShowingAirTemp,
                         isShowingGroundTemp: vm.isShowingGroundTemp
                     )
+                    
                 case .daylight:
                     SunlightChartView(
                         reports: vm.selectedReports,
                         isShowingSunrise: vm.isShowingSunrise,
                         isShowingSunset: vm.isShowingSunset
                     )
+                    
                 case .conditions:
                     ConditionsChartView(reports: vm.selectedReports)
+                    
                 case .pressure:
-                    PressureChartView(vm: PressureChartViewModel(reports: vm.selectedReports))
+                    PressureChartView(reports: vm.selectedReports)
+                    
                 case .irradiance:
                     IrradianceChartView(vm: IrradianceChartViewModel(reports: vm.selectedReports))
                 }
@@ -62,7 +66,7 @@ struct DetailsChartView: View {
 
 struct DetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsChartView(vm: WeatherDetailsViewModel(weatherDetail: .temperature,
+        DetailsChartView(vm: WeatherDetailsViewModel(weatherDetail: .pressure,
                                                      reports: Array(MockData.getMockWeatherData())))
     }
 }

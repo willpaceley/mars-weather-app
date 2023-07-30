@@ -34,6 +34,10 @@ import Charts
         getSummaryTitle(for: chartType)
     }
     
+    var chartSummary: String {
+        getSummary(for: chartType, from: selectedReports)
+    }
+    
     // MARK: Initializer
     init(weatherDetail: WeatherDetail, reports: [Report]) {
         self.chartType = weatherDetail
@@ -50,8 +54,10 @@ import Charts
             
         case .conditions:
             return getConditionLabel(from: selectedReports)
+            
         case .pressure:
-            return "Pressure Summary"
+            return getAveragePressureLabel(from: selectedReports)
+            
         case .irradiance:
             return "Irradiance Summary"
         }
@@ -219,6 +225,24 @@ import Charts
             }
         }
         return Double(sunnyCount) / Double(reports.count)
+    }
+    
+    // MARK: Pressure Summary
+    private func getAveragePressureLabel(from reports: [Report]) -> String {
+        let averagePressure = calculateAveragePressure(from: reports)
+        return String(format: "%.2f", averagePressure) + " Pa"
+    }
+    
+    private func calculateAveragePressure(from reports: [Report]) -> Double {
+        var totalPressure: Double = 0
+        
+        reports.forEach {
+            if let pressure = Double($0.pressure) {
+                totalPressure += pressure
+            }
+        }
+        
+        return totalPressure / Double(reports.count)
     }
 }
 

@@ -43,6 +43,13 @@ struct Condition: Identifiable {
     var numberOfDays: Int = 0
 }
 
+// MARK: Pressure
+struct PressureData: Identifiable {
+    let id = UUID()
+    let date: Date
+    let pressure: Int
+}
+
 //struct ChartData: Identifiable {
 //    let id = UUID()
 //    let xAxis: any Plottable
