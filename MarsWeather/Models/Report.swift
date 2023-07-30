@@ -48,6 +48,19 @@ enum UVIrradianceIndex: String, Codable {
     case moderate = "Moderate"
     case high = "High"
     case veryHigh = "Very_High"
+    
+    func formatUVIndexString() -> String {
+        let formattedResult: String
+        switch self {
+        case .empty:
+            formattedResult = "No Data"
+        case .veryHigh:
+            formattedResult = "Very High"
+        default:
+            formattedResult = self.rawValue
+        }
+        return formattedResult
+    }
 }
 
 enum MarsMonth: String, Codable, CaseIterable, Identifiable {

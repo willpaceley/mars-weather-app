@@ -50,18 +50,9 @@ struct PressureData: Identifiable {
     let pressure: Int
 }
 
-//struct ChartData: Identifiable {
-//    let id = UUID()
-//    let xAxis: any Plottable
-//    let yAxis: any Plottable
-//    var type: ChartDataType? = nil
-//}
-//
-//enum ChartDataType: String {
-//    case maxAirTemp = "Max Air"
-//    case minAirTemp = "Min Air"
-//    case maxGroundTemp = "Max Ground"
-//    case minGroundTemp = "Min Ground"
-//    case sunrise = "Sunrise"
-//    case sunset = "Sunset"
-//}
+// MARK: Irradiance
+struct MarsIrradianceData: Identifiable {
+    let id = UUID()
+    let date: Date
+    let irradiance: String
+}

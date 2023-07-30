@@ -43,7 +43,7 @@ struct DetailsChartView: View {
                     PressureChartView(reports: vm.selectedReports)
                     
                 case .irradiance:
-                    IrradianceChartView(vm: IrradianceChartViewModel(reports: vm.selectedReports))
+                    IrradianceChartView(reports: vm.selectedReports)
                 }
                 
                 if vm.chartType == .temperature {
@@ -66,7 +66,7 @@ struct DetailsChartView: View {
 
 struct DetailsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsChartView(vm: WeatherDetailsViewModel(weatherDetail: .pressure,
+        DetailsChartView(vm: WeatherDetailsViewModel(weatherDetail: .irradiance,
                                                      reports: Array(MockData.getMockWeatherData())))
     }
 }

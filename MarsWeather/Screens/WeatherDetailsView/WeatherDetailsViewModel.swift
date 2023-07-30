@@ -44,25 +44,6 @@ import Charts
         self.reports = reports
     }
     
-    func getSummary(for chartType: WeatherDetail, from reports: [Report]) -> String {
-        switch chartType {
-        case .temperature:
-            return getAverageTemperatureLabel(from: selectedReports)
-            
-        case .daylight:
-            return getAverageDaylightLabel(from: selectedReports)
-            
-        case .conditions:
-            return getConditionLabel(from: selectedReports)
-            
-        case .pressure:
-            return getAveragePressureLabel(from: selectedReports)
-            
-        case .irradiance:
-            return "Irradiance Summary"
-        }
-    }
-    
     // MARK: - Private Methods
     private func getReportSelection(for timeRange: TimeRange) -> [Report] {
         switch timeRange {
@@ -106,6 +87,21 @@ import Charts
             return "Average Pressure"
         case .irradiance:
             return "Most Frequent UV Index"
+        }
+    }
+    
+    private func getSummary(for chartType: WeatherDetail, from reports: [Report]) -> String {
+        switch chartType {
+        case .temperature:
+            return getAverageTemperatureLabel(from: selectedReports)
+        case .daylight:
+            return getAverageDaylightLabel(from: selectedReports)
+        case .conditions:
+            return getConditionLabel(from: selectedReports)
+        case .pressure:
+            return getAveragePressureLabel(from: selectedReports)
+        case .irradiance:
+            return getMostFrequentUVIndexLabel(from: selectedReports)
         }
     }
     
@@ -243,6 +239,32 @@ import Charts
         }
         
         return totalPressure / Double(reports.count)
+    }
+    
+    // MARK: Irradiance Summary
+    private func getMostFrequentUVIndexLabel(from reports: [Report]) -> String {
+        let indexCounts = calculateUVIndexCounts(from: reports)
+        
+        // Determine most common irradiance index
+        var mostFrequentIndex: UVIrradianceIndex = .empty
+        var maxCount = 0
+        
+        for key in indexCounts.keys {
+            if let count = indexCounts[key] {
+                // current intensity has a greater count of occurrences
+                if count > maxCount {
+                    mostFrequentIndex = key
+                    maxCount = count
+                }
+            }
+        }
+        return mostFrequentIndex.formatUVIndexString()
+    }
+    
+    private func calculateUVIndexCounts(from reports: [Report]) -> [UVIrradianceIndex: Int] {
+        let intensities = reports.map { ($0.localUvIrradianceIndex, 1) }
+        let intensityCounts = Dictionary(intensities, uniquingKeysWith: +)
+        return intensityCounts
     }
 }
 
