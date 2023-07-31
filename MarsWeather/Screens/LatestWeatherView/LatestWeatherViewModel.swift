@@ -8,16 +8,16 @@
 import Foundation
 
 @MainActor final class LatestWeatherViewModel: ObservableObject {
-    @Published var selectedReport: Report
+    @Published var selectedReport: WeatherReport
     
-    let reports: [Report]
+    let reports: [WeatherReport]
     
-    init(reports: [Report]) {
+    init(reports: [WeatherReport]) {
         self.reports = reports
         self.selectedReport = reports[0]
     }
     
-    var recentReports: [Report] {
+    var recentReports: [WeatherReport] {
         let count = reports.count
         let range = count > 13 ? 0..<29 : 0..<count
         return Array(reports[range])
@@ -29,7 +29,7 @@ import Foundation
         calculateHighestTemp(from: recentReports)
     }
     
-    private func calculateLowestTemp(from recentReports: [Report]) -> Int {
+    private func calculateLowestTemp(from recentReports: [WeatherReport]) -> Int {
         let lowestReport = recentReports.min { a, b in
             return Int(a.minTemp) ?? 0 < Int(b.minTemp) ?? 0
         }
@@ -39,7 +39,7 @@ import Foundation
         return 0
     }
     
-    private func calculateHighestTemp(from recentReports: [Report]) -> Int {
+    private func calculateHighestTemp(from recentReports: [WeatherReport]) -> Int {
         let highestReport = recentReports.max { a, b in
             return Int(a.maxTemp) ?? 0 < Int(b.maxTemp) ?? 0
         }

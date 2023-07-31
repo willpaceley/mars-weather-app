@@ -10,11 +10,11 @@ import SwiftUI
 @MainActor final class WeatherReportViewModel: ObservableObject {
     @Published var isShowingDetailsChart = false
     
-    let selectedReport: Report
-    let reports: [Report]
+    let selectedReport: WeatherReport
+    let reports: [WeatherReport]
     var selectedWeatherDetail: WeatherDetail?
     
-    init(selectedReport: Report, reports: [Report]) {
+    init(selectedReport: WeatherReport, reports: [WeatherReport]) {
         self.selectedReport = selectedReport
         self.reports = reports
     }

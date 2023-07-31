@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReportListCellView: View {
-    let report: Report
+    let report: WeatherReport
     let lowestTemp: Int
     let highestTemp: Int
     let isSelected: Bool

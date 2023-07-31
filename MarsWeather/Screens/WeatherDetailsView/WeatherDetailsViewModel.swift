@@ -16,9 +16,9 @@ import Charts
     @Published var isShowingSunset = false
     
     let chartType: WeatherDetail
-    let reports: [Report]
+    let reports: [WeatherReport]
     
-    var selectedReports: [Report] {
+    var selectedReports: [WeatherReport] {
         getReportSelection(for: selectedTimeRange)
     }
     
@@ -39,13 +39,13 @@ import Charts
     }
     
     // MARK: Initializer
-    init(weatherDetail: WeatherDetail, reports: [Report]) {
+    init(weatherDetail: WeatherDetail, reports: [WeatherReport]) {
         self.chartType = weatherDetail
         self.reports = reports
     }
     
     // MARK: - Private Methods
-    private func getReportSelection(for timeRange: TimeRange) -> [Report] {
+    private func getReportSelection(for timeRange: TimeRange) -> [WeatherReport] {
         switch timeRange {
         case .threeMonth:
             return Array(reports[0..<90])
@@ -90,7 +90,7 @@ import Charts
         }
     }
     
-    private func getSummary(for chartType: WeatherDetail, from reports: [Report]) -> String {
+    private func getSummary(for chartType: WeatherDetail, from reports: [WeatherReport]) -> String {
         switch chartType {
         case .temperature:
             return getAverageTemperatureLabel(from: selectedReports)
@@ -151,11 +151,11 @@ import Charts
     }
     
     // MARK: Temperature Summary
-    private func getAverageTemperatureLabel(from reports: [Report]) -> String {
+    private func getAverageTemperatureLabel(from reports: [WeatherReport]) -> String {
         String(format: "%.1f", calculateAverageTemperature(from: reports)) + " °C"
     }
     
-    private func calculateAverageTemperature(from reports: [Report]) -> Double {
+    private func calculateAverageTemperature(from reports: [WeatherReport]) -> Double {
         var sumTemperature = 0
         
         for report in reports {
@@ -180,7 +180,7 @@ import Charts
     }
     
     // MARK: Daylight Summary
-    private func getAverageDaylightLabel(from reports: [Report]) -> String {
+    private func getAverageDaylightLabel(from reports: [WeatherReport]) -> String {
         var totalMinutesOfSunlight = 0
         
         reports.forEach {
@@ -201,19 +201,19 @@ import Charts
         return sunlightMinutes
     }
     
-    private func getAverageSunlight(minutes: Int, reports: [Report]) -> String {
+    private func getAverageSunlight(minutes: Int, reports: [WeatherReport]) -> String {
         let numberOfDays = reports.count
         let averageMinutes = minutes / numberOfDays
         return averageMinutes.formatMinutesToString()
     }
     
     // MARK: Condition Summary
-    private func getConditionLabel(from reports: [Report]) -> String {
+    private func getConditionLabel(from reports: [WeatherReport]) -> String {
         let percentage = calculatePercentageSunnyDays(from: reports)
         return String(format: "%.1f", percentage * 100) + "%"
     }
     
-    private func calculatePercentageSunnyDays(from reports: [Report]) -> Double {
+    private func calculatePercentageSunnyDays(from reports: [WeatherReport]) -> Double {
         var sunnyCount = 0
         reports.forEach {
             if $0.atmoOpacity == "Sunny" {
@@ -224,12 +224,12 @@ import Charts
     }
     
     // MARK: Pressure Summary
-    private func getAveragePressureLabel(from reports: [Report]) -> String {
+    private func getAveragePressureLabel(from reports: [WeatherReport]) -> String {
         let averagePressure = calculateAveragePressure(from: reports)
         return String(format: "%.2f", averagePressure) + " Pa"
     }
     
-    private func calculateAveragePressure(from reports: [Report]) -> Double {
+    private func calculateAveragePressure(from reports: [WeatherReport]) -> Double {
         var totalPressure: Double = 0
         
         reports.forEach {
@@ -242,7 +242,7 @@ import Charts
     }
     
     // MARK: Irradiance Summary
-    private func getMostFrequentUVIndexLabel(from reports: [Report]) -> String {
+    private func getMostFrequentUVIndexLabel(from reports: [WeatherReport]) -> String {
         let indexCounts = calculateUVIndexCounts(from: reports)
         
         // Determine most common irradiance index
@@ -261,7 +261,7 @@ import Charts
         return mostFrequentIndex.formatUVIndexString()
     }
     
-    private func calculateUVIndexCounts(from reports: [Report]) -> [UVIrradianceIndex: Int] {
+    private func calculateUVIndexCounts(from reports: [WeatherReport]) -> [UVIrradianceIndex: Int] {
         let intensities = reports.map { ($0.localUvIrradianceIndex, 1) }
         let intensityCounts = Dictionary(intensities, uniquingKeysWith: +)
         return intensityCounts

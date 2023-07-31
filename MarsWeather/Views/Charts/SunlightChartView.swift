@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct SunlightChartView: View {
-    let reports: [Report]
+    let reports: [WeatherReport]
     let isShowingSunrise: Bool
     let isShowingSunset: Bool
     
@@ -34,7 +34,7 @@ struct SunlightChartView_Previews: PreviewProvider {
 }
 
 extension SunlightChartView {
-    private func getChartData(from reports: [Report]) -> [MarsSunlight] {
+    private func getChartData(from reports: [WeatherReport]) -> [MarsSunlight] {
         var sunlightData = [MarsSunlight]()
         
         reports.forEach {

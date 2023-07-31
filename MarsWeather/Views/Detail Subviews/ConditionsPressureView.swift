@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConditionsPressureView: View {
-    let report: Report
+    let report: WeatherReport
     
     var body: some View {
         HStack {

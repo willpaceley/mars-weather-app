@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct PressureChartView: View {
-    let reports: [Report]
+    let reports: [WeatherReport]
     
     var body: some View {
             Chart(getChartData(from: reports)) {
@@ -28,7 +28,7 @@ struct PressureChartView_Previews: PreviewProvider {
 }
 
 extension PressureChartView {
-    private func getChartData(from reports: [Report]) -> [PressureData] {
+    private func getChartData(from reports: [WeatherReport]) -> [PressureData] {
         var pressureData = [PressureData]()
         
         reports.forEach {

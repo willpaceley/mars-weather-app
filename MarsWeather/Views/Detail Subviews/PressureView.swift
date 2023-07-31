@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PressureView: View {
-    let report: Report
+    let report: WeatherReport
     
     var icon: String {
         switch report.pressureString {

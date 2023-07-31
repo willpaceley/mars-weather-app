@@ -8,13 +8,11 @@
 import SwiftUI
 
 @MainActor final class MarsWeatherViewModel: ObservableObject {
-    @Published var reports = [Report]()
+    @Published var reports = [WeatherReport]()
     @Published var isLoading = false
     @Published var isPresentingAlert = false
     @Published var isShowingInfo = false
     @Published var alert = AlertContext.defaultAlert
-    
-    var descriptions: Descriptions?
     
     func getWeatherData() {
         isLoading = true
@@ -23,7 +21,6 @@ import SwiftUI
             do {
                 let weatherData = try await NetworkManager.shared.getMarsWeatherData()
                 reports = weatherData.soles
-                descriptions = weatherData.descriptions
                 isLoading = false
             } catch {
                 if let mwError = error as? MWError {

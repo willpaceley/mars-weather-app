@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct ConditionsChartView: View {
-    let reports: [Report]
+    let reports: [WeatherReport]
     
     var body: some View {
             Chart(getChartData(from: reports)) {
@@ -29,7 +29,7 @@ struct ConditionsChartView_Previews: PreviewProvider {
 }
 
 extension ConditionsChartView {
-    private func getChartData(from reports: [Report]) -> [Condition] {
+    private func getChartData(from reports: [WeatherReport]) -> [Condition] {
         var conditionsData = [Condition]()
         reports.forEach { report in
             var description = report.atmoOpacity

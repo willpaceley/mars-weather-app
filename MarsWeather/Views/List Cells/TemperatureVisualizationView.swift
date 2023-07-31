@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TemperatureVisualizationView: View {
     let totalWidth: Double = 125
-    let report: Report
+    let report: WeatherReport
     let lowestTemp: Int
     let highestTemp: Int
     
@@ -53,7 +53,7 @@ struct TemperatureVisualizationView_Previews: PreviewProvider {
 
 extension TemperatureVisualizationView {
     // calculate width for given report's temperature range
-    func calculateRangeWidth(for report: Report) -> Double {
+    func calculateRangeWidth(for report: WeatherReport) -> Double {
         if let maxReportTemp = Double(report.maxTemp),
            let minReportTemp = Double(report.minTemp) {
             let widthPerDegree = totalWidth / Double(highestTemp - lowestTemp)
@@ -63,7 +63,7 @@ extension TemperatureVisualizationView {
     }
     
     // calculate offset of report temperature bar
-    func calculateOffset(for report: Report) -> CGFloat {
+    func calculateOffset(for report: WeatherReport) -> CGFloat {
         if let maxReportTemp = Double(report.maxTemp),
            let minReportTemp = Double(report.minTemp) {
             // calculate midrange total temp, which is represented @ x pos 0

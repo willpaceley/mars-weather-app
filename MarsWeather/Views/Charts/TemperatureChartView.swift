@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct TemperatureChartView: View {
-    let reports: [Report]
+    let reports: [WeatherReport]
     let isShowingAirTemp: Bool
     let isShowingGroundTemp: Bool
     
@@ -36,7 +36,7 @@ struct TemperatureChartView_Previews: PreviewProvider {
 }
 
 extension TemperatureChartView {
-    private func getChartData(from reports: [Report]) -> [MarsTemperature] {
+    private func getChartData(from reports: [WeatherReport]) -> [MarsTemperature] {
             var temperatures = [MarsTemperature]()
             
             reports.forEach {

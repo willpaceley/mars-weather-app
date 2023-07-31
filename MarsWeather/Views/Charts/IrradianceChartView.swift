@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 struct IrradianceChartView: View {
-    let reports: [Report]
+    let reports: [WeatherReport]
     
     var body: some View {
         Chart(getChartData(from: reports)) {
@@ -29,7 +29,7 @@ struct IrradianceChartView_Previews: PreviewProvider {
 }
 
 extension IrradianceChartView {
-    private func getChartData(from reports: [Report]) -> [MarsIrradianceData] {
+    private func getChartData(from reports: [WeatherReport]) -> [MarsIrradianceData] {
         reports.map { report in
             let date = report.terrestrialDate.toDate()!
             let irradiance: String = report.localUvIrradianceIndex.formatUVIndexString()
