@@ -8,17 +8,26 @@
 import Foundation
 
 final class NetworkManager {
+    typealias WeatherDataCache = Cache<String, MarsWeatherData>
     
     static let shared = NetworkManager()
     
-    private let cache = Cache<String, MarsWeatherData>()
+    private var cache = WeatherDataCache()
     private let WEATHER_DATA_KEY = "MarsWeatherData"
+    private let CACHE_NAME = "MarsWeatherDataCache"
         
-    private init() {}
+    private init() {
+        // Check if there's a cache persisted in file system
+        if let weatherDataCache = loadCacheFromDisc(withName: CACHE_NAME) {
+            cache = weatherDataCache
+        }
+    }
     
+    // MARK: - Public Methods
     func getMarsWeatherData() async throws -> MarsWeatherData {
         // Check if there is already weather API data in the cache
         if let weatherData = cache.value(forKey: WEATHER_DATA_KEY) {
+            print("Found unexpired cached data, skipping API call.")
             return weatherData
         }
         
@@ -32,12 +41,14 @@ final class NetworkManager {
         do {
             let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
             cache.insert(weatherData, forKey: WEATHER_DATA_KEY)
+            try cache.saveToDisc(withName: CACHE_NAME)
             return weatherData
         } catch {
             throw MWError.invalidData
         }
     }
     
+    // MARK: - Private Methods
     private func createWeatherURL() -> URL? {
         var components = URLComponents()
         components.scheme = "https"
@@ -50,5 +61,22 @@ final class NetworkManager {
         ]
         
         return components.url
+    }
+    
+    private func loadCacheFromDisc(withName name: String, using fileManager: FileManager = .default) -> WeatherDataCache? {
+        let folderURLs = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)
+        let fileURL = folderURLs[0].appending(path: name + ".cache")
+        
+        guard let data = try? Data(contentsOf: fileURL) else {
+            print("Could not obtain data from fileURL in loadCacheFromDisc(withName:using:)")
+            return nil
+        }
+        
+        if let cache = try? JSONDecoder().decode(WeatherDataCache.self, from: data) {
+            print("Found a cache in disc! Loading...")
+            return cache
+        }
+        
+        return nil
     }
 }
