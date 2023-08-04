@@ -9,18 +9,32 @@ import SwiftUI
 
 @MainActor final class MarsWeatherViewModel: ObservableObject {
     @Published var reports = [WeatherReport]()
+    @Published var selectedReport: WeatherReport?
     @Published var isLoading = false
     @Published var isPresentingAlert = false
     @Published var isShowingInfo = false
     @Published var alert = AlertContext.defaultAlert
     
+    let dataProvider: MarsWeatherDataProvider
+    
+    init(dataProvider: MarsWeatherDataProvider) {
+        self.dataProvider = dataProvider
+    }
+    
+    // MARK: - Public Methods
     func getWeatherData() {
         isLoading = true
 
         Task {
             do {
-                let weatherData = try await NetworkManager.shared.updateMarsWeatherData()
+//                let weatherData = try await NetworkManager.shared.getMarsWeatherData()
+                let weatherData = try await dataProvider.getMarsWeatherData()
                 reports = weatherData.soles
+                
+                if !reports.isEmpty {
+                    selectedReport = reports[0]
+                }
+                
                 isLoading = false
             } catch {
                 if let mwError = error as? MWError {
@@ -47,7 +61,8 @@ import SwiftUI
         }
     }
     
-    func getMockWeatherData() {
-        reports = MockData.getMockWeatherData()
-    }
+    // TODO: Probably can remove this function? Commenting for now.
+//    func getMockWeatherData() {
+//        reports = MockData.getMockWeatherData()
+//    }
 }

@@ -24,7 +24,7 @@ final class NetworkManager {
     }
     
     // MARK: - Public Methods
-    func updateMarsWeatherData() async throws -> MarsWeatherData {
+    func getMarsWeatherData() async throws -> MarsWeatherData {
         // Check if there is already weather API data in the cache
         if let weatherData = cache.value(forKey: WEATHER_DATA_KEY) {
             print("Found unexpired cached data, skipping API call.")

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MarsWeatherHomeView: View {
-    @StateObject var vm = MarsWeatherViewModel()
+    @StateObject var vm = MarsWeatherViewModel(dataProvider: NASADataProvider())
     
     var body: some View {
         ZStack {
