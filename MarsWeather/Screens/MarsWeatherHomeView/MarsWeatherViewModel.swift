@@ -27,9 +27,13 @@ import SwiftUI
 
         Task {
             do {
-//                let weatherData = try await NetworkManager.shared.getMarsWeatherData()
-                let weatherData = try await dataProvider.getMarsWeatherData()
-                reports = weatherData.soles
+                if let cachedWeatherData = MWCache.shared.getMarsWeatherData() {
+                    reports = cachedWeatherData.soles
+                } else {
+                    let weatherData = try await dataProvider.getMarsWeatherData()
+                    reports = weatherData.soles
+                    try MWCache.shared.insert(weatherData)
+                }
                 
                 if !reports.isEmpty {
                     selectedReport = reports[0]
@@ -60,9 +64,4 @@ import SwiftUI
             }
         }
     }
-    
-    // TODO: Probably can remove this function? Commenting for now.
-//    func getMockWeatherData() {
-//        reports = MockData.getMockWeatherData()
-//    }
 }
