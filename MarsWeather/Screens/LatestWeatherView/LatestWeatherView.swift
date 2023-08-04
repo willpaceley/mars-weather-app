@@ -24,19 +24,20 @@ struct LatestWeatherView: View {
                 .padding(.top, 10)
                 .padding(.bottom, 10)
             
-            ScrollView {
-                LazyVStack(spacing: 10) {
-                    ForEach(vm.recentReports) { report in
-                        ReportListCellView(report: report,
-                                           lowestTemp: vm.lowestTemp,
-                                           highestTemp: vm.highestTemp,
-                                           isSelected: report.id == vm.selectedReport.id)
-                        .onTapGesture {
-                            vm.selectedReport = report
-                        }
-                    }
+            List(vm.recentReports) { report in
+                ReportListCellView(
+                    report: report,
+                    lowestTemp: vm.lowestTemp,
+                    highestTemp: vm.highestTemp,
+                    isSelected: report.id == vm.selectedReport.id
+                )
+                .listRowSeparator(.hidden)
+                .listRowInsets(.init(top: 0, leading: 0, bottom: 10, trailing: 0))
+                .onTapGesture {
+                    vm.selectedReport = report
                 }
             }
+            .listStyle(.plain)
         }
         .padding(.leading)
         .padding(.trailing)
