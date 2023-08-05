@@ -18,7 +18,6 @@
 		07D829A129FC1E1000587495 /* WeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D829A029FC1E1000587495 /* WeatherReport.swift */; };
 		07D982012A097E0400DBB317 /* PressureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D982002A097E0400DBB317 /* PressureView.swift */; };
 		07D982032A09880200DBB317 /* ConditionsPressureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D982022A09880200DBB317 /* ConditionsPressureView.swift */; };
-		07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DBE2412A15063F0017BE32 /* LatestWeatherViewModel.swift */; };
 		07DBE2452A1BF8740017BE32 /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DBE2442A1BF8740017BE32 /* WeatherDetailsView.swift */; };
 		07DBE2482A1C0D7A0017BE32 /* WeatherReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DBE2472A1C0D7A0017BE32 /* WeatherReportViewModel.swift */; };
 		07DBE24C2A24D9730017BE32 /* WeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DBE24B2A24D9730017BE32 /* WeatherDetailsViewModel.swift */; };
@@ -73,7 +72,6 @@
 		07D829A029FC1E1000587495 /* WeatherReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReport.swift; sourceTree = "<group>"; };
 		07D982002A097E0400DBB317 /* PressureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureView.swift; sourceTree = "<group>"; };
 		07D982022A09880200DBB317 /* ConditionsPressureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsPressureView.swift; sourceTree = "<group>"; };
-		07DBE2412A15063F0017BE32 /* LatestWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWeatherViewModel.swift; sourceTree = "<group>"; };
 		07DBE2442A1BF8740017BE32 /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
 		07DBE2472A1C0D7A0017BE32 /* WeatherReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReportViewModel.swift; sourceTree = "<group>"; };
 		07DBE24B2A24D9730017BE32 /* WeatherDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +129,7 @@
 			children = (
 				075FAB962A140DF800692B42 /* MarsWeatherHomeView.swift */,
 				07ED94E22A0297350075B8D4 /* MarsWeatherViewModel.swift */,
+				07D8298729FB141100587495 /* LatestWeatherView.swift */,
 			);
 			path = MarsWeatherHomeView;
 			sourceTree = "<group>";
@@ -189,21 +188,11 @@
 			isa = PBXGroup;
 			children = (
 				075FAB952A140DDE00692B42 /* MarsWeatherHomeView */,
-				07D8299429FB19EA00587495 /* LatestWeatherView */,
 				07DBE2492A1C0FAB0017BE32 /* WeatherReportView */,
 				07DBE24A2A24D8D20017BE32 /* WeatherDetailsView */,
 				BE19EA202A6730E50065E5C2 /* AboutView */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		07D8299429FB19EA00587495 /* LatestWeatherView */ = {
-			isa = PBXGroup;
-			children = (
-				07D8298729FB141100587495 /* LatestWeatherView.swift */,
-				07DBE2412A15063F0017BE32 /* LatestWeatherViewModel.swift */,
-			);
-			path = LatestWeatherView;
 			sourceTree = "<group>";
 		};
 		07D8299D29FC1CB800587495 /* Models */ = {
@@ -259,9 +248,9 @@
 		07ED94EE2A05338E0075B8D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				07ED94EF2A0533AD0075B8D4 /* String+Ext.swift */,
 				BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */,
 				BE19EA4B2A7350A60065E5C2 /* Bundle+Ext.swift */,
+				07ED94EF2A0533AD0075B8D4 /* String+Ext.swift */,
 				BE19EA5A2A75FD5E0065E5C2 /* Int+Ext.swift */,
 			);
 			path = Extensions;
@@ -441,7 +430,6 @@
 				07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */,
 				07F108A329FF4D2A00EC2D6A /* DaylightView.swift in Sources */,
 				BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */,
-				07DBE2422A15063F0017BE32 /* LatestWeatherViewModel.swift in Sources */,
 				BE3736882A7D84E00019C69F /* MockDataProvider.swift in Sources */,
 				BE19EA572A75B8A00065E5C2 /* DaylightChartToggles.swift in Sources */,
 				07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */,

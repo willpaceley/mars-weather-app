@@ -27,14 +27,11 @@ struct NASADataProvider: MarsWeatherDataProvider {
             throw MWError.invalidURL
         }
         
-        print("Fetching weather data from NASA API")
+        print("Fetching weather data from NASA API.")
         let (data, _) = try await URLSession.shared.data(from: url)
         
         do {
             let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
-            // TODO: Hook up with cache as well? Or move somewhere else?
-//            cache.insert(weatherData, forKey: WEATHER_DATA_KEY)
-//            try cache.saveToDisc(withName: CACHE_NAME)
             return weatherData
         } catch {
             throw MWError.invalidData
