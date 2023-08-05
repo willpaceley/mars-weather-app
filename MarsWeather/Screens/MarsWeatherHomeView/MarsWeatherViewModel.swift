@@ -36,20 +36,19 @@ import SwiftUI
     // MARK: - Public Methods
     func getWeatherData(forceFetch: Bool = false) async {
             do {
+                // If not forced to fetch from API, check cache for unexpired data
                 if !forceFetch {
                     if let cachedWeatherData = MWCache.shared.getMarsWeatherData() {
                         reports = cachedWeatherData.soles
+                    } else {
+                        // If no data found in cache, fetch fresh data from provider
+                        reports = try await fetchMarsWeatherReports()
                     }
                 } else {
-                    isLoading = true
-                    let weatherData = try await dataProvider.getMarsWeatherData()
-                    reports = weatherData.soles
-                    isLoading = false
-                    
-                    // Cache the weather data returned from the API
-                    try MWCache.shared.insert(weatherData)
+                    reports = try await fetchMarsWeatherReports()
                 }
                 
+                // Set the initial selected report to most recent
                 if !reports.isEmpty {
                     selectedReport = reports[0]
                 }
@@ -78,6 +77,15 @@ import SwiftUI
     }
     
     // MARK: Private Methods
+    private func fetchMarsWeatherReports() async throws -> [WeatherReport] {
+        isLoading = true
+        let weatherData = try await dataProvider.getMarsWeatherData()
+        // Cache the weather data returned from the API
+        try MWCache.shared.insert(weatherData)
+        isLoading = false
+        return weatherData.soles
+    }
+    
     private func calculateLowestTemp(from recentReports: [WeatherReport]) -> Int {
         let lowestReport = recentReports.min { a, b in
             return Int(a.minTemp) ?? 0 < Int(b.minTemp) ?? 0
