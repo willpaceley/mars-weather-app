@@ -14,12 +14,16 @@ struct AlertContext {
     static let invalidURL = Alert(title: Text("Network Error"),
                                   message: Text("The URL was invalid or not constructed properly."))
     
-    static let invalidResponse = Alert(title: Text("Network Error"),
-                                       message: Text("The network call to the weather API provided an invalid response."))
-    
     static let invalidData = Alert(title: Text("Network Error"),
                                    message: Text("The data returned from the API was invalid."))
     
     static let unableToComplete = Alert(title: Text("Network Error"),
                                         message: Text("Unable to complete your request. Please check your internet connection."))
+    
+    static func invalidResponse(for statusCode: Int) -> Alert {
+        let statusCodeMessage = HTTPURLResponse.localizedString(forStatusCode: statusCode)
+        let title = "\(statusCode) \(statusCodeMessage.capitalized)"
+        let message = "Invalid response from server. Please try again later."
+        return Alert(title: Text(title), message: Text(message))
+    }
 }

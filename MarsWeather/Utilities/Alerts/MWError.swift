@@ -9,7 +9,7 @@ import Foundation
 
 enum MWError: Error {
     case invalidURL
-    case invalidResponse
+    case invalidResponse(Int)
     case invalidData
     case unableToComplete
 }

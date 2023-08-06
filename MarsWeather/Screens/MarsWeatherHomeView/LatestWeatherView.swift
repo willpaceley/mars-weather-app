@@ -46,6 +46,7 @@ struct LatestWeatherView: View {
                 .listStyle(.plain)
                 .refreshable {
                     await vm.getWeatherData(forceFetch: true)
+//                    vm.showAlert(for: .invalidURL)
                 }
                 .onAppear {
                     UIRefreshControl.appearance().tintColor = UIColor.orange

@@ -53,29 +53,10 @@ import SwiftUI
                     selectedReport = reports[0]
                 }
             } catch {
-                if let mwError = error as? MWError {
-                    switch mwError {
-                    case .invalidURL:
-                        alert = AlertContext.invalidURL
-
-                    case .invalidData:
-                        alert = AlertContext.invalidData
-
-                    case .invalidResponse:
-                        alert = AlertContext.invalidResponse
-
-                    case .unableToComplete:
-                        alert = AlertContext.unableToComplete
-                    }
-                } else {
-                    alert = AlertContext.defaultAlert
-                }
-
-                isLoading = false
-                isPresentingAlert = true
+                showAlert(for: error)
             }
     }
-    
+
     // MARK: Private Methods
     private func fetchMarsWeatherReports() async throws -> [WeatherReport] {
         isLoading = true
@@ -84,6 +65,29 @@ import SwiftUI
         try MWCache.shared.insert(weatherData)
         isLoading = false
         return weatherData.soles
+    }
+    
+    private func showAlert(for error: Error) {
+        if let mwError = error as? MWError {
+            switch mwError {
+            case .invalidURL:
+                alert = AlertContext.invalidURL
+
+            case .invalidData:
+                alert = AlertContext.invalidData
+
+            case .invalidResponse(let statusCode):
+                alert = AlertContext.invalidResponse(for: statusCode)
+
+            case .unableToComplete:
+                alert = AlertContext.unableToComplete
+            }
+        } else {
+            alert = AlertContext.defaultAlert
+        }
+        
+        isLoading = false
+        isPresentingAlert = true
     }
     
     private func calculateLowestTemp(from recentReports: [WeatherReport]) -> Int {
