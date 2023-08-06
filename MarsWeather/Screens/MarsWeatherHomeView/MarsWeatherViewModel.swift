@@ -42,7 +42,9 @@ import SwiftUI
                         reports = cachedWeatherData.soles
                     } else {
                         // If no data found in cache, fetch fresh data from provider
+                        isLoading = true
                         reports = try await fetchMarsWeatherReports()
+                        isLoading = false
                     }
                 } else {
                     reports = try await fetchMarsWeatherReports()
@@ -59,11 +61,9 @@ import SwiftUI
 
     // MARK: Private Methods
     private func fetchMarsWeatherReports() async throws -> [WeatherReport] {
-        isLoading = true
         let weatherData = try await dataProvider.getMarsWeatherData()
         // Cache the weather data returned from the API
         try MWCache.shared.insert(weatherData)
-        isLoading = false
         return weatherData.soles
     }
     
