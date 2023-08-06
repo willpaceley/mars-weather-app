@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MarsWeatherHomeView: View {
-    @StateObject var vm = MarsWeatherViewModel()
+    @StateObject var vm = MarsWeatherViewModel(dataProvider: NASADataProvider())
     
     var body: some View {
         ZStack {
@@ -26,10 +26,8 @@ struct MarsWeatherHomeView: View {
                                 vm.isShowingInfo = true
                             }
                     }
-                    .padding(.leading)
-                    .padding(.trailing)
                     
-                    LatestWeatherView(vm: LatestWeatherViewModel(reports: vm.reports))
+                    LatestWeatherView(vm: vm)
                 }
                 
                 if vm.isLoading {
@@ -39,8 +37,7 @@ struct MarsWeatherHomeView: View {
         }
         .preferredColorScheme(.dark)
         .task {
-//            vm.getMockWeatherData()
-            vm.getWeatherData()
+            await vm.getWeatherData()
         }
         .alert(isPresented: $vm.isPresentingAlert) { vm.alert }
         .sheet(isPresented: $vm.isShowingInfo) {

@@ -9,19 +9,49 @@ import SwiftUI
 
 @MainActor final class MarsWeatherViewModel: ObservableObject {
     @Published var reports = [WeatherReport]()
+    @Published var selectedReport: WeatherReport?
     @Published var isLoading = false
     @Published var isPresentingAlert = false
     @Published var isShowingInfo = false
     @Published var alert = AlertContext.defaultAlert
     
-    func getWeatherData() {
-        isLoading = true
-
-        Task {
+    let dataProvider: MarsWeatherDataProvider
+    
+    var recentReports: [WeatherReport] {
+        let count = reports.count
+        let range = count > 13 ? 0..<29 : 0..<count
+        return Array(reports[range])
+    }
+    var lowestTemp: Int {
+        calculateLowestTemp(from: recentReports)
+    }
+    var highestTemp: Int {
+        calculateHighestTemp(from: recentReports)
+    }
+    
+    init(dataProvider: MarsWeatherDataProvider) {
+        self.dataProvider = dataProvider
+    }
+    
+    // MARK: - Public Methods
+    func getWeatherData(forceFetch: Bool = false) async {
             do {
-                let weatherData = try await NetworkManager.shared.getMarsWeatherData()
-                reports = weatherData.soles
-                isLoading = false
+                // If not forced to fetch from API, check cache for unexpired data
+                if !forceFetch {
+                    if let cachedWeatherData = MWCache.shared.getMarsWeatherData() {
+                        reports = cachedWeatherData.soles
+                    } else {
+                        // If no data found in cache, fetch fresh data from provider
+                        reports = try await fetchMarsWeatherReports()
+                    }
+                } else {
+                    reports = try await fetchMarsWeatherReports()
+                }
+                
+                // Set the initial selected report to most recent
+                if !reports.isEmpty {
+                    selectedReport = reports[0]
+                }
             } catch {
                 if let mwError = error as? MWError {
                     switch mwError {
@@ -44,10 +74,35 @@ import SwiftUI
                 isLoading = false
                 isPresentingAlert = true
             }
-        }
     }
     
-    func getMockWeatherData() {
-        reports = MockData.getMockWeatherData()
+    // MARK: Private Methods
+    private func fetchMarsWeatherReports() async throws -> [WeatherReport] {
+        isLoading = true
+        let weatherData = try await dataProvider.getMarsWeatherData()
+        // Cache the weather data returned from the API
+        try MWCache.shared.insert(weatherData)
+        isLoading = false
+        return weatherData.soles
+    }
+    
+    private func calculateLowestTemp(from recentReports: [WeatherReport]) -> Int {
+        let lowestReport = recentReports.min { a, b in
+            return Int(a.minTemp) ?? 0 < Int(b.minTemp) ?? 0
+        }
+        if let lowestReport {
+            return Int(lowestReport.minTemp) ?? 0
+        }
+        return 0
+    }
+    
+    private func calculateHighestTemp(from recentReports: [WeatherReport]) -> Int {
+        let highestReport = recentReports.max { a, b in
+            return Int(a.maxTemp) ?? 0 < Int(b.maxTemp) ?? 0
+        }
+        if let highestReport {
+            return Int(highestReport.maxTemp) ?? 0
+        }
+        return 0
     }
 }
