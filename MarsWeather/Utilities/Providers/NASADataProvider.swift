@@ -43,7 +43,7 @@ struct NASADataProvider: MarsWeatherDataProvider {
             let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
             return weatherData
         } catch {
-            throw MWError.invalidData
+            throw MWError.decodingError(error)
         }
     }
 }

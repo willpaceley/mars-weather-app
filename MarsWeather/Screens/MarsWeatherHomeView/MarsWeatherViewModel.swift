@@ -73,8 +73,8 @@ import SwiftUI
             case .invalidURL:
                 alert = AlertContext.invalidURL
 
-            case .invalidData:
-                alert = AlertContext.invalidData
+            case .decodingError(let error):
+                alert = AlertContext.decodingError(error)
 
             case .invalidResponse(let statusCode):
                 alert = AlertContext.invalidResponse(for: statusCode)

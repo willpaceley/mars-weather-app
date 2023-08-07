@@ -10,6 +10,6 @@ import Foundation
 enum MWError: Error {
     case invalidURL
     case invalidResponse(Int)
-    case invalidData
+    case decodingError(Error)
     case unableToComplete
 }
