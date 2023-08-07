@@ -42,7 +42,9 @@ import SwiftUI
                         reports = cachedWeatherData.soles
                     } else {
                         // If no data found in cache, fetch fresh data from provider
+                        isLoading = true
                         reports = try await fetchMarsWeatherReports()
+                        isLoading = false
                     }
                 } else {
                     reports = try await fetchMarsWeatherReports()
@@ -53,37 +55,45 @@ import SwiftUI
                     selectedReport = reports[0]
                 }
             } catch {
-                if let mwError = error as? MWError {
-                    switch mwError {
-                    case .invalidURL:
-                        alert = AlertContext.invalidURL
-
-                    case .invalidData:
-                        alert = AlertContext.invalidData
-
-                    case .invalidResponse:
-                        alert = AlertContext.invalidResponse
-
-                    case .unableToComplete:
-                        alert = AlertContext.unableToComplete
-                    }
-                } else {
-                    alert = AlertContext.defaultAlert
-                }
-
-                isLoading = false
-                isPresentingAlert = true
+                showAlert(for: error)
             }
     }
-    
+
     // MARK: Private Methods
     private func fetchMarsWeatherReports() async throws -> [WeatherReport] {
-        isLoading = true
         let weatherData = try await dataProvider.getMarsWeatherData()
         // Cache the weather data returned from the API
         try MWCache.shared.insert(weatherData)
-        isLoading = false
         return weatherData.soles
+    }
+    
+    private func showAlert(for error: Error) {
+        if let mwError = error as? MWError {
+            switch mwError {
+            case .defaultError:
+                alert = AlertContext.defaultAlert
+                
+            case .invalidURL:
+                alert = AlertContext.invalidURL
+                
+            case .invalidResponse(let statusCode):
+                alert = AlertContext.invalidResponse(for: statusCode)
+
+            case .decodingError(let error):
+                alert = AlertContext.decodingError(error)
+
+            case .cacheError(let error):
+                alert = AlertContext.cacheError(error)
+                
+            case .genericError(let error):
+                alert = AlertContext.genericError(error)
+            }
+        } else {
+            alert = AlertContext.genericError(error)
+        }
+        
+        isLoading = false
+        isPresentingAlert = true
     }
     
     private func calculateLowestTemp(from recentReports: [WeatherReport]) -> Int {

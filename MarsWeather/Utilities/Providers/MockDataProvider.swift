@@ -8,7 +8,7 @@
 import Foundation
 
 struct MockDataProvider: MarsWeatherDataProvider {
-    func getMarsWeatherData() async throws -> MarsWeatherData {
+    func getMarsWeatherData() -> MarsWeatherData {
         let marsWeatherData = Bundle.main.decode(MarsWeatherData.self, from: "MarsWeatherAPIData.json")
         return marsWeatherData
     }

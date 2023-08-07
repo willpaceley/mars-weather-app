@@ -28,13 +28,22 @@ struct NASADataProvider: MarsWeatherDataProvider {
         }
         
         print("Fetching weather data from NASA API.")
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse else {
+            throw MWError.defaultError
+        }
+        
+        // Check for 200 status code before decoding data
+        if response.statusCode != 200 {
+            throw MWError.invalidResponse(response.statusCode)
+        }
         
         do {
             let weatherData = try JSONDecoder().decode(MarsWeatherData.self, from: data)
             return weatherData
         } catch {
-            throw MWError.invalidData
+            throw MWError.decodingError(error)
         }
     }
 }

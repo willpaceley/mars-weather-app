@@ -31,8 +31,7 @@ final class MWCache {
         do {
             try cache.saveToDisc(withName: CACHE_NAME)
         } catch {
-            // TODO: Improve error handling, add specific caching error.
-            throw MWError.unableToComplete
+            throw MWError.cacheError(error)
         }
     }
     
