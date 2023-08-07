@@ -11,5 +11,6 @@ enum MWError: Error {
     case invalidURL
     case invalidResponse(Int)
     case decodingError(Error)
+    case cacheError(Error)
     case unableToComplete
 }

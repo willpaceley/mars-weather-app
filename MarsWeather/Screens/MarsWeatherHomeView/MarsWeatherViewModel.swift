@@ -72,15 +72,18 @@ import SwiftUI
             switch mwError {
             case .invalidURL:
                 alert = AlertContext.invalidURL
+                
+            case .unableToComplete:
+                alert = AlertContext.unableToComplete
+                
+            case .invalidResponse(let statusCode):
+                alert = AlertContext.invalidResponse(for: statusCode)
 
             case .decodingError(let error):
                 alert = AlertContext.decodingError(error)
 
-            case .invalidResponse(let statusCode):
-                alert = AlertContext.invalidResponse(for: statusCode)
-
-            case .unableToComplete:
-                alert = AlertContext.unableToComplete
+            case .cacheError(let error):
+                alert = AlertContext.cacheError(error)
             }
         } else {
             alert = AlertContext.defaultAlert

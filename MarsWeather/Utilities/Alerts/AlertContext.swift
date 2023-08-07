@@ -46,4 +46,8 @@ struct AlertContext {
             return AlertContext.defaultAlert
         }
     }
+    
+    static func cacheError(_ error: Error) -> Alert {
+        return Alert(title: Text("Cache Error"), message: Text(error.localizedDescription))
+    }
 }
