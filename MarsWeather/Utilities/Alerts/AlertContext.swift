@@ -14,9 +14,6 @@ struct AlertContext {
     static let invalidURL = Alert(title: Text("Network Error"),
                                   message: Text("The URL was invalid or not constructed properly."))
     
-    static let unableToComplete = Alert(title: Text("Network Error"),
-                                        message: Text("Unable to complete your request. Please check your internet connection."))
-    
     static func invalidResponse(for statusCode: Int) -> Alert {
         let statusCodeMessage = HTTPURLResponse.localizedString(forStatusCode: statusCode)
         let title = "\(statusCode) \(statusCodeMessage.capitalized)"
@@ -43,11 +40,15 @@ struct AlertContext {
 
             return Alert(title: Text("Decoding Error"), message: Text(message))
         } else {
-            return AlertContext.defaultAlert
+            return AlertContext.genericError(error)
         }
     }
     
     static func cacheError(_ error: Error) -> Alert {
         return Alert(title: Text("Cache Error"), message: Text(error.localizedDescription))
+    }
+    
+    static func genericError(_ error: Error) -> Alert {
+        return Alert(title: Text("Application Error"), message: Text(error.localizedDescription))
     }
 }

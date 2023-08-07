@@ -8,9 +8,10 @@
 import Foundation
 
 enum MWError: Error {
+    case defaultError
     case invalidURL
     case invalidResponse(Int)
     case decodingError(Error)
     case cacheError(Error)
-    case unableToComplete
+    case genericError(Error)
 }

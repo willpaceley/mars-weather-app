@@ -31,7 +31,7 @@ struct NASADataProvider: MarsWeatherDataProvider {
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let response = response as? HTTPURLResponse else {
-            throw MWError.unableToComplete
+            throw MWError.defaultError
         }
         
         // Check for 200 status code before decoding data

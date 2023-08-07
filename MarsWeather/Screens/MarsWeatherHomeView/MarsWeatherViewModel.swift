@@ -70,11 +70,11 @@ import SwiftUI
     private func showAlert(for error: Error) {
         if let mwError = error as? MWError {
             switch mwError {
+            case .defaultError:
+                alert = AlertContext.defaultAlert
+                
             case .invalidURL:
                 alert = AlertContext.invalidURL
-                
-            case .unableToComplete:
-                alert = AlertContext.unableToComplete
                 
             case .invalidResponse(let statusCode):
                 alert = AlertContext.invalidResponse(for: statusCode)
@@ -84,9 +84,12 @@ import SwiftUI
 
             case .cacheError(let error):
                 alert = AlertContext.cacheError(error)
+                
+            case .genericError(let error):
+                alert = AlertContext.genericError(error)
             }
         } else {
-            alert = AlertContext.defaultAlert
+            alert = AlertContext.genericError(error)
         }
         
         isLoading = false
