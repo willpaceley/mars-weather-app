@@ -40,7 +40,7 @@ extension TemperatureChartView {
             var temperatures = [MarsTemperature]()
             
             reports.forEach {
-                let date = $0.terrestrialDate.toDate()!
+                guard let date = $0.terrestrialDate.toDate() else { return }
                 
                 if isShowingAirTemp {
                     if let maxTempValue = Int($0.maxTemp), let minTempValue = Int($0.minTemp)

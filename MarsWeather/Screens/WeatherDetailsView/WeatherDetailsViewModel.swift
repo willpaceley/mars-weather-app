@@ -184,8 +184,8 @@ import Charts
         var totalMinutesOfSunlight = 0
         
         reports.forEach {
-            let sunriseTime = $0.sunrise.getDaylightTime()!
-            let sunsetTime = $0.sunset.getDaylightTime()!
+            guard let sunriseTime = $0.sunrise.getDaylightTime() else { return }
+            guard let sunsetTime = $0.sunset.getDaylightTime() else { return }
             
             if let minutesOfSunlight = getMinutesOfSunlight(from: sunriseTime, to: sunsetTime) {
                 totalMinutesOfSunlight += minutesOfSunlight

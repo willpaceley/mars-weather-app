@@ -30,10 +30,13 @@ struct IrradianceChartView_Previews: PreviewProvider {
 
 extension IrradianceChartView {
     private func getChartData(from reports: [WeatherReport]) -> [MarsIrradianceData] {
-        reports.map { report in
-            let date = report.terrestrialDate.toDate()!
-            let irradiance: String = report.localUvIrradianceIndex.formatUVIndexString()
-            return MarsIrradianceData(date: date, irradiance: irradiance)
+        var chartData = [MarsIrradianceData]()
+        reports.forEach { report in
+            guard let date = report.terrestrialDate.toDate() else { return }
+            let irradiance = report.localUvIrradianceIndex.formatUVIndexString()
+            let irradianceData = MarsIrradianceData(date: date, irradiance: irradiance)
+            chartData.append(irradianceData)
         }
+        return chartData
     }
 }

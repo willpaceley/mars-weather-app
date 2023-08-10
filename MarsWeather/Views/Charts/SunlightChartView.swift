@@ -38,7 +38,7 @@ extension SunlightChartView {
         var sunlightData = [MarsSunlight]()
         
         reports.forEach {
-            let date = $0.terrestrialDate.toDate()!
+            guard let date = $0.terrestrialDate.toDate() else { return }
             
             if isShowingSunrise {
                 let sunriseTime = getSunlightTime(for: $0.sunrise)!

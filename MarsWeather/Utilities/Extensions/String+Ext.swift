@@ -28,7 +28,7 @@ extension String {
         if let date = dateFormatter.date(from: self) {
             return date
         } else {
-            print("A problem occurred converting \(self) to a Date type. Returning today's date.")
+            print("Could not convert to Date. The string \(self) did not match the format yyyy-MM-dd.")
             return nil
         }
     }
@@ -40,7 +40,7 @@ extension String {
         if let date = dateFormatter.date(from: self) {
             return date
         } else {
-            print("Date from time conversion failed in getDaylightTime function.")
+            print("Date from time conversion failed. The string \(self) did not match the format HH:mm.")
             return nil
         }
     }
