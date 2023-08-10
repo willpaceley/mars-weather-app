@@ -14,20 +14,21 @@ struct MarsWeatherHomeView: View {
         ZStack {
             VStack(spacing: 0) {
                 if !vm.reports.isEmpty {
-                    HStack(alignment: .firstTextBaseline) {
+                    HStack {
                         AppTitleView()
                         
                         Spacer()
                         
-                        Image(systemName: "info.circle")
-                            .font(.title)
-                            .foregroundStyle(.secondary)
-                            .onTapGesture {
-                                vm.isShowingInfo = true
-                            }
+                        BarButtonIconView(isShowingInfo: $vm.isShowingInfo, icon: "info.circle")
                     }
                     
-                    LatestWeatherView(vm: vm)
+                    WeatherReportView(vm: vm)
+                    
+                    Divider()
+                        .padding(.top)
+                        .padding(.bottom)
+                    
+                    WeatherReportListView(vm: vm)
                 }
                 
                 if vm.isLoading {

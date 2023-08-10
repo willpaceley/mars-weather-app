@@ -11,11 +11,15 @@ import SwiftUI
     @Published var reports = [WeatherReport]()
     @Published var selectedReport: WeatherReport?
     @Published var isLoading = false
-    @Published var isPresentingAlert = false
     @Published var isShowingInfo = false
+    @Published var isPresentingAlert = false
+    @Published var isShowingDetailsChart = false
     @Published var alert = AlertContext.defaultAlert
     
+    // MARK: Properties
     let dataProvider: MarsWeatherDataProvider
+    
+    var selectedWeatherDetail: WeatherDetail?
     
     var recentReports: [WeatherReport] {
         let count = reports.count
@@ -57,6 +61,11 @@ import SwiftUI
             } catch {
                 showAlert(for: error)
             }
+    }
+    
+    func showChart(for weatherDetail: WeatherDetail) {
+        selectedWeatherDetail = weatherDetail
+        isShowingDetailsChart = true
     }
 
     // MARK: Private Methods
@@ -115,4 +124,13 @@ import SwiftUI
         }
         return 0
     }
+}
+
+// MARK: - WeatherDetail Enum
+enum WeatherDetail: String {
+    case temperature
+    case daylight
+    case conditions
+    case pressure
+    case irradiance
 }

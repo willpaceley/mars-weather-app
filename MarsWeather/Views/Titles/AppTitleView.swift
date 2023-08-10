@@ -9,13 +9,17 @@ import SwiftUI
 
 struct AppTitleView: View {
     var body: some View {
-        VStack(alignment: .center) {
-            Text("Mars Weather")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .foregroundStyle(LinearGradient(colors: [.orange, .accentColor], startPoint: .top, endPoint: .bottom))
-        }
-//        .frame(maxWidth: .infinity)
+        Text("Mars Weather")
+            .font(.largeTitle)
+            .fontWeight(.semibold)
+            .foregroundStyle(
+                LinearGradient(
+                    colors: [.orange,
+                             .accentColor],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
     }
 }
 
