@@ -10,6 +10,8 @@ import SwiftUI
 struct MarsWeatherHomeView: View {
     @StateObject var vm = MarsWeatherViewModel(dataProvider: NASADataProvider())
     
+    var testLoading = true
+    
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -29,12 +31,10 @@ struct MarsWeatherHomeView: View {
                         .padding(.bottom)
                     
                     WeatherReportListView(vm: vm)
+                } else if vm.isLoading {
+                    LoadingView()
                 } else {
                     NoDataView(getWeatherData: vm.getWeatherData)
-                }
-                
-                if vm.isLoading {
-                    LoadingView()
                 }
             }
         }
