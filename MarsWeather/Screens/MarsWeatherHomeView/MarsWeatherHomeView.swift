@@ -29,6 +29,8 @@ struct MarsWeatherHomeView: View {
                         .padding(.bottom)
                     
                     WeatherReportListView(vm: vm)
+                } else {
+                    NoDataView(getWeatherData: vm.getWeatherData)
                 }
                 
                 if vm.isLoading {

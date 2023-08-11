@@ -38,6 +38,7 @@
 		07FAD9222A30BEE600D554EC /* SunlightChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD9212A30BEE600D554EC /* SunlightChartView.swift */; };
 		BE1729932A8517C400D6DBD7 /* WeatherReportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1729922A8517C400D6DBD7 /* WeatherReportListView.swift */; };
 		BE1729962A85C8C700D6DBD7 /* BarButtonIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1729952A85C8C700D6DBD7 /* BarButtonIconView.swift */; };
+		BE1729982A866BBB00D6DBD7 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1729972A866BBB00D6DBD7 /* NoDataView.swift */; };
 		BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */; };
 		BE19E9F92A649F5E0065E5C2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19E9F82A649F5E0065E5C2 /* AboutView.swift */; };
 		BE19EA1F2A66BDD30065E5C2 /* MSL_REMS.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BE19EA1E2A66BDD30065E5C2 /* MSL_REMS.mp4 */; };
@@ -92,6 +93,7 @@
 		07FAD9212A30BEE600D554EC /* SunlightChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightChartView.swift; sourceTree = "<group>"; };
 		BE1729922A8517C400D6DBD7 /* WeatherReportListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReportListView.swift; sourceTree = "<group>"; };
 		BE1729952A85C8C700D6DBD7 /* BarButtonIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonIconView.swift; sourceTree = "<group>"; };
+		BE1729972A866BBB00D6DBD7 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		BE19E9F82A649F5E0065E5C2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		BE19EA1E2A66BDD30065E5C2 /* MSL_REMS.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = MSL_REMS.mp4; sourceTree = "<group>"; };
@@ -255,7 +257,7 @@
 				BE1729942A8570E700D6DBD7 /* Icons */,
 				07F1089D29FDCA0700EC2D6A /* Titles */,
 				07F1089729FC5C6500EC2D6A /* LoadingView.swift */,
-				BE19EA4F2A75B5050065E5C2 /* DismissButtonView.swift */,
+				BE1729972A866BBB00D6DBD7 /* NoDataView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,8 +299,9 @@
 		BE1729942A8570E700D6DBD7 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				07F108A82A00416800EC2D6A /* WeatherIconView.swift */,
+				BE19EA4F2A75B5050065E5C2 /* DismissButtonView.swift */,
 				BE1729952A85C8C700D6DBD7 /* BarButtonIconView.swift */,
+				07F108A82A00416800EC2D6A /* WeatherIconView.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				07F886782A0EF2BC0009AA7C /* ReportListCellView.swift in Sources */,
 				07F108A329FF4D2A00EC2D6A /* DaylightView.swift in Sources */,
 				BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */,
+				BE1729982A866BBB00D6DBD7 /* NoDataView.swift in Sources */,
 				BE3736882A7D84E00019C69F /* MockDataProvider.swift in Sources */,
 				BE19EA572A75B8A00065E5C2 /* DaylightChartToggles.swift in Sources */,
 				07D8299F29FC1CD200587495 /* MarsWeatherData.swift in Sources */,
