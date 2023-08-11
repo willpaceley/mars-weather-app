@@ -9,20 +9,12 @@ import SwiftUI
 
 struct MarsWeatherHomeView: View {
     @StateObject var vm = MarsWeatherViewModel(dataProvider: NASADataProvider())
-    
-    var testLoading = true
-    
+
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 if !vm.reports.isEmpty {
-                    HStack {
-                        AppTitleView()
-                        
-                        Spacer()
-                        
-                        BarButtonIconView(isShowingInfo: $vm.isShowingInfo, icon: "info.circle")
-                    }
+                    HeaderView(isShowingInfo: $vm.isShowingInfo)
                     
                     WeatherReportView(vm: vm)
                     

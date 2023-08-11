@@ -39,6 +39,7 @@
 		BE1729932A8517C400D6DBD7 /* WeatherReportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1729922A8517C400D6DBD7 /* WeatherReportListView.swift */; };
 		BE1729962A85C8C700D6DBD7 /* BarButtonIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1729952A85C8C700D6DBD7 /* BarButtonIconView.swift */; };
 		BE1729982A866BBB00D6DBD7 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1729972A866BBB00D6DBD7 /* NoDataView.swift */; };
+		BE17299A2A86BAC800D6DBD7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1729992A86BAC800D6DBD7 /* HeaderView.swift */; };
 		BE19E9F72A6499CA0065E5C2 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */; };
 		BE19E9F92A649F5E0065E5C2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19E9F82A649F5E0065E5C2 /* AboutView.swift */; };
 		BE19EA1F2A66BDD30065E5C2 /* MSL_REMS.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BE19EA1E2A66BDD30065E5C2 /* MSL_REMS.mp4 */; };
@@ -94,6 +95,7 @@
 		BE1729922A8517C400D6DBD7 /* WeatherReportListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReportListView.swift; sourceTree = "<group>"; };
 		BE1729952A85C8C700D6DBD7 /* BarButtonIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonIconView.swift; sourceTree = "<group>"; };
 		BE1729972A866BBB00D6DBD7 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
+		BE1729992A86BAC800D6DBD7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		BE19E9F62A6499CA0065E5C2 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		BE19E9F82A649F5E0065E5C2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		BE19EA1E2A66BDD30065E5C2 /* MSL_REMS.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = MSL_REMS.mp4; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				07F1089D29FDCA0700EC2D6A /* Titles */,
 				07F1089729FC5C6500EC2D6A /* LoadingView.swift */,
 				BE1729972A866BBB00D6DBD7 /* NoDataView.swift */,
+				BE1729992A86BAC800D6DBD7 /* HeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				07D8298629FB141100587495 /* MarsWeatherApp.swift in Sources */,
 				07FAD9222A30BEE600D554EC /* SunlightChartView.swift in Sources */,
 				07EF55A02A0EC72E0050BBA8 /* WeatherReportView.swift in Sources */,
+				BE17299A2A86BAC800D6DBD7 /* HeaderView.swift in Sources */,
 				07FAD91F2A2FE6F600D554EC /* DetailsChartView.swift in Sources */,
 				07ED94F02A0533AD0075B8D4 /* String+Ext.swift in Sources */,
 				07F1089829FC5C6500EC2D6A /* LoadingView.swift in Sources */,
