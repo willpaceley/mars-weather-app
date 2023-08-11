@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherReport: Codable, Identifiable {
+struct WeatherReport: Codable, Identifiable, Equatable {
     let id: String
     let terrestrialDate : String
     let sol: String

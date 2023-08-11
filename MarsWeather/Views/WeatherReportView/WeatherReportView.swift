@@ -35,6 +35,7 @@ struct WeatherReportView: View {
                 }
             }
         }
+        .animation(.smooth, value: vm.selectedReport)
         .sheet(isPresented: $vm.isShowingDetailsChart) {
             if let weatherDetail = vm.selectedWeatherDetail {
                 WeatherDetailsView(
