@@ -14,12 +14,13 @@ struct MarsDateView: View {
         HStack {
             HStack(spacing: 10) {
                 Text("Sol " + report.sol)
+                    .font(.title3)
                     .foregroundColor(.accentColor)
                 
                 Divider()
                 
                 Text(report.terrestrialDate.formatDate(format: .full))
-                    .font(.callout)
+                    .font(.title3)
                     .foregroundColor(.secondary)
             }
             
