@@ -24,7 +24,11 @@ struct TemperatureChartToggles: View {
     }
 }
 
-#Preview {
-    TemperatureChartToggles(isShowingAirTemp: .constant(true),
-                           isShowingGroundTemp: .constant(false))
+struct TemperatureChartToggles_Previews: PreviewProvider {
+    static var previews: some View {
+        TemperatureChartToggles(
+            isShowingAirTemp: .constant(true),
+            isShowingGroundTemp: .constant(false)
+        )
+    }
 }

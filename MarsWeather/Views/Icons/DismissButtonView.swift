@@ -23,6 +23,8 @@ struct DismissButtonView: View {
     }
 }
 
-#Preview {
-    DismissButtonView()
+struct DismissButtonView_Previews: PreviewProvider {
+    static var previews: some View {
+        DismissButtonView()
+    }
 }

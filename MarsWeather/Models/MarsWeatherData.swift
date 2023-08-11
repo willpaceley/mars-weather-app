@@ -52,7 +52,6 @@ struct Descriptions: Codable {
     }
 }
 
-#if DEBUG
 struct MockData {
     static let report = WeatherReport(id: "3617",
                          terrestrialDate: "2023-04-24",
@@ -78,4 +77,3 @@ struct MockData {
         return marsWeatherData.soles
     }
 }
-#endif

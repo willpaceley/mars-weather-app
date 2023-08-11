@@ -24,9 +24,11 @@ struct DaylightChartToggles: View {
     }
 }
 
-#Preview {
-    DaylightChartToggles(
-        isShowingSunrise: .constant(true),
-        isShowingSunset: .constant(false)
-    )
+struct DaylightChartToggles_Previews: PreviewProvider {
+    static var previews: some View {
+        DaylightChartToggles(
+            isShowingSunrise: .constant(true),
+            isShowingSunset: .constant(false)
+        )
+    }
 }
