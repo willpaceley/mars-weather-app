@@ -39,6 +39,8 @@ import SwiftUI
     
     // MARK: - Public Methods
     func getWeatherData(forceFetch: Bool = false) async {
+        isLoading = true
+        
             do {
                 // If not forced to fetch from API, check cache for unexpired data
                 if !forceFetch {
@@ -46,9 +48,7 @@ import SwiftUI
                         reports = cachedWeatherData.soles
                     } else {
                         // If no data found in cache, fetch fresh data from provider
-                        isLoading = true
                         reports = try await fetchMarsWeatherReports()
-                        isLoading = false
                     }
                 } else {
                     reports = try await fetchMarsWeatherReports()
@@ -61,6 +61,8 @@ import SwiftUI
             } catch {
                 showAlert(for: error)
             }
+        
+        isLoading = false
     }
     
     func showChart(for weatherDetail: WeatherDetail) {
