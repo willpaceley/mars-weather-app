@@ -30,12 +30,14 @@ struct ReportListCellView: View {
                 Spacer()
                 
                 Text("\(report.minTemp)°")
+                    .frame(width: 40)
                 
                 TemperatureVisualizationView(report: report,
                                              lowestTemp: lowestTemp,
                                              highestTemp: highestTemp)
                 
                 Text("\(report.maxTemp)°")
+                    .frame(width: 40)
             }
         }
         .padding(10)
