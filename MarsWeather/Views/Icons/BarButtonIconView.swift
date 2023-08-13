@@ -21,6 +21,11 @@ struct BarButtonIconView: View {
     }
 }
 
-#Preview {
-    BarButtonIconView(isShowingInfo: .constant(false), icon: "info.circle")
+struct BarButtonIconView_Previews: PreviewProvider {
+    static var previews: some View {
+        BarButtonIconView(
+            isShowingInfo: .constant(false),
+            icon: "info.circle"
+        )
+    }
 }

@@ -21,6 +21,8 @@ struct HeaderView: View {
     }
 }
 
-#Preview {
-    HeaderView(isShowingInfo: .constant(false))
+struct HeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        HeaderView(isShowingInfo: .constant(false))
+    }
 }
