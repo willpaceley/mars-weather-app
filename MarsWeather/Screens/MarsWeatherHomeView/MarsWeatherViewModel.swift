@@ -10,7 +10,7 @@ import SwiftUI
 @MainActor final class MarsWeatherViewModel: ObservableObject {
     @Published var reports = [WeatherReport]()
     @Published var selectedReport: WeatherReport?
-    @Published var isLoading = false
+    @Published var isLoading = true
     @Published var isShowingInfo = false
     @Published var isPresentingAlert = false
     @Published var isShowingDetailsChart = false
@@ -42,13 +42,12 @@ import SwiftUI
             do {
                 // If not forced to fetch from API, check cache for unexpired data
                 if !forceFetch {
+                    isLoading = true
                     if let cachedWeatherData = MWCache.shared.getMarsWeatherData() {
                         reports = cachedWeatherData.soles
                     } else {
                         // If no data found in cache, fetch fresh data from provider
-                        isLoading = true
                         reports = try await fetchMarsWeatherReports()
-                        isLoading = false
                     }
                 } else {
                     reports = try await fetchMarsWeatherReports()
@@ -61,6 +60,8 @@ import SwiftUI
             } catch {
                 showAlert(for: error)
             }
+        
+        isLoading = false
     }
     
     func showChart(for weatherDetail: WeatherDetail) {
