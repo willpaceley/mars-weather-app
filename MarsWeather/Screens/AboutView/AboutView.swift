@@ -18,7 +18,7 @@ struct AboutView: View {
                 .padding()
 
             VideoPlayer(player: vm.player)
-                    .frame(height: 200)
+                .aspectRatio(1280 / 720, contentMode: .fit)
             
             Text("The Rover Environmental Monitoring Station (REMS) onboard the Curiosity rover on Mars.")
                 .foregroundStyle(.secondary)

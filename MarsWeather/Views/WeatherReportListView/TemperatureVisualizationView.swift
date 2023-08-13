@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct TemperatureVisualizationView: View {
-    let totalWidth: Double = 125
     let report: WeatherReport
     let lowestTemp: Int
     let highestTemp: Int
+    
+    var totalWidth: Double {
+        UIDevice.isIPad ? 350 : 125
+    }
     
     var reportRangeWidth: Double {
         calculateRangeWidth(for: report)

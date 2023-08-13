@@ -19,7 +19,6 @@ struct SunlightChartView: View {
                          y: .value("Time", $0.time, unit: .minute))
                 .foregroundStyle(by: .value("Type", $0.type.rawValue))
             }
-            .frame(height: 275)
         }
     }
 

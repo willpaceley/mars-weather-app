@@ -18,7 +18,6 @@ struct ConditionsChartView: View {
                         width: .fixed(50))
                 .foregroundStyle(Color.accentColor)
             }
-            .frame(height: 275)
     }
 }
 

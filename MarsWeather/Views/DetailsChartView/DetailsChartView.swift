@@ -28,6 +28,7 @@ struct DetailsChartView: View {
                         isShowingAirTemp: vm.isShowingAirTemp,
                         isShowingGroundTemp: vm.isShowingGroundTemp
                     )
+                    .frame(height: vm.chartHeight)
                     
                 case .daylight:
                     SunlightChartView(
@@ -35,15 +36,19 @@ struct DetailsChartView: View {
                         isShowingSunrise: vm.isShowingSunrise,
                         isShowingSunset: vm.isShowingSunset
                     )
+                    .frame(height: vm.chartHeight)
                     
                 case .conditions:
                     ConditionsChartView(reports: vm.selectedReports)
+                        .frame(height: vm.chartHeight)
                     
                 case .pressure:
                     PressureChartView(reports: vm.selectedReports)
+                        .frame(height: vm.chartHeight)
                     
                 case .irradiance:
                     IrradianceChartView(reports: vm.selectedReports)
+                        .frame(height: vm.chartHeight)
                 }
                 
                 if vm.chartType == .temperature {

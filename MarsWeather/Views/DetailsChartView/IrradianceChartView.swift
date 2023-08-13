@@ -17,7 +17,6 @@ struct IrradianceChartView: View {
                       y: .value("Irradiance", $0.irradiance))
             .foregroundStyle(Color.accentColor)
         }
-        .frame(height: 275)
     }
 }
 

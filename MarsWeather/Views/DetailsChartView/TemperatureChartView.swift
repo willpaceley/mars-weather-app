@@ -21,7 +21,6 @@ struct TemperatureChartView: View {
             )
             .foregroundStyle(by: .value("Type", $0.type.rawValue))
         }
-        .frame(height: 275)
     }
 }
 

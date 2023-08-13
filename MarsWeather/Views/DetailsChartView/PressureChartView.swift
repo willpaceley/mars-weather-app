@@ -17,7 +17,6 @@ struct PressureChartView: View {
                          y: .value("Pressure (Pa)", $0.pressure))
                 .foregroundStyle(Color.accentColor)
             }
-            .frame(height: 275)
     }
 }
 
