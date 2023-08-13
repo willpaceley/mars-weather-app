@@ -109,9 +109,9 @@ import Charts
         switch weatherDetail {
         case .temperature:
             return """
-            Mars is farther from the Sun than Earth, it makes that Mars is colder than our planet. \
-            Moreover, Martian's atmosphere, which is extremely tenuous, does not retain the heat; \
-            hence the difference between day and night's temperatures is more pronounced than in our planet.
+            Mars is farther from the Sun than Earth, thus Mars is colder than our planet. \
+            The Martian atmosphere is extremely tenuous and does not retain heat well; \
+            the difference between day and night's temperatures is more pronounced than on Earth.
             """
             
         case .daylight:
