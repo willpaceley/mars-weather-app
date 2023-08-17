@@ -32,6 +32,9 @@ import SwiftUI
     var highestTemp: Int {
         calculateHighestTemp(from: recentReports)
     }
+    var verticalPadding: CGFloat? {
+        UIDevice.isIPad ? nil : 10
+    }
     
     init(dataProvider: MarsWeatherDataProvider) {
         self.dataProvider = dataProvider

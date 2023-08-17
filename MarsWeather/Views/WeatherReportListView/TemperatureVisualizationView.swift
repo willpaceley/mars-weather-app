@@ -13,7 +13,7 @@ struct TemperatureVisualizationView: View {
     let highestTemp: Int
     
     var totalWidth: Double {
-        UIDevice.isIPad ? 350 : 125
+        UIDevice.isIPad ? 350 : 120
     }
     
     var reportRangeWidth: Double {

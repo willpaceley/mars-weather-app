@@ -29,8 +29,8 @@ struct MarsWeatherHomeView: View {
                     NoDataView(getWeatherData: vm.getWeatherData)
                 }
             }
-            .padding(.leading)
-            .padding(.trailing)
+            .padding(.leading, vm.verticalPadding)
+            .padding(.trailing, vm.verticalPadding)
         }
         .preferredColorScheme(.dark)
         .task {
