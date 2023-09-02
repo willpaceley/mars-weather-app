@@ -114,6 +114,7 @@
 		BE37368A2A7D8BAA0019C69F /* MWCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MWCache.swift; sourceTree = "<group>"; };
 		BE655EE12A5981BD0066E2B6 /* ConditionsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsChartView.swift; sourceTree = "<group>"; };
 		BE655EE62A5A17F00066E2B6 /* PressureChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressureChartView.swift; sourceTree = "<group>"; };
+		BE91703A2AA3D28B0036A455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BEC810C72A6385C300971F82 /* IrradianceChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IrradianceChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +170,7 @@
 		07D8298429FB141100587495 /* MarsWeather */ = {
 			isa = PBXGroup;
 			children = (
+				BE91703A2AA3D28B0036A455 /* Info.plist */,
 				07D8299D29FC1CB800587495 /* Models */,
 				07ED94E52A02A06E0075B8D4 /* Utilities */,
 				07F1089629FC5B3D00EC2D6A /* Views */,
@@ -608,6 +610,7 @@
 				DEVELOPMENT_TEAM = 64H6U72Q6B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarsWeather/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Mars Weather";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -645,6 +648,7 @@
 				DEVELOPMENT_TEAM = 64H6U72Q6B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarsWeather/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Mars Weather";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
