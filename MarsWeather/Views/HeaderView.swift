@@ -12,7 +12,8 @@ struct HeaderView: View {
     
     var body: some View {
         HStack {
-            AppTitleView()
+            Text("Mars Weather")
+              .marsTitle()
             
             Spacer()
             
