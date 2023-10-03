@@ -14,7 +14,8 @@ struct WeatherReportListView: View {
         
         VStack(alignment: .leading) {
             
-            SubHeaderView(title: "Last 30 Days")
+            Text("Last 30 Days")
+                .subheading()
             
             if let selectedReport = vm.selectedReport {
                 
